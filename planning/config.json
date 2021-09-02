@@ -1,0 +1,65 @@
+{
+    "posts": [
+        "Accueil",
+        "Automates",
+        "Découvrir",
+        "Imaginer -12",
+        "Imaginer +12"
+    ],
+    "slots": {
+        "Mercredi": [
+            "10h - 11h30",
+            "11h30 - 13h",
+            "14h - 15h30",
+            "15h30 - 17h",
+            "17h - 18h30"
+        ],
+        "Jeudi": [
+            "14h - 15h30",
+            "15h30 - 17h",
+            "17h - 18h30"
+        ],
+        "Vendredi": [
+            "14h - 15h30",
+            "15h30 - 17h",
+            "17h - 18h30"
+        ],
+        "Samedi": [
+            "10h - 11h30",
+            "11h30 - 13h"
+        ]
+    },
+    "agents": [
+        "Jean",
+        "Marie",
+        "Pierre",
+        "Jeanne",
+        "Michel",
+        "Françoise",
+        "André",
+        "Monique",
+        "Philippe",
+        "Catherine"
+    ],
+    "objectives": {
+        "avoidTwiceInARow": 1,
+        "standardizeWeeklyTotal": 1,
+        "refTimes": {
+            "Jean": "10.25",
+            "Marie": "10.25",
+            "Pierre": "10.25",
+            "Jeanne": "10.25",
+            "Michel": "10.25",
+            "Françoise": "10.25",
+            "André": "10.25",
+            "Monique": "10.25",
+            "Philippe": "10.25",
+            "Catherine": "10.25"
+        }
+    },
+    "constraints": {
+        "posts": {},
+        "agentsAbsence": {},
+        "postsAttributions": {}
+    }
+}

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+
+    <title>Générateur de plannings</title>
+    <meta charset="utf8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/ychalier/pifekit/pifekit.css" />
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/ychalier/pifekit/pifekit.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
+</head>
+
+<body class="container">
+
+    <header class="navbar">
+        <section class="navbar-section">
+
+            <div class="dropdown">
+                <a class="btn dropdown-toggle" tabindex="0">Fichier</a>
+                <ul class="menu">
+                    <li class="menu-item">
+                        <a class="btn btn-link" onclick="showModal('modal-file-import-config');">Importer une configuration</a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="btn btn-link" href="javascript:void(0);" id="file-export-config" download="config.json">Exporter la configuration</a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="btn btn-link" onclick="showModal('modal-file-export-solution');">Exporter le planning</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="dropdown">
+                <a class="btn dropdown-toggle" tabindex="0">Configuration</a>
+                <ul class="menu">
+                    <li class="menu-item">
+                        <a class="btn btn-link" onclick="showModal('modal-params-posts');">Postes</a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="btn btn-link" onclick="showModal('modal-params-slots');">Créneaux</a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="btn btn-link" onclick="showModal('modal-params-agents');">Agents</a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="btn btn-link" onclick="showModal('modal-params-objectives');">Objectifs</a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="btn btn-link" onclick="showModal('modal-params-objectives-reftimes');">Quotas</a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="btn btn-link" onclick="showModal('modal-params-constraints-agents-absence');">Disponibilité des agents</a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="btn btn-link" onclick="showModal('modal-params-constraints-posts');">Ouverture des postes</a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="btn btn-link" onclick="showModal('modal-params-constraints-posts-attributions');">Attribution des postes</a>
+                    </li>
+                </ul>
+            </div>
+
+            <button class="btn btn-primary" onclick="generate()">Générer</button>
+
+        </section>
+    </header>
+
+    <div class="columns">
+
+        <div class="column col-10">
+            <table class="table table-striped table-hover table-condensed" id="table-schedule"></table>
+        </div>
+
+        <div class="column col-2">
+            <table class="table table-striped table-hover table-condensed" id="table-agents">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Plages</th>
+                        <th>Heures</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <script type="text/javascript" src="master.js"></script>
+
+    <div class="modal" id="modal-loading">
+        <a class="modal-overlay" aria-label="Close"></a>
+        <div style="z-index: 1;">
+            <div class="text-center">Génération en cours...</div>
+            <div class="loading loading-lg"></div>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-file-import-config">
+        <a class="modal-overlay" aria-label="Close" onclick="closeModal('modal-file-import-config');"></a>
+        <div class="modal-container">
+            <div class="modal-header">
+                <a class="btn btn-clear float-right" aria-label="Close" onclick="closeModal('modal-file-import-config');"></a>
+                <div class="modal-title h5">Importer une configuration</div>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <input class="form-input" type="file" id="input-file-import-config" accept=".json" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="loadConfigFromFile();closeModal('modal-file-import-config');">Importer</button>
+                <button class="btn" onclick="closeModal('modal-file-import-config');">Annuler</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-file-export-solution">
+        <a class="modal-overlay" aria-label="Close" onclick="closeModal('modal-file-export-solution');"></a>
+        <div class="modal-container">
+            <form action="/export" method="get">
+                <div class="modal-header">
+                    <a class="btn btn-clear float-right" aria-label="Close" onclick="closeModal('modal-file-export-solution');"></a>
+                    <div class="modal-title h5">Exporter le planning</div>
+                </div>
+                <div class="modal-body">
+                    <input type="text" name="solution" id="input-file-export-solution-solution" hidden />
+                    <div class="form-group">
+                        <label class="form-label" for="input-file-export-solution-format">Format</label>
+                        <select class="form-select" id="input-file-export-solution-format" name="format">
+                            <option value=".xlsx">Classeur Excel (*.xlsx)</option>
+                            <option value=".ods">Feuille de calcul OpenDocument (*.ods)</option>
+                            <option value=".csv">CSV (*.csv)</option>
+                            <option value=".tsv">TSV (*.tsv)</option>
+                            <option value=".txt">Texte (*.txt)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" onclick="closeModal('modal-file-export-solution');">Exporter</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-params-posts">
+        <a class="modal-overlay" aria-label="Close" onclick="closeModal('modal-params-posts');"></a>
+        <div class="modal-container">
+            <div class="modal-header">
+                <a class="btn btn-clear float-right" aria-label="Close" onclick="closeModal('modal-params-posts');"></a>
+                <div class="modal-title h5">Postes</div>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <textarea class="form-input" id="input-params-posts" rows=10></textarea>
+                    <p class="form-input-hint">
+                        Renseigner une entrée par ligne.
+                    </p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="loadConfigFromModals();closeModal('modal-params-posts');">Enregistrer</button>
+                <button class="btn" onclick="closeModal('modal-params-posts');">Annuler</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-params-slots">
+        <a class="modal-overlay" aria-label="Close" onclick="closeModal('modal-params-slots');"></a>
+        <div class="modal-container">
+            <div class="modal-header">
+                <a class="btn btn-clear float-right" aria-label="Close" onclick="closeModal('modal-params-slots');"></a>
+                <div class="modal-title h5">Créneaux</div>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <textarea class="form-input" id="input-params-slots" rows=10></textarea>
+                    <p class="form-input-hint">
+                        Renseigner un jour ou un créneau par ligne. Les créneaux sont indentés d'un tiret, doivent suivre la forme <code>11h30 - 13h</code>.
+                    </p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="loadConfigFromModals();closeModal('modal-params-slots');">Enregistrer</button>
+                <button class="btn" onclick="closeModal('modal-params-slots');">Annuler</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-params-agents">
+        <a class="modal-overlay" aria-label="Close" onclick="closeModal('modal-params-agents');"></a>
+        <div class="modal-container">
+            <div class="modal-header">
+                <a class="btn btn-clear float-right" aria-label="Close" onclick="closeModal('modal-params-agents');"></a>
+                <div class="modal-title h5">Agents</div>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <textarea class="form-input" id="input-params-agents" rows=10></textarea>
+                    <p class="form-input-hint">
+                        Renseigner une entrée par ligne.
+                    </p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="loadConfigFromModals();closeModal('modal-params-agents');">Enregistrer</button>
+                <button class="btn" onclick="closeModal('modal-params-agents');">Annuler</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-params-objectives">
+        <a class="modal-overlay" aria-label="Close" onclick="closeModal('modal-params-objectives');"></a>
+        <div class="modal-container">
+            <div class="modal-header">
+                <a class="btn btn-clear float-right" aria-label="Close" onclick="closeModal('modal-params-objectives');"></a>
+                <div class="modal-title h5">Objectifs</div>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label" for="input-params-objectives-avoidTwiceInARow">Pénalité de l'enchaînement de deux créneaux</label>
+                    <input class="form-input" id="input-params-objectives-avoidTwiceInARow" type="number" />
+                    <p class="form-input-hint">
+                        Plus la valeur renseignée est haute, plus cet objectif sera important relativement aux autres. Une valeur de <strong>zéro</strong> fera de cet objectif un objectif ignoré. Une valeur <strong>négative</strong> changera cette pénalité
+                        en récompense.
+                    </p>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="input-params-objectives-standardizeWeeklyTotal">Pénalité d'écart aux quotas</label>
+                    <input class="form-input" id="input-params-objectives-standardizeWeeklyTotal" type="number" />
+                    <p class="form-input-hint">
+                        Plus la valeur renseignée est haute, plus cet objectif sera important relativement aux autres. Une valeur de <strong>zéro</strong> fera de cet objectif un objectif ignoré. Une valeur <strong>négative</strong> changera cette pénalité
+                        en récompense.
+                    </p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="loadConfigFromModals();closeModal('modal-params-objectives');">Enregistrer</button>
+                <button class="btn" onclick="closeModal('modal-params-objectives');">Annuler</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-params-objectives-reftimes">
+        <a class="modal-overlay" aria-label="Close" onclick="closeModal('modal-params-objectives-reftimes');"></a>
+        <div class="modal-container">
+            <div class="modal-header">
+                <a class="btn btn-clear float-right" aria-label="Close" onclick="closeModal('modal-params-objectives-reftimes');"></a>
+                <div class="modal-title h5">Quotas</div>
+            </div>
+            <div class="modal-body">
+                <p class="form-input-hint">
+                    Il y a <span id="span-params-objectives-reftimes-total"></span>h à répartir.
+                    Une répartition uniforme donne en moyenne <span id="span-params-objectives-reftimes-average"></span>h par agent.
+                </p>
+                <table class="table table-hover table-condensed">
+                    <tbody id="table-params-objectives-reftimes">
+                    </tbody>
+                </table>
+                <p>
+                    La somme des quotas donne <span id="span-params-objectives-reftimes-current"></span>h.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="loadConfigFromModals();closeModal('modal-params-objectives-reftimes');">Enregistrer</button>
+                <button class="btn" onclick="closeModal('modal-params-objectives-reftimes');">Annuler</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal modal-xl" id="modal-params-constraints-posts">
+        <a class="modal-overlay" aria-label="Close" onclick="closeModal('modal-params-constraints-posts');"></a>
+        <div class="modal-container">
+            <div class="modal-header">
+                <a class="btn btn-clear float-right" aria-label="Close" onclick="closeModal('modal-params-constraints-posts');"></a>
+                <div class="modal-title h5">Ouverture des postes</div>
+                <div class="modal-subtitle text-gray">Cliquez sur une plage pour la (dés)activer.</div>
+            </div>
+            <div class="modal-body">
+                <table class="table table-hover table-condensed" id="table-params-constraints-posts"></table>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="loadConfigFromModals();closeModal('modal-params-constraints-posts');">Enregistrer</button>
+                <button class="btn" onclick="closeModal('modal-params-constraints-posts');">Annuler</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal modal-xl" id="modal-params-constraints-agents-absence">
+        <a class="modal-overlay" aria-label="Close" onclick="closeModal('modal-params-constraints-agents-absence');"></a>
+        <div class="modal-container">
+            <div class="modal-header">
+                <a class="btn btn-clear float-right" aria-label="Close" onclick="closeModal('modal-params-constraints-agents-absence');"></a>
+                <div class="modal-title h5">Disponibilité des agents</div>
+                <div class="modal-subtitle text-gray">Cliquez sur une plage pour la (dés)activer.</div>
+            </div>
+            <div class="modal-body">
+                <table class="table table-hover table-condensed" id="table-params-constraints-agents-absence"></table>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="loadConfigFromModals();closeModal('modal-params-constraints-agents-absence');">Enregistrer</button>
+                <button class="btn" onclick="closeModal('modal-params-constraints-agents-absence');">Annuler</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal modal-xl" id="modal-params-constraints-posts-attributions">
+        <a class="modal-overlay" aria-label="Close" onclick="closeModal('modal-params-constraints-posts-attributions');"></a>
+        <div class="modal-container">
+            <div class="modal-header">
+                <a class="btn btn-clear float-right" aria-label="Close" onclick="closeModal('modal-params-constraints-posts-attributions');"></a>
+                <div class="modal-title h5">Attribution des postes</div>
+                <div class="modal-subtitle text-gray">Cliquez sur une plage pour la (dés)activer.</div>
+            </div>
+            <div class="modal-body">
+                <table class="table table-hover table-condensed" id="table-params-constraints-posts-attributions"></table>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="loadConfigFromModals();closeModal('modal-params-constraints-posts-attributions');">Enregistrer</button>
+                <button class="btn" onclick="closeModal('modal-params-constraints-posts-attributions');">Annuler</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
