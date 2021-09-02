@@ -144,6 +144,25 @@ function getSlotDuration(slot) {
 }
 
 
+function resetQuotas() {
+    let avgTime = 0;
+    for (let day in CURRENT_CONFIG.slots) {
+        CURRENT_CONFIG.slots[day].forEach(slot => {
+            avgTime += getSlotDuration(slot) * CURRENT_CONFIG.posts.length;
+        });
+    }
+    for (let post in CURRENT_CONFIG.constraints.posts) {
+        CURRENT_CONFIG.constraints.posts[post].forEach(arr => {
+            avgTime -= getSlotDuration(arr[1]);
+        });
+    }
+    avgTime /= CURRENT_CONFIG.agents.length;
+    document.querySelectorAll("#table-params-objectives-reftimes input").forEach(input => {
+        input.value = avgTime;
+    });
+}
+
+
 function inflateTableReftimes() {
     let table = document.getElementById("table-params-objectives-reftimes");
     let avgTime = 0;
@@ -157,10 +176,10 @@ function inflateTableReftimes() {
             avgTime -= getSlotDuration(arr[1]);
         });
     }
-    document.getElementById("span-params-objectives-reftimes-total").textContent = avgTime;
+    document.getElementById("span-params-objectives-reftimes-total").textContent = avgTime.toFixed(2);
     avgTime /= CURRENT_CONFIG.agents.length;
-    avgTime = avgTime.toFixed(2);
-    document.getElementById("span-params-objectives-reftimes-average").textContent = avgTime;
+    // avgTime = avgTime.toFixed(2);
+    document.getElementById("span-params-objectives-reftimes-average").textContent = avgTime.toFixed(2);
 
     table.innerHTML = "";
     CURRENT_CONFIG.agents.forEach(agent => {
@@ -176,7 +195,7 @@ function inflateTableReftimes() {
             document.querySelectorAll("#table-params-objectives-reftimes input").forEach(inpt => {
                 total += parseFloat(inpt.value);
             });
-            document.getElementById("span-params-objectives-reftimes-current").textContent = total;
+            document.getElementById("span-params-objectives-reftimes-current").textContent = total.toFixed(2);
         });
 
         input.className = "form-input";
@@ -193,7 +212,7 @@ function inflateTableReftimes() {
     document.querySelectorAll("#table-params-objectives-reftimes input").forEach(inpt => {
         total += parseFloat(inpt.value);
     });
-    document.getElementById("span-params-objectives-reftimes-current").textContent = total;
+    document.getElementById("span-params-objectives-reftimes-current").textContent = total.toFixed(2);
 }
 
 
