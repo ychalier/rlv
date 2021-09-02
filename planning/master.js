@@ -360,6 +360,19 @@ function inflateTableSchedule(tableId, cellCallback) {
 }
 
 
+function isPostOpened(day, slot, post) {
+    if (!(post in CURRENT_CONFIG.constraints.posts)) {
+        return true;
+    }
+    for (let i = 0; i < CURRENT_CONFIG.constraints.posts[post].length; i++) {
+        if (CURRENT_CONFIG.constraints.posts[post][i][0] == day && CURRENT_CONFIG.constraints.posts[post][i][1] == slot) {
+            return false;
+        }
+    }
+    return true;
+}
+
+
 function inflateTableAgents() {
     let table = document.querySelector("#table-agents tbody");
     table.innerHTML = "";
@@ -404,7 +417,12 @@ function loadConfig(config) {
     if (storageAvailable("localStorage")) {
         localStorage.setItem("config", JSON.stringify(CURRENT_CONFIG));
     }
-    inflateTableSchedule("table-schedule", (td) => td.classList.add("agent-cell"));
+    inflateTableSchedule("table-schedule", (td, day, slot, post) => {
+        td.classList.add("agent-cell")
+        if (!isPostOpened(day, slot, post)) {
+            td.classList.add("post-closed");
+        }
+    });
     inflateTableAgents();
     setAgentCellEventListeners();
     inflateModals();
