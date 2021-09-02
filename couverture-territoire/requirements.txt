@@ -1,0 +1,6 @@
+shapely
+pyproj
+geopandas
+matplotlib
+tqdm
+pulp
