@@ -45,16 +45,16 @@
         "avoidTwiceInARow": 1,
         "standardizeWeeklyTotal": 1,
         "refTimes": {
-            "Jean": "10.25",
-            "Marie": "10.25",
-            "Pierre": "10.25",
-            "Jeanne": "10.25",
-            "Michel": "10.25",
-            "Françoise": "10.25",
-            "André": "10.25",
-            "Monique": "10.25",
-            "Philippe": "10.25",
-            "Catherine": "10.25"
+            "Jean": 10.25,
+            "Marie": 10.25,
+            "Pierre": 10.25,
+            "Jeanne": 10.25,
+            "Michel": 10.25,
+            "Françoise": 10.25,
+            "André": 10.25,
+            "Monique": 10.25,
+            "Philippe": 10.25,
+            "Catherine": 10.25
         }
     },
     "constraints": {
