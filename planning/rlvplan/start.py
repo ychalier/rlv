@@ -27,6 +27,24 @@ def color_hash(string, alpha=.8):
     return "#%02X%02X%02X" % (s(), s(), s())
 
 
+def cast_nint(string):
+    if string is None:
+        return 0
+    return int(string)
+
+
+def get_slot_duration(slot):
+    pattern = re.compile(r"^(\d+)h(\d+)? \- (\d+)h(\d+)?$")
+    match = pattern.match(slot)
+    return cast_nint(match.group(3)) + cast_nint(match.group(4)) / 60 - (cast_nint(match.group(1)) + cast_nint(match.group(2)) / 60)
+
+
+# def is_closing_slot(slot):
+#     pattern = re.compile(r"^(\d+)h(\d+)? \- (\d+)h(\d+)?$")
+#     match = pattern.match(slot)
+#     return int(match.group(1)) >= 17
+
+
 class RequestHandler(http.server.BaseHTTPRequestHandler):
 
     def do_GET(self):
@@ -114,16 +132,60 @@ class RequestHandler(http.server.BaseHTTPRequestHandler):
         format_slot = workbook.add_format({
             "bold": True,
         })
+        format_border = workbook.add_format({
+            "border": True,
+        })
         format_agents = dict()
+
+        agents = set()
+
+        first = True
         for row in table:
             for agent in row[2:]:
+                if not first and agent != "":
+                    agents.add(agent)
                 if agent in format_agents:
                     continue
                 format_agents[agent] = workbook.add_format({
                     "fg_color": color_hash(agent),
                     "align": "center",
                 })
-        print(format_agents)
+            first = False
+        
+        total_times = dict()
+        total_slots = dict()
+        closings = dict()
+
+        first = True
+        for i, row in enumerate(table):
+            if first:
+                first = False
+                continue
+            day, slot = row[:2]
+            if day not in closings:
+                closings.setdefault(day, dict())
+                for agent in agents:
+                    closings[day].setdefault(agent, False)
+            slot_duration = get_slot_duration(slot)
+            total_slots.setdefault(slot_duration, dict())
+            is_closing = i == len(table) - 1 or table[i+1][0] != day  # is_closing_slot(slot)
+            for agent in row[2:]:
+                total_times.setdefault(agent, 0)
+                total_times[agent] += slot_duration
+                total_slots[slot_duration].setdefault(agent, 0)
+                total_slots[slot_duration][agent] += 1
+                if is_closing:
+                    closings[day][agent] = True
+        
+        total_closings = {
+            agent: len([
+                None
+                for day in closings
+                if closings[day][agent]
+            ])
+            for agent in agents
+        }
+
         i = 0
         while True:
             if i >= len(table) - 1:
@@ -150,6 +212,21 @@ class RequestHandler(http.server.BaseHTTPRequestHandler):
         for day, ranges in rows_by_day.items():
             worksheet.merge_range(
                 min(ranges), 0, max(ranges), 0, day, format_day)
+
+        worksheet.set_column(len(table[0]) + 1, len(table[0]) + 3 + len(total_slots), width=15)
+        worksheet.write(1, len(table[0]) + 1, "", format_border)
+        worksheet.write(1, len(table[0]) + 2, "Total SP", format_border)
+        worksheet.write(1, len(table[0]) + 3, "Fermetures", format_border)
+        for j, dur in enumerate(total_slots):
+            worksheet.write(1, len(table[0]) + 4 + j, "Plages %.1fh" % dur, format_border)
+        for i, agent in enumerate(sorted(agents)):
+            worksheet.write(i + 2, len(table[0]) + 1, agent, format_border)
+            worksheet.write(i + 2, len(table[0]) + 2, total_times[agent], format_border)
+            worksheet.write(i + 2, len(table[0]) + 3, total_closings[agent], format_border)
+            for j, dur in enumerate(total_slots):
+                worksheet.write(i + 2, len(table[0]) + 4 + j, total_slots[dur].get(agent, 0), format_border)
+            
+        
         workbook.close()
         with open("tmp.xlsx", "rb") as file:
             stream = file.read()

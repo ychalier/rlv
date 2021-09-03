@@ -184,6 +184,19 @@ def generate(config, debug=True):
             ))
             model.objective += config["objectives"]["standardizeWeeklyTotal"] * y
 
+    for agent in config["constraints"]["limits"]:
+        model.addConstraint(pulp.LpConstraint(
+            e=sum([
+                durations[(day, slot)] * variables[(VariableType.SPAN, day, slot, post, agent)]
+                for day in config["slots"]
+                for slot in config["slots"][day]
+                for post in config["posts"]
+                if (VariableType.SPAN, day, slot, post, agent) in variables
+            ]),
+            sense=pulp.const.LpConstraintLE,
+            rhs=float(config["constraints"]["limits"][agent])
+        ))
+
     solver = pulp.PULP_CBC_CMD(timeLimit=20, logPath="solver.log")
     result = model.solve(solver)
 
