@@ -12,8 +12,10 @@ import urllib.parse
 import xlsxwriter
 import pyexcel_ods
 
-from reason import generate
-
+try:
+    from reason import generate
+except ModuleNotFoundError:
+    from .reason import generate
 
 PORT = 8000
 

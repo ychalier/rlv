@@ -1,0 +1,6 @@
+include README.md
+include rlvplan/config.json
+include rlvplan/index.html
+include rlvplan/style.css
+include rlvplan/master.js
+include rlvplan/*.py

@@ -1,3 +1,5 @@
 __pycache__
 debug.tsv
 solver.log
+*.egg-info
+dist
