@@ -43,9 +43,10 @@ class Reasoner:
         self._add_constraints_attributions()
         self._add_constraints_limits()
         self._add_objective_twiceinrow()
-        self._add_objective_quotas_abs()
+        # self._add_objective_quotas_abs()
+        self._add_objective_quotas_quad()
     
-    def solve(self, debug=False):
+    def solve(self, debug=True):
         solver = pulp.PULP_CBC_CMD(timeLimit=20, logPath="solver.log")
         result = self.model.solve(solver)
         solution = {
@@ -235,6 +236,37 @@ class Reasoner:
                 rhs=0
             ))
             self.model.objective += self.config["objectives"]["standardizeWeeklyTotal"] * y
+    
+    def _add_objective_quotas_quad(self):
+        if self.config["objectives"].get("standardizeWeeklyTotal", 0) <= 0:
+            return
+        weekly_total = 0
+        for day in self.config["slots"]:
+            for slot in self.config["slots"][day]:
+                weekly_total += self.config["durations"][(day, slot)] * len(self.config["posts"])
+        for post in self.config["constraints"]["posts"]:
+            for day, slot in self.config["constraints"]["posts"][post]:
+                weekly_total -= self.config["durations"][(day, slot)]
+        weekly_average = weekly_total / len(self.config["agents"])
+        for agent in self.config["agents"]:
+            target = float(self.config["objectives"]["refTimes"].get(agent, weekly_average))
+            e = sum([
+                self.config["durations"][(day, slot)] * self.variables[(VariableType.SPAN, day, slot, post, agent)]
+                for day in self.config["slots"]
+                for slot in self.config["slots"][day]
+                for post in self.config["posts"]
+                if (VariableType.SPAN, day, slot, post, agent) in self.variables
+            ])
+            for h in range(1, 11):
+                self.varidx += 1
+                y = pulp.LpVariable(str(self.varidx), lowBound=0, upBound=weekly_total, cat=pulp.const.LpContinuous)
+                self.variables[(VariableType.OBJ_TOTAL, agent, h)] = y
+                self.model.addConstraint(pulp.LpConstraint(
+                    e=y - e,
+                    sense=pulp.const.LpConstraintGE,
+                    rhs=1-target-h
+                ))
+                self.model.objective += self.config["objectives"]["standardizeWeeklyTotal"] * y * (h ** 2)
 
 
 def generate(config):
