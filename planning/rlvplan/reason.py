@@ -1,13 +1,10 @@
 import pulp
 import enum
 import json
-import re
+import os
 
 
-try:
-    from utils import get_slot_duration
-except ModuleNotFoundError:
-    from .utils import get_slot_duration
+import rlvplan
 
 
 @enum.unique
@@ -18,7 +15,7 @@ class VariableType(enum.Enum):
     OBJ_TOTAL = 2
 
 
-with open("config.json", "r", encoding="utf8") as file:
+with open(os.path.join(__file__, os.pardir, "config.json"), "r", encoding="utf8") as file:
     DEFAULT_CONFIG = json.load(file)
 
 
@@ -27,7 +24,7 @@ def compute_slots_durations(config):
     durations = dict()
     for day in config["slots"]:
         for slot in config["slots"][day]:
-            durations[(day, slot)] = get_slot_duration(slot)
+            durations[(day, slot)] = rlvplan.utils.get_slot_duration(slot)
     return durations
 
 

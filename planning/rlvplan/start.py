@@ -12,16 +12,8 @@ import urllib.parse
 import xlsxwriter
 import pyexcel_ods
 
-try:
-    from reason import generate
-except ModuleNotFoundError:
-    from .reason import generate
 
-
-try:
-    from utils import get_slot_duration
-except ModuleNotFoundError:
-    from .utils import get_slot_duration
+import rlvplan
 
 
 PORT = 8000
@@ -155,7 +147,7 @@ class RequestHandler(http.server.BaseHTTPRequestHandler):
                 closings.setdefault(day, dict())
                 for agent in agents:
                     closings[day].setdefault(agent, False)
-            slot_duration = get_slot_duration(slot)
+            slot_duration = rlvplan.utils.get_slot_duration(slot)
             total_slots.setdefault(slot_duration, dict())
             is_closing = i == len(table) - 1 or table[i+1][0] != day  # is_closing_slot(slot)
             for agent in row[2:]:
@@ -325,7 +317,7 @@ class Daemon(threading.Thread):
     def execute(self, task):
         print("Starting generation")
         self.computing = True
-        self.solution = generate(task)
+        self.solution = rlvplan.reason.generate(task)
         self.computing = False
         print("Generation is done")
 
@@ -356,7 +348,3 @@ class Controller:
 def main():
     controller = Controller()
     controller.start()
-
-
-if __name__ == "__main__":
-    main()
