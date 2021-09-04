@@ -67,3 +67,38 @@ td {
 #table-objectives-quotas td:nth-child(3) {
     min-width: 250px;
 }
+
+.table-firstrow thead th,
+.table-firstrow thead td {
+    position: sticky;
+    top: 0;
+    background: var(--color-primary-1);
+    z-index: 2;
+}
+
+.table-firstcol th:first-child,
+.table-firstcol td:first-child {
+    position: sticky;
+    left: 0;
+    background: var(--color-primary-1);
+    z-index: 1;
+}
+
+#table-constraints-absences .td-day {
+    position: sticky;
+    left: 0;
+    width: 80px;
+    background: var(--color-primary-1);
+    z-index: 1;
+}
+
+#table-constraints-absences .td-slot {
+    position: sticky;
+    left: 80px;
+    background: var(--color-primary-1);
+    z-index: 1;
+}
+
+#table-constraints-absences {
+    border-collapse: separate;
+}

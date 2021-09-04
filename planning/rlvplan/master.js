@@ -243,10 +243,12 @@ function inflateTableConstraintsAbsences() {
                 tr.classList.add("schedule-table-dayrow");
                 let tdDay = document.createElement("td");
                 tdDay.textContent = day;
+                tdDay.classList.add("td-day");
                 tdDay.setAttribute("rowspan", CURRENT_CONFIG.slots[day].length);
                 tr.appendChild(tdDay);
             }
             let tdSlot = document.createElement("td");
+            tdSlot.classList.add("td-slot");
             tdSlot.textContent = CURRENT_CONFIG.slots[day][i];
             tr.appendChild(tdSlot);
             CURRENT_CONFIG.agents.forEach(agent => {
