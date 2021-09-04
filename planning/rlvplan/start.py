@@ -17,6 +17,13 @@ try:
 except ModuleNotFoundError:
     from .reason import generate
 
+
+try:
+    from utils import get_slot_duration
+except ModuleNotFoundError:
+    from .utils import get_slot_duration
+
+
 PORT = 8000
 
 
@@ -25,24 +32,6 @@ def color_hash(string, alpha=.8):
     def r(): return random.randint(0, 255)
     def s(): return int(alpha * 255 + (1 - alpha) * r())
     return "#%02X%02X%02X" % (s(), s(), s())
-
-
-def cast_nint(string):
-    if string is None:
-        return 0
-    return int(string)
-
-
-def get_slot_duration(slot):
-    pattern = re.compile(r"^(\d+)h(\d+)? \- (\d+)h(\d+)?$")
-    match = pattern.match(slot)
-    return cast_nint(match.group(3)) + cast_nint(match.group(4)) / 60 - (cast_nint(match.group(1)) + cast_nint(match.group(2)) / 60)
-
-
-# def is_closing_slot(slot):
-#     pattern = re.compile(r"^(\d+)h(\d+)? \- (\d+)h(\d+)?$")
-#     match = pattern.match(slot)
-#     return int(match.group(1)) >= 17
 
 
 class RequestHandler(http.server.BaseHTTPRequestHandler):

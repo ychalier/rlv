@@ -4,6 +4,12 @@ import json
 import re
 
 
+try:
+    from utils import get_slot_duration
+except ModuleNotFoundError:
+    from .utils import get_slot_duration
+
+
 @enum.unique
 class VariableType(enum.Enum):
 
@@ -16,20 +22,12 @@ with open("config.json", "r", encoding="utf8") as file:
     DEFAULT_CONFIG = json.load(file)
 
 
-def cast_nint(string):
-    if string is None:
-        return 0
-    return int(string)
-
 
 def compute_slots_durations(config):
     durations = dict()
-    pattern = re.compile(r"^(\d+)h(\d+)? \- (\d+)h(\d+)?$")
     for day in config["slots"]:
         for slot in config["slots"][day]:
-            match = pattern.match(slot)
-            assert match is not None, "Error extracting slot duration for (%s, %s)" % (day, slot)
-            durations[(day, slot)] = cast_nint(match.group(3)) + cast_nint(match.group(4)) / 60 - (cast_nint(match.group(1)) + cast_nint(match.group(2)) / 60)
+            durations[(day, slot)] = get_slot_duration(slot)
     return durations
 
 
