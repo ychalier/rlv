@@ -13,6 +13,7 @@ class VariableType(enum.Enum):
     SPAN = 0
     OBJ_TWICE = 1
     OBJ_TOTAL = 2
+    OBJ_TWICE_SAME = 3
 
 
 with open(os.path.join(__file__, os.pardir, "config.json"), "r", encoding="utf8") as file:
@@ -43,6 +44,7 @@ class Reasoner:
         self._add_constraints_attributions()
         self._add_constraints_limits()
         self._add_objective_twiceinrow()
+        self._add_objective_twiceinrow_samepost()
         # self._add_objective_quotas_abs()
         self._add_objective_quotas_quad()
     
@@ -202,6 +204,41 @@ class Reasoner:
                     ))
                     self.model.objective += self.config["objectives"]["avoidTwiceInARow"] * y
     
+    def _add_objective_twiceinrow_samepost(self):
+        # If possible, try not to do two spans in a row.
+        if self.config["objectives"].get("avoidTwiceInARow", 0) <= 0:
+            return
+        for day in self.config["slots"]:
+            for agent in self.config["agents"]:
+                for slot_prev, slot_next in zip(self.config["slots"][day][:-1], self.config["slots"][day][1:]):
+                    for post in self.config["posts"]:
+                        if (VariableType.SPAN, day, slot_prev, post, agent) not in self.variables:
+                            continue
+                        if (VariableType.SPAN, day, slot_next, post, agent) not in self.variables:
+                            continue
+                        key = (VariableType.OBJ_TWICE_SAME, day, agent, slot_prev, slot_next)
+                        self.varidx += 1
+                        y = pulp.LpVariable(str(self.varidx), lowBound=0, upBound=1, cat=pulp.const.LpBinary)
+                        self.variables[key] = y
+                        e1 = self.variables[(VariableType.SPAN, day, slot_prev, post, agent)]
+                        e2 = self.variables[(VariableType.SPAN, day, slot_next, post, agent)]
+                        self.model.addConstraint(pulp.LpConstraint(
+                            e=e1 + e2 - 1 - y,
+                            sense=pulp.const.LpConstraintLE,
+                            rhs=0
+                        ))
+                        self.model.addConstraint(pulp.LpConstraint(
+                            e=y - e1,
+                            sense=pulp.const.LpConstraintLE,
+                            rhs=0
+                        ))
+                        self.model.addConstraint(pulp.LpConstraint(
+                            e=y - e2,
+                            sense=pulp.const.LpConstraintLE,
+                            rhs=0
+                        ))
+                        self.model.objective += .1 * self.config["objectives"]["avoidTwiceInARow"] * y
+
     def _add_objective_quotas_abs(self):
         if self.config["objectives"].get("standardizeWeeklyTotal", 0) <= 0:
             return
