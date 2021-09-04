@@ -112,7 +112,7 @@ function getAverageTime() {
 function resetTableObjectivesQuotas() {
     let avgTime = getAverageTime();
     document.querySelectorAll("#table-objectives-quotas input").forEach(input => {
-        input.value = avgTime;
+        input.value = avgTime.toFixed(2);
     });
 }
 
