@@ -45,14 +45,14 @@
                     <li class="menu-item">
                         <a class="btn btn-link" onclick="showModal('modal-params-agents');">Agents</a>
                     </li>
+                </ul>
+            </div>
+
+            <div class="dropdown">
+                <a class="btn dropdown-toggle" tabindex="0">Contraintes</a>
+                <ul class="menu">
                     <li class="menu-item">
-                        <a class="btn btn-link" onclick="showModal('modal-params-objectives');">Objectifs</a>
-                    </li>
-                    <li class="menu-item">
-                        <a class="btn btn-link" onclick="showModal('modal-objectives-quotas');">Quotas</a>
-                    </li>
-                    <li class="menu-item">
-                        <a class="btn btn-link" onclick="showModal('modal-constraints-limits');">Limites</a>
+                        <a class="btn btn-link" onclick="showModal('modal-constraints-limits');">Limites de temps</a>
                     </li>
                     <li class="menu-item">
                         <a class="btn btn-link" onclick="showModal('modal-constraints-absences');">Disponibilité des agents</a>
@@ -62,6 +62,18 @@
                     </li>
                     <li class="menu-item">
                         <a class="btn btn-link" onclick="showModal('modal-constraints-attributions');">Attribution des postes</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="dropdown">
+                <a class="btn dropdown-toggle" tabindex="0">Objectifs</a>
+                <ul class="menu">
+                    <li class="menu-item">
+                        <a class="btn btn-link" onclick="showModal('modal-params-objectives');">Poids</a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="btn btn-link" onclick="showModal('modal-objectives-quotas');">Quotas</a>
                     </li>
                 </ul>
             </div>
@@ -267,13 +279,13 @@
                             <th>Quota</th>
                             <th>Maximum</th>
                         </tr>
-                    </thead>
-                    <tbody>
                         <tr>
                             <td></td>
                             <td><small class='text-gray'>L'algorithme s'efforcera de ne pas dépasser cette valeur</small></td>
                             <td><small class='text-gray'>En fonction des disponibilités et contraintes exprimées précédemment</small></td>
                         </tr>
+                    </thead>
+                    <tbody>
                     </tbody>
                 </table>
             </div>
