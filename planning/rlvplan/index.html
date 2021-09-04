@@ -49,19 +49,19 @@
                         <a class="btn btn-link" onclick="showModal('modal-params-objectives');">Objectifs</a>
                     </li>
                     <li class="menu-item">
-                        <a class="btn btn-link" onclick="showModal('modal-params-objectives-reftimes');">Quotas</a>
+                        <a class="btn btn-link" onclick="showModal('modal-objectives-quotas');">Quotas</a>
                     </li>
                     <li class="menu-item">
-                        <a class="btn btn-link" onclick="showModal('modal-params-constraints-limits');">Limites</a>
+                        <a class="btn btn-link" onclick="showModal('modal-constraints-limits');">Limites</a>
                     </li>
                     <li class="menu-item">
-                        <a class="btn btn-link" onclick="showModal('modal-params-constraints-agents-absence');">Disponibilité des agents</a>
+                        <a class="btn btn-link" onclick="showModal('modal-constraints-absences');">Disponibilité des agents</a>
                     </li>
                     <li class="menu-item">
-                        <a class="btn btn-link" onclick="showModal('modal-params-constraints-posts');">Ouverture des postes</a>
+                        <a class="btn btn-link" onclick="showModal('modal-constraints-posts');">Ouverture des postes</a>
                     </li>
                     <li class="menu-item">
-                        <a class="btn btn-link" onclick="showModal('modal-params-constraints-posts-attributions');">Attribution des postes</a>
+                        <a class="btn btn-link" onclick="showModal('modal-constraints-attributions');">Attribution des postes</a>
                     </li>
                 </ul>
             </div>
@@ -225,16 +225,16 @@
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <label class="form-label" for="input-params-objectives-avoidTwiceInARow">Pénalité de l'enchaînement de deux créneaux</label>
-                    <input class="form-input" id="input-params-objectives-avoidTwiceInARow" type="number" />
+                    <label class="form-label" for="input-objectives-avoidTwiceInARow">Pénalité de l'enchaînement de deux créneaux</label>
+                    <input class="form-input" id="input-objectives-avoidTwiceInARow" type="number" />
                     <p class="form-input-hint">
                         Plus la valeur renseignée est haute, plus cet objectif sera important relativement aux autres. Une valeur de <strong>zéro</strong> fera de cet objectif un objectif ignoré. Une valeur <strong>négative</strong> changera cette pénalité
                         en récompense.
                     </p>
                 </div>
                 <div class="form-group">
-                    <label class="form-label" for="input-params-objectives-standardizeWeeklyTotal">Pénalité d'écart aux quotas</label>
-                    <input class="form-input" id="input-params-objectives-standardizeWeeklyTotal" type="number" />
+                    <label class="form-label" for="input-objectives-standardizeWeeklyTotal">Pénalité de dépassement des quotas</label>
+                    <input class="form-input" id="input-objectives-standardizeWeeklyTotal" type="number" />
                     <p class="form-input-hint">
                         Plus la valeur renseignée est haute, plus cet objectif sera important relativement aux autres. Une valeur de <strong>zéro</strong> fera de cet objectif un objectif ignoré. Une valeur <strong>négative</strong> changera cette pénalité
                         en récompense.
@@ -248,102 +248,102 @@
         </div>
     </div>
 
-    <div class="modal modal-xl" id="modal-params-objectives-reftimes">
-        <a class="modal-overlay" aria-label="Close" onclick="closeModal('modal-params-objectives-reftimes');"></a>
+    <div class="modal modal-xl" id="modal-objectives-quotas">
+        <a class="modal-overlay" aria-label="Close" onclick="closeModal('modal-objectives-quotas');"></a>
         <div class="modal-container">
             <div class="modal-header">
-                <a class="btn btn-clear float-right" aria-label="Close" onclick="closeModal('modal-params-objectives-reftimes');"></a>
+                <a class="btn btn-clear float-right" aria-label="Close" onclick="closeModal('modal-objectives-quotas');"></a>
                 <div class="modal-title h5">Quotas</div>
                 <div class="modal-subtitle">
-                Il y a <b><span id="span-params-objectives-reftimes-total"></span> h</b> à répartir.
-                    Une répartition uniforme donne une moyenne de <b><span id="span-params-objectives-reftimes-average"></span> h</b> par agent.
+                Il y a <b><span id="span-objectives-quotas-total"></span> h</b> à répartir.
+                    Une répartition uniforme donne une moyenne de <b><span id="span-objectives-quotas-avg"></span> h</b> par agent.
                     <br>
-                    La somme des quotas actuels donne <b><span id="span-params-objectives-reftimes-current"></span> h (<span id="span-params-objectives-reftimes-diff"></span> h)</b>.
+                    La somme des quotas actuels donne <b><span id="span-objectives-quotas-current"></span> h (<span id="span-objectives-quotas-diff"></span> h)</b>.
                 </div>
             </div>
             <div class="modal-body">
-                <table class="table table-hover table-condensed" id="table-params-objectives-reftimes">
+                <table class="table table-hover table-condensed" id="table-objectives-quotas">
                 </table>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" onclick="loadConfigFromModals();closeModal('modal-params-objectives-reftimes');">Enregistrer</button>
+                <button class="btn btn-primary" onclick="loadConfigFromModals();closeModal('modal-objectives-quotas');">Enregistrer</button>
                 <button class="btn" onclick="resetQuotas();">Réinitialiser</button>
-                <button class="btn" onclick="closeModal('modal-params-objectives-reftimes');">Annuler</button>
+                <button class="btn" onclick="closeModal('modal-objectives-quotas');">Annuler</button>
             </div>
         </div>
     </div>
 
-    <div class="modal modal-xl" id="modal-params-constraints-limits">
-        <a class="modal-overlay" aria-label="Close" onclick="closeModal('modal-params-constraints-limits');"></a>
+    <div class="modal modal-xl" id="modal-constraints-limits">
+        <a class="modal-overlay" aria-label="Close" onclick="closeModal('modal-constraints-limits');"></a>
         <div class="modal-container">
             <div class="modal-header">
-                <a class="btn btn-clear float-right" aria-label="Close" onclick="closeModal('modal-params-constraints-limits');"></a>
+                <a class="btn btn-clear float-right" aria-label="Close" onclick="closeModal('modal-constraints-limits');"></a>
                 <div class="modal-title h5">Limites de temps</div>
             </div>
             <div class="modal-body">
                 <table class="table table-hover table-condensed">
-                    <tbody id="table-params-constraints-limits">
+                    <tbody id="table-constraints-limits">
                     </tbody>
                 </table>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" onclick="loadConfigFromModals();closeModal('modal-params-constraints-limits');">Enregistrer</button>
+                <button class="btn btn-primary" onclick="loadConfigFromModals();closeModal('modal-constraints-limits');">Enregistrer</button>
                 <button class="btn" onclick="resetQuotas();">Réinitialiser</button>
-                <button class="btn" onclick="closeModal('modal-params-constraints-limits');">Annuler</button>
+                <button class="btn" onclick="closeModal('modal-constraints-limits');">Annuler</button>
             </div>
         </div>
     </div>
 
-    <div class="modal modal-xl" id="modal-params-constraints-posts">
-        <a class="modal-overlay" aria-label="Close" onclick="closeModal('modal-params-constraints-posts');"></a>
+    <div class="modal modal-xl" id="modal-constraints-posts">
+        <a class="modal-overlay" aria-label="Close" onclick="closeModal('modal-constraints-posts');"></a>
         <div class="modal-container">
             <div class="modal-header">
-                <a class="btn btn-clear float-right" aria-label="Close" onclick="closeModal('modal-params-constraints-posts');"></a>
+                <a class="btn btn-clear float-right" aria-label="Close" onclick="closeModal('modal-constraints-posts');"></a>
                 <div class="modal-title h5">Ouverture des postes</div>
                 <div class="modal-subtitle text-gray">Cliquez sur une plage pour la (dés)activer.</div>
             </div>
             <div class="modal-body">
-                <table class="table table-hover table-condensed" id="table-params-constraints-posts"></table>
+                <table class="table table-hover table-condensed" id="table-constraints-posts"></table>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" onclick="loadConfigFromModals();closeModal('modal-params-constraints-posts');">Enregistrer</button>
-                <button class="btn" onclick="closeModal('modal-params-constraints-posts');">Annuler</button>
+                <button class="btn btn-primary" onclick="loadConfigFromModals();closeModal('modal-constraints-posts');">Enregistrer</button>
+                <button class="btn" onclick="closeModal('modal-constraints-posts');">Annuler</button>
             </div>
         </div>
     </div>
 
-    <div class="modal modal-xl" id="modal-params-constraints-agents-absence">
-        <a class="modal-overlay" aria-label="Close" onclick="closeModal('modal-params-constraints-agents-absence');"></a>
+    <div class="modal modal-xl" id="modal-constraints-absences">
+        <a class="modal-overlay" aria-label="Close" onclick="closeModal('modal-constraints-absences');"></a>
         <div class="modal-container">
             <div class="modal-header">
-                <a class="btn btn-clear float-right" aria-label="Close" onclick="closeModal('modal-params-constraints-agents-absence');"></a>
+                <a class="btn btn-clear float-right" aria-label="Close" onclick="closeModal('modal-constraints-absences');"></a>
                 <div class="modal-title h5">Disponibilité des agents</div>
                 <div class="modal-subtitle text-gray">Cliquez sur une plage pour la (dés)activer.</div>
             </div>
             <div class="modal-body">
-                <table class="table table-hover table-condensed" id="table-params-constraints-agents-absence"></table>
+                <table class="table table-hover table-condensed" id="table-constraints-absences"></table>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" onclick="loadConfigFromModals();closeModal('modal-params-constraints-agents-absence');">Enregistrer</button>
-                <button class="btn" onclick="closeModal('modal-params-constraints-agents-absence');">Annuler</button>
+                <button class="btn btn-primary" onclick="loadConfigFromModals();closeModal('modal-constraints-absences');">Enregistrer</button>
+                <button class="btn" onclick="closeModal('modal-constraints-absences');">Annuler</button>
             </div>
         </div>
     </div>
 
-    <div class="modal modal-xl" id="modal-params-constraints-posts-attributions">
-        <a class="modal-overlay" aria-label="Close" onclick="closeModal('modal-params-constraints-posts-attributions');"></a>
+    <div class="modal modal-xl" id="modal-constraints-attributions">
+        <a class="modal-overlay" aria-label="Close" onclick="closeModal('modal-constraints-attributions');"></a>
         <div class="modal-container">
             <div class="modal-header">
-                <a class="btn btn-clear float-right" aria-label="Close" onclick="closeModal('modal-params-constraints-posts-attributions');"></a>
+                <a class="btn btn-clear float-right" aria-label="Close" onclick="closeModal('modal-constraints-attributions');"></a>
                 <div class="modal-title h5">Attribution des postes</div>
                 <div class="modal-subtitle text-gray">Cliquez sur une plage pour la (dés)activer.</div>
             </div>
             <div class="modal-body">
-                <table class="table table-hover table-condensed" id="table-params-constraints-posts-attributions"></table>
+                <table class="table table-hover table-condensed" id="table-constraints-attributions"></table>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" onclick="loadConfigFromModals();closeModal('modal-params-constraints-posts-attributions');">Enregistrer</button>
-                <button class="btn" onclick="closeModal('modal-params-constraints-posts-attributions');">Annuler</button>
+                <button class="btn btn-primary" onclick="loadConfigFromModals();closeModal('modal-constraints-attributions');">Enregistrer</button>
+                <button class="btn" onclick="closeModal('modal-constraints-attributions');">Annuler</button>
             </div>
         </div>
     </div>
