@@ -45,6 +45,13 @@ class RequestHandler(http.server.BaseHTTPRequestHandler):
                     "done": False,
                     "solution": {}
                 }).encode("utf8"))
+            elif self.server.controller.daemon.exception is not None:
+                self.send_response(500)
+                self.send_header('Content-type', 'application/json')
+                self.end_headers()
+                self.wfile.write(json.dumps({
+                    "error": repr(self.server.controller.daemon.exception),
+                }, default=str).encode("utf8"))
             else:
                 self.send_response(200)
                 self.send_header('Content-type', 'application/json')
@@ -309,6 +316,7 @@ class Daemon(threading.Thread):
         self.controller = controller
         self.computing = False
         self.solution = None
+        self.exception = None
         self.tasks = []
 
     def add_task(self, task):
@@ -316,8 +324,12 @@ class Daemon(threading.Thread):
 
     def execute(self, task):
         print("Starting generation")
+        self.exception = None
         self.computing = True
-        self.solution = rlvplan.reason.generate(task)
+        try:
+            self.solution = rlvplan.reason.generate(task)
+        except Exception as err:
+            self.exception = err
         self.computing = False
         print("Generation is done")
 

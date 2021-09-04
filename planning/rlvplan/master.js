@@ -566,7 +566,11 @@ function generate() {
         interval = setInterval(() => {
             fetch("/answer").then(response => {
                 response.json().then(data => {
-                    if (data.done) {
+                    if ("error" in data) {
+                        alert("Le serveur a rencontré une erreur lors de la génération :\n" + data.error);
+                        clearInterval(interval);
+                        document.getElementById("modal-loading").classList.remove("active");
+                    } else if (data.done) {
                         if (data.solution.feasible) {
                             loadSolution(data.solution.schedule);
                         } else {
