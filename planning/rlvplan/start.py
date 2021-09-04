@@ -1,5 +1,6 @@
 import re
 import os
+import sys
 import json
 import time
 import random
@@ -341,6 +342,12 @@ class Daemon(threading.Thread):
             self.execute(self.tasks.pop())
 
 
+def is_port_in_use(port):
+    import socket
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+        return s.connect_ex(('localhost', port)) == 0
+
+
 class Controller:
 
     def __init__(self):
@@ -358,5 +365,8 @@ class Controller:
 
 
 def main():
-    controller = Controller()
-    controller.start()
+    if is_port_in_use(PORT):
+        print(f"Port {PORT} is already used.")
+    else:
+        controller = Controller()
+        controller.start()
