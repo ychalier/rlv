@@ -255,23 +255,45 @@
                 <a class="btn btn-clear float-right" aria-label="Close" onclick="closeModal('modal-objectives-quotas');"></a>
                 <div class="modal-title h5">Quotas</div>
                 <div class="modal-subtitle">
-                Il y a <b><span id="span-objectives-quotas-total"></span> h</b> à répartir.
-                    Une répartition uniforme donne une moyenne de <b><span id="span-objectives-quotas-avg"></span> h</b> par agent.
-                    <br>
-                    La somme des quotas actuels donne <b><span id="span-objectives-quotas-current"></span> h (<span id="span-objectives-quotas-diff"></span> h)</b>.
+                    Il y a <b><span id="span-objectives-quotas-total"></span> h</b> à répartir. Une répartition uniforme donne une moyenne de <b><span id="span-objectives-quotas-avg"></span> h</b> par agent.
+                    <br> La somme des quotas actuels donne <b><span id="span-objectives-quotas-current"></span> h (<span id="span-objectives-quotas-diff"></span> h)</b>.
                 </div>
             </div>
             <div class="modal-body">
                 <table class="table table-hover table-condensed" id="table-objectives-quotas">
+                    <thead>
+                        <tr>
+                            <th>Agent</th>
+                            <th>Quota</th>
+                            <th>Maximum</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td><small class='text-gray'>L'algorithme s'efforcera de ne pas dépasser cette valeur</small></td>
+                            <td><small class='text-gray'>En fonction des disponibilités et contraintes exprimées précédemment</small></td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-primary" onclick="loadConfigFromModals();closeModal('modal-objectives-quotas');">Enregistrer</button>
-                <button class="btn" onclick="resetQuotas();">Réinitialiser</button>
+                <button class="btn" onclick="resetTableObjectivesQuotas();">Réinitialiser</button>
                 <button class="btn" onclick="closeModal('modal-objectives-quotas');">Annuler</button>
             </div>
         </div>
     </div>
+
+    <template id="template-quotas-tr">
+        <tr>
+            <td class="quota-agent"></td>
+            <td class="quota-input">
+                <input class="form-input" type="number" step="0.01" />
+            </td>
+            <td class="quota-max"></td>
+        </tr>
+    </template>
 
     <div class="modal modal-xl" id="modal-constraints-limits">
         <a class="modal-overlay" aria-label="Close" onclick="closeModal('modal-constraints-limits');"></a>
@@ -281,8 +303,8 @@
                 <div class="modal-title h5">Limites de temps</div>
             </div>
             <div class="modal-body">
-                <table class="table table-hover table-condensed">
-                    <tbody id="table-constraints-limits">
+                <table class="table table-hover table-condensed" id="table-constraints-limits">
+                    <tbody>
                     </tbody>
                 </table>
             </div>
@@ -293,6 +315,15 @@
             </div>
         </div>
     </div>
+
+    <template id="template-limits-tr">
+        <tr>
+            <td class="limit-agent"></td>
+            <td class="limit-input">
+                <input class="form-input" type="number" step="0.01" />
+            </td>
+        </tr>
+    </template>
 
     <div class="modal modal-xl" id="modal-constraints-posts">
         <a class="modal-overlay" aria-label="Close" onclick="closeModal('modal-constraints-posts');"></a>

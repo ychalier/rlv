@@ -1,27 +1,11 @@
 const DEFAULT_CONFIG = {
-    posts: ["Accueil", "Automates", "Découvrir", "Imaginer -12", "Imaginer +12"],
-    slots: {
-        "Mercredi": ["10h - 11h30", "11h30 - 13h", "14h - 15h30", "15h30 - 17h", "17h - 18h30"],
-        "Jeudi": ["14h - 15h30", "15h30 - 17h", "17h - 18h30"],
-        "Vendredi": ["14h - 15h30", "15h30 - 17h", "17h - 18h30"],
-        "Samedi": ["10h - 11h30", "11h30 - 13h"],
-    },
-    agents: ["Jean", "Marie", "Pierre", "Jeanne", "Michel", "Françoise", "André", "Monique", "Philippe", "Catherine"],
+    posts: [],
+    slots: {},
+    agents: [],
     objectives: {
-        avoidTwiceInARow: 1,
-        standardizeWeeklyTotal: 1,
-        refTimes: {
-            "Jean": 10.25,
-            "Marie": 10.25,
-            "Pierre": 10.25,
-            "Jeanne": 10.25,
-            "Michel": 10.25,
-            "Françoise": 10.25,
-            "André": 10.25,
-            "Monique": 10.25,
-            "Philippe": 10.25,
-            "Catherine": 10.25
-        }
+        avoidTwiceInARow: null,
+        standardizeWeeklyTotal: null,
+        refTimes: {}
     },
     constraints: {
         posts: {},
@@ -34,8 +18,8 @@ var CURRENT_CONFIG = null;
 
 
 function hashCode(str) {
-    var hash = 0;
-    for (var i = 0; i < str.length; i++) {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
         hash = str.charCodeAt(i) + ((hash << 5) - hash);
     }
     return hash;
@@ -43,7 +27,7 @@ function hashCode(str) {
 
 
 function intToRGB(i) {
-    var c = (i & 0x00FFFFFF).toString(16).toUpperCase();
+    let c = (i & 0x00FFFFFF).toString(16).toUpperCase();
     return "00000".substring(0, 6 - c.length) + c;
 }
 
@@ -84,89 +68,27 @@ function inflateModals() {
         });
     });
 
-    inflateTableScheduleAgents("table-constraints-absences", (td, day, slot, agent) => {
-        td.classList.add("schedule-cell");
-        let isDisabled = false;
-        if (agent in CURRENT_CONFIG.constraints.agentsAbsence) {
-            for (let i = 0; i < CURRENT_CONFIG.constraints.agentsAbsence[agent].length; i++) {
-                if (CURRENT_CONFIG.constraints.agentsAbsence[agent][i][0] == day && CURRENT_CONFIG.constraints.agentsAbsence[agent][i][1] == slot) {
-                    isDisabled = true;
-                    break;
-                }
-            }
-        }
-        if (isDisabled) {
-            td.classList.add("cell-disabled");
-        }
-        td.addEventListener("click", (event) => {
-            if (td.classList.contains("cell-disabled")) {
-                td.classList.remove("cell-disabled");
-            } else {
-                td.classList.add("cell-disabled");
-            }
-        });
-    });
-
-    inflateTablePostsAttributions("table-constraints-attributions", (td, post, agent) => {
-        td.classList.add("schedule-cell");
-        let isDisabled = false;
-        if (post in CURRENT_CONFIG.constraints.postsAttributions) {
-            for (let i = 0; i < CURRENT_CONFIG.constraints.postsAttributions[post].length; i++) {
-                if (CURRENT_CONFIG.constraints.postsAttributions[post][i] == agent) {
-                    isDisabled = true;
-                    break;
-                }
-            }
-        }
-        if (isDisabled) {
-            td.classList.add("cell-disabled");
-        }
-        td.addEventListener("click", (event) => {
-            if (td.classList.contains("cell-disabled")) {
-                td.classList.remove("cell-disabled");
-            } else {
-                td.classList.add("cell-disabled");
-            }
-        });
-    });
-
-    inflateTableReftimes();
-    inflateTableLimits();
+    inflateTableConstraintsAbsences();
+    inflateTableConstraintsAttributions();
+    inflateTableObjectivesQuotas();
+    inflateTableConstraintsLimits();
 
 }
 
+
 const slotDurationPattern = /^(\d+)h(\d+)? \- (\d+)h(\d+)?$/;
+
 
 function getSlotDuration(slot) {
     let match = slot.match(slotDurationPattern);
     return parseInt(match[3]) +
         (match[4] ? parseInt(match[4]) / 60 : 0) -
         parseInt(match[1]) -
-        (match[2] ? parseInt(match[2]) / 60 : 0)
+        (match[2] ? parseInt(match[2]) / 60 : 0);
 }
 
 
-function resetQuotas() {
-    let avgTime = 0;
-    for (let day in CURRENT_CONFIG.slots) {
-        CURRENT_CONFIG.slots[day].forEach(slot => {
-            avgTime += getSlotDuration(slot) * CURRENT_CONFIG.posts.length;
-        });
-    }
-    for (let post in CURRENT_CONFIG.constraints.posts) {
-        CURRENT_CONFIG.constraints.posts[post].forEach(arr => {
-            avgTime -= getSlotDuration(arr[1]);
-        });
-    }
-    avgTime /= CURRENT_CONFIG.agents.length;
-    document.querySelectorAll("#table-objectives-quotas input").forEach(input => {
-        input.value = avgTime;
-    });
-}
-
-
-function inflateTableReftimes() {
-    let table = document.getElementById("table-objectives-quotas");
+function getTotalTime() {
     let totalTime = 0;
     for (let day in CURRENT_CONFIG.slots) {
         CURRENT_CONFIG.slots[day].forEach(slot => {
@@ -178,98 +100,79 @@ function inflateTableReftimes() {
             totalTime -= getSlotDuration(arr[1]);
         });
     }
-    document.getElementById("span-objectives-quotas-total").textContent = totalTime.toFixed(2);
-    let avgTime = totalTime / CURRENT_CONFIG.agents.length;
-    // avgTime = avgTime.toFixed(2);
-    document.getElementById("span-objectives-quotas-avg").textContent = avgTime.toFixed(2);
+    return totalTime;
+}
 
-    table.innerHTML = "";
 
-    let thead = document.createElement("thead");
+function getAverageTime() {
+    return getTotalTime() / CURRENT_CONFIG.agents.length;
+}
 
-    thead.innerHTML = "<tr><th>Agent</th><th>Quota</th><th>Maximum</th></tr>";
-    thead.innerHTML += "<tr><td></td><td><small class='text-gray'>L'algorithme s'efforcera de ne pas dépasser cette valeur</small></td><td><small class='text-gray'>En fonction des disponibilités et contraintes exprimées précédemment</small></td></tr>";
-    table.appendChild(thead);
 
-    let tbody = document.createElement("tbody");
-
-    CURRENT_CONFIG.agents.forEach(agent => {
-        let tr = document.createElement("tr");
-        let tdName = document.createElement("td");
-        tdName.textContent = agent;
-        tr.appendChild(tdName);
-        let tdTime = document.createElement("td");
-        let input = document.createElement("input");
-
-        input.addEventListener("input", (event) => {
-            let total = 0;
-            document.querySelectorAll("#table-objectives-quotas input").forEach(inpt => {
-                total += parseFloat(inpt.value);
-            });
-            document.getElementById("span-objectives-quotas-current").textContent = total.toFixed(2);
-            document.getElementById("span-objectives-quotas-diff").textContent = (totalTime - total).toFixed(2);
-        });
-
-        input.className = "form-input";
-        input.step = "0.01";
-        input.type = "number";
-        input.max = getAgentMaxTime(agent);
-        input.name = agent;
-        input.value = parseFloat(agent in CURRENT_CONFIG.objectives.refTimes ? CURRENT_CONFIG.objectives.refTimes[agent] : avgTime).toFixed(2);
-        tdTime.appendChild(input);
-        tr.appendChild(tdTime);
-
-        let tdMax = document.createElement("td");
-        tdMax.textContent = getAgentMaxTime(agent);
-        tr.appendChild(tdMax);
-
-        tbody.appendChild(tr);
+function resetTableObjectivesQuotas() {
+    let avgTime = getAverageTime();
+    document.querySelectorAll("#table-objectives-quotas input").forEach(input => {
+        input.value = avgTime;
     });
+}
 
-    table.appendChild(tbody);
 
+function updateObjectivesQuotasSum() {
     let total = 0;
     document.querySelectorAll("#table-objectives-quotas input").forEach(inpt => {
         total += parseFloat(inpt.value);
     });
     document.getElementById("span-objectives-quotas-current").textContent = total.toFixed(2);
-    let diff = (total - totalTime);
+    let diff = (total - getTotalTime());
     document.getElementById("span-objectives-quotas-diff").textContent = (diff >= 0 ? "+" : "") + diff.toFixed(2);
 }
 
 
-function inflateTableLimits() {
-    let table = document.getElementById("table-constraints-limits");
+function inflateTableObjectivesQuotas() {
+    let avgTime = getAverageTime();
+    document.getElementById("span-objectives-quotas-total").textContent = getTotalTime().toFixed(2);
+    document.getElementById("span-objectives-quotas-avg").textContent = avgTime.toFixed(2);
+    let tbody = document.querySelector("#table-objectives-quotas tbody");
+    tbody.innerHTML = "";
+    CURRENT_CONFIG.agents.forEach(agent => {
+        let tr = importTemplate("template-quotas-tr");
+        tr.querySelector(".quota-agent").textContent = agent;
+        let input = tr.querySelector("input");
+        input.addEventListener("input", updateObjectivesQuotasSum);
+        input.max = getAgentMaxTime(agent);
+        input.name = agent;
+        input.value = parseFloat(agent in CURRENT_CONFIG.objectives.refTimes ? CURRENT_CONFIG.objectives.refTimes[agent] : avgTime).toFixed(2);
+        tr.querySelector(".quota-max").textContent = getAgentMaxTime(agent);
+        tbody.appendChild(tr);
+    });
+    updateObjectivesQuotasSum();
+}
+
+
+function inflateTableConstraintsLimits() {
     let maxTime = 0;
     for (let day in CURRENT_CONFIG.slots) {
         CURRENT_CONFIG.slots[day].forEach(slot => {
             maxTime += getSlotDuration(slot);
         });
     }
-    table.innerHTML = "";
+    let tbody = document.querySelector("#table-constraints-limits tbody");
+    tbody.innerHTML = "";
     CURRENT_CONFIG.agents.forEach(agent => {
-        let tr = document.createElement("tr");
-        let tdName = document.createElement("td");
-        tdName.textContent = agent;
-        tr.appendChild(tdName);
-        let tdTime = document.createElement("td");
-        let input = document.createElement("input");
-        input.className = "form-input";
-        input.step = "0.01";
-        input.type = "number";
+        let tr = importTemplate("template-limits-tr");
+        tr.querySelector(".limit-agent").textContent = agent;
+        let input = tr.querySelector("input");
         input.name = agent;
         input.value = parseFloat(agent in CURRENT_CONFIG.constraints.limits ? CURRENT_CONFIG.constraints.limits[agent] : maxTime);
-        tdTime.appendChild(input);
-        tr.appendChild(tdTime);
-        table.appendChild(tr);
+        tbody.appendChild(tr);
     });
 }
 
 
-function inflateTablePostsAttributions(tableId, cellCallback) {
-    let table = document.getElementById(tableId);
+function inflateTableConstraintsAttributions() {
+    let table = document.getElementById("table-constraints-attributions");
     table.innerHTML = "";
-    let tHead = document.createElement("thead");
+    let thead = document.createElement("thead");
     let tHeadTr = document.createElement("tr");
     tHeadTr.innerHTML = "<th></th>";
     CURRENT_CONFIG.posts.forEach(post => {
@@ -277,9 +180,9 @@ function inflateTablePostsAttributions(tableId, cellCallback) {
         th.textContent = post;
         tHeadTr.appendChild(th);
     });
-    tHead.appendChild(tHeadTr);
-    table.appendChild(tHead);
-    let tBody = document.createElement("tbody");
+    thead.appendChild(tHeadTr);
+    table.appendChild(thead);
+    let tbody = document.createElement("tbody");
     CURRENT_CONFIG.agents.forEach(agent => {
         let tr = document.createElement("tr");
         let tdAgent = document.createElement("td");
@@ -287,19 +190,27 @@ function inflateTablePostsAttributions(tableId, cellCallback) {
         tr.appendChild(tdAgent);
         CURRENT_CONFIG.posts.forEach(post => {
             let tdPost = document.createElement("td");
-            if (cellCallback) {
-                cellCallback(tdPost, post, agent);
+            tdPost.classList.add("schedule-cell");
+            if (!isAgentAttributedTo(post, agent)) {
+                tdPost.classList.add("cell-disabled");
             }
+            tdPost.addEventListener("click", (event) => {
+                if (tdPost.classList.contains("cell-disabled")) {
+                    tdPost.classList.remove("cell-disabled");
+                } else {
+                    tdPost.classList.add("cell-disabled");
+                }
+            });
             tr.appendChild(tdPost);
         });
-        tBody.appendChild(tr);
+        tbody.appendChild(tr);
     });
-    table.appendChild(tBody);
+    table.appendChild(tbody);
 }
 
 
-function iterateTablePostsAttributions(tableId, cellCallback) {
-    let table = document.getElementById(tableId);
+function iterateTableConstraintsAttributions(cellCallback) {
+    let table = document.getElementById("table-constraints-attributions");
     table.querySelectorAll("tbody tr").forEach(tr => {
         let tds = Array.prototype.slice.call(tr.querySelectorAll("td"));
         let agent = tds[0].textContent;
@@ -311,8 +222,8 @@ function iterateTablePostsAttributions(tableId, cellCallback) {
 }
 
 
-function inflateTableScheduleAgents(tableId, cellCallback) {
-    let table = document.getElementById(tableId);
+function inflateTableConstraintsAbsences() {
+    let table = document.getElementById("table-constraints-absences");
     table.innerHTML = "";
     let tHead = document.createElement("thead");
     let tHeadTr = document.createElement("tr");
@@ -340,9 +251,17 @@ function inflateTableScheduleAgents(tableId, cellCallback) {
             tr.appendChild(tdSlot);
             CURRENT_CONFIG.agents.forEach(agent => {
                 let tdAgent = document.createElement("td");
-                if (cellCallback) {
-                    cellCallback(tdAgent, day, CURRENT_CONFIG.slots[day][i], agent);
+                tdAgent.classList.add("schedule-cell");
+                if (!isAgentPresent(day, CURRENT_CONFIG.slots[day][i], agent)) {
+                    tdAgent.classList.add("cell-disabled");
                 }
+                tdAgent.addEventListener("click", (event) => {
+                    if (tdAgent.classList.contains("cell-disabled")) {
+                        tdAgent.classList.remove("cell-disabled");
+                    } else {
+                        tdAgent.classList.add("cell-disabled");
+                    }
+                });
                 tr.appendChild(tdAgent);
             });
             tBody.appendChild(tr);
@@ -352,8 +271,8 @@ function inflateTableScheduleAgents(tableId, cellCallback) {
 }
 
 
-function iterateTableScheduleAgents(tableId, cellCallback) {
-    let table = document.getElementById(tableId);
+function iterateTableConstraintsAbsences(cellCallback) {
+    let table = document.getElementById("table-constraints-absences");
     let currentDay = null;
     table.querySelectorAll("tbody tr").forEach(tr => {
         let tds = Array.prototype.slice.call(tr.querySelectorAll("td"));
@@ -441,6 +360,7 @@ function isPostOpened(day, slot, post) {
     return true;
 }
 
+
 function isAgentPresent(day, slot, agent) {
     if (!(agent in CURRENT_CONFIG.constraints.agentsAbsence)) {
         return true;
@@ -452,6 +372,7 @@ function isAgentPresent(day, slot, agent) {
     }
     return true;
 }
+
 
 function isAgentAttributedTo(post, agent) {
     if (!(post in CURRENT_CONFIG.constraints.postsAttributions)) {
@@ -619,34 +540,24 @@ function loadConfigFromFile() {
 }
 
 
+function clone(obj) {
+    return JSON.parse(JSON.stringify(obj));
+}
+
+
 function loadConfigFromModals() {
-    let config = {
-        posts: [],
-        slots: {},
-        agents: [],
-        objectives: {
-            avoidTwiceInARow: null,
-            standardizeWeeklyTotal: null,
-            refTimes: {}
-        },
-        constraints: {
-            posts: {},
-            agentsAbsence: {},
-            postsAttributions: {},
-            limits: {}
-        }
-    }
+    let config = clone(DEFAULT_CONFIG);
     let error = null;
 
-    // POSTS
+    // PARAMS POSTS
     document.getElementById("input-params-posts").value.split("\n").forEach(entry => {
         if (entry.trim() != "") {
             config.posts.push(entry.trim());
         }
     });
-    if (config.posts.length == 0) error = "Veuillez renseigner au moins un poste.";
+    // if (config.posts.length == 0) error = "Veuillez renseigner au moins un poste.";
 
-    // SLOTS
+    // PARAMS SLOTS
     let slotCount = 0;
     let currentDay = null;
     document.getElementById("input-params-slots").value.split("\n").forEach((entry) => {
@@ -660,27 +571,27 @@ function loadConfigFromModals() {
             }
         }
     });
-    if (slotCount == 0) error = "Veuillez renseigner au moins un créneau.";
+    // if (slotCount == 0) error = "Veuillez renseigner au moins un créneau.";
 
-    // AGENTS
+    // PARAMS AGENTS
     document.getElementById("input-params-agents").value.split("\n").forEach(entry => {
         if (entry.trim() != "") {
             config.agents.push(entry.trim());
         }
     });
-    if (config.agents.length == 0) error = "Veuillez renseigner au moins un agent.";
+    // if (config.agents.length == 0) error = "Veuillez renseigner au moins un agent.";
 
-    // OBJECTIVES
+    // PARAMS OBJECTIVES
     config.objectives.avoidTwiceInARow = parseInt(document.getElementById("input-objectives-avoidTwiceInARow").value);
     config.objectives.standardizeWeeklyTotal = parseInt(document.getElementById("input-objectives-standardizeWeeklyTotal").value);
 
-    // REFTIMES
+    // OBJECTIVES QUOTAS
     document.querySelectorAll("#table-objectives-quotas input").forEach(input => {
         let agent = input.name;
         config.objectives.refTimes[agent] = input.value;
     });
 
-    // LIMITS
+    // CONSTRAINTS LIMITS
     document.querySelectorAll("#table-constraints-limits input").forEach(input => {
         let agent = input.name;
         config.constraints.limits[agent] = parseFloat(input.value);
@@ -696,8 +607,8 @@ function loadConfigFromModals() {
         }
     });
 
-    // AGENTS ABSCENCE
-    iterateTableScheduleAgents("table-constraints-absences", (td, day, slot, agent) => {
+    // CONSTRAINTS ABSCENCES
+    iterateTableConstraintsAbsences((td, day, slot, agent) => {
         if (td.classList.contains("cell-disabled")) {
             if (!(agent in config.constraints.agentsAbsence)) {
                 config.constraints.agentsAbsence[agent] = [];
@@ -706,8 +617,8 @@ function loadConfigFromModals() {
         }
     });
 
-    // POSTS ATTRIBUTIONS
-    iterateTablePostsAttributions("table-constraints-attributions", (td, post, agent) => {
+    // CONSTRAINTS ATTRIBUTIONS
+    iterateTableConstraintsAttributions((td, post, agent) => {
         if (td.classList.contains("cell-disabled")) {
             if (!(post in config.constraints.postsAttributions)) {
                 config.constraints.postsAttributions[post] = [];
@@ -715,8 +626,6 @@ function loadConfigFromModals() {
             config.constraints.postsAttributions[post].push(agent);
         }
     })
-
-    // console.log(config);
 
     if (error != null) {
         alert(error);
@@ -755,6 +664,6 @@ window.addEventListener("load", () => {
         }
     }
     if (CURRENT_CONFIG == null) {
-        loadConfig(DEFAULT_CONFIG);
+        loadConfig(clone(DEFAULT_CONFIG));
     }
 });
