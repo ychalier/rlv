@@ -257,16 +257,13 @@
                 <div class="modal-subtitle">
                 Il y a <b><span id="span-params-objectives-reftimes-total"></span> h</b> à répartir.
                     Une répartition uniforme donne une moyenne de <b><span id="span-params-objectives-reftimes-average"></span> h</b> par agent.
+                    <br>
+                    La somme des quotas actuels donne <b><span id="span-params-objectives-reftimes-current"></span> h (<span id="span-params-objectives-reftimes-diff"></span> h)</b>.
                 </div>
             </div>
             <div class="modal-body">
-                <table class="table table-hover table-condensed">
-                    <tbody id="table-params-objectives-reftimes">
-                    </tbody>
+                <table class="table table-hover table-condensed" id="table-params-objectives-reftimes">
                 </table>
-                <p>
-                    La somme des quotas actuels donne <b><span id="span-params-objectives-reftimes-current"></span> h</b>.
-                </p>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-primary" onclick="loadConfigFromModals();closeModal('modal-params-objectives-reftimes');">Enregistrer</button>

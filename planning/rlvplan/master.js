@@ -167,23 +167,32 @@ function resetQuotas() {
 
 function inflateTableReftimes() {
     let table = document.getElementById("table-params-objectives-reftimes");
-    let avgTime = 0;
+    let totalTime = 0;
     for (let day in CURRENT_CONFIG.slots) {
         CURRENT_CONFIG.slots[day].forEach(slot => {
-            avgTime += getSlotDuration(slot) * CURRENT_CONFIG.posts.length;
+            totalTime += getSlotDuration(slot) * CURRENT_CONFIG.posts.length;
         });
     }
     for (let post in CURRENT_CONFIG.constraints.posts) {
         CURRENT_CONFIG.constraints.posts[post].forEach(arr => {
-            avgTime -= getSlotDuration(arr[1]);
+            totalTime -= getSlotDuration(arr[1]);
         });
     }
-    document.getElementById("span-params-objectives-reftimes-total").textContent = avgTime.toFixed(2);
-    avgTime /= CURRENT_CONFIG.agents.length;
+    document.getElementById("span-params-objectives-reftimes-total").textContent = totalTime.toFixed(2);
+    let avgTime = totalTime / CURRENT_CONFIG.agents.length;
     // avgTime = avgTime.toFixed(2);
     document.getElementById("span-params-objectives-reftimes-average").textContent = avgTime.toFixed(2);
 
     table.innerHTML = "";
+
+    let thead = document.createElement("thead");
+
+    thead.innerHTML = "<tr><th>Agent</th><th>Quota</th><th>Maximum</th></tr>";
+    thead.innerHTML += "<tr><td></td><td><small class='text-gray'>L'algorithme s'efforcera de ne pas dépasser cette valeur</small></td><td><small class='text-gray'>En fonction des disponibilités et contraintes exprimées précédemment</small></td></tr>";
+    table.appendChild(thead);
+
+    let tbody = document.createElement("tbody");
+
     CURRENT_CONFIG.agents.forEach(agent => {
         let tr = document.createElement("tr");
         let tdName = document.createElement("td");
@@ -198,6 +207,7 @@ function inflateTableReftimes() {
                 total += parseFloat(inpt.value);
             });
             document.getElementById("span-params-objectives-reftimes-current").textContent = total.toFixed(2);
+            document.getElementById("span-params-objectives-reftimes-diff").textContent = (totalTime - total).toFixed(2);
         });
 
         input.className = "form-input";
@@ -208,14 +218,23 @@ function inflateTableReftimes() {
         input.value = parseFloat(agent in CURRENT_CONFIG.objectives.refTimes ? CURRENT_CONFIG.objectives.refTimes[agent] : avgTime).toFixed(2);
         tdTime.appendChild(input);
         tr.appendChild(tdTime);
-        table.appendChild(tr);
+
+        let tdMax = document.createElement("td");
+        tdMax.textContent = getAgentMaxTime(agent);
+        tr.appendChild(tdMax);
+
+        tbody.appendChild(tr);
     });
+
+    table.appendChild(tbody);
 
     let total = 0;
     document.querySelectorAll("#table-params-objectives-reftimes input").forEach(inpt => {
         total += parseFloat(inpt.value);
     });
     document.getElementById("span-params-objectives-reftimes-current").textContent = total.toFixed(2);
+    let diff = (total - totalTime);
+    document.getElementById("span-params-objectives-reftimes-diff").textContent = (diff >= 0 ? "+" : "") + diff.toFixed(2);
 }
 
 

@@ -52,3 +52,18 @@ td {
     opacity: 0.5;
     background: repeating-linear-gradient( 45deg, transparent, transparent 23px, var(--color-accent-5) 23px, var(--color-accent-5) 27px), repeating-linear-gradient( -45deg, transparent, transparent 23px, var(--color-accent-5) 23px, var(--color-accent-5) 27px);
 }
+
+#table-params-objectives-reftimes th:nth-child(1),
+#table-params-objectives-reftimes td:nth-child(1) {
+    text-align: left;
+}
+
+#table-params-objectives-reftimes th:nth-child(2),
+#table-params-objectives-reftimes td:nth-child(2) {
+    width: 100%;
+}
+
+#table-params-objectives-reftimes th:nth-child(3),
+#table-params-objectives-reftimes td:nth-child(3) {
+    min-width: 250px;
+}
