@@ -503,6 +503,9 @@ function generate() {
     fetch("/generate", {
         method: "POST",
         body: JSON.stringify(CURRENT_CONFIG)
+    }).catch(error => {
+        alert("Une erreur est survenue : " + error + "\nLe serveur est peut-être éteint.");
+        document.getElementById("modal-loading").classList.remove("active");
     }).then(() => {
         let interval = null;
         interval = setInterval(() => {
