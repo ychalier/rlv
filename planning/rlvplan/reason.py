@@ -19,7 +19,6 @@ with open(os.path.join(__file__, os.pardir, "config.json"), "r", encoding="utf8"
     DEFAULT_CONFIG = json.load(file)
 
 
-
 def compute_slots_durations(config):
     durations = dict()
     for day in config["slots"]:
@@ -28,204 +27,220 @@ def compute_slots_durations(config):
     return durations
 
 
-def generate(config, debug=True):
+class Reasoner:
 
-    # Pre-processing the config
-    for post, constraints in config["constraints"]["posts"].items():
-        for i in range(len(constraints)):
-            constraints[i] = tuple(constraints[i])
-    durations = compute_slots_durations(config)
-    # print(durations)
+    def __init__(self, config):
+        self.config = config
+        self.variables = dict()
+        self.varidx = 0
+        self.model = pulp.LpProblem("Planning", sense=pulp.LpMinimize)
     
-    model = pulp.LpProblem("Planning", sense=pulp.LpMinimize)
+    def build(self):
+        self._preprocess_config()
+        self._create_variables()
+        self._add_constraints_fill()
+        self._add_constraints_absences()
+        self._add_constraints_attributions()
+        self._add_constraints_limits()
+        self._add_objective_twiceinrow()
+        self._add_objective_quotas_abs()
+    
+    def solve(self, debug=False):
+        solver = pulp.PULP_CBC_CMD(timeLimit=20, logPath="solver.log")
+        result = self.model.solve(solver)
+        solution = {
+            "feasible": result == 1,
+            "schedule": {
+                day: {
+                    slot: {
+                        post: None
+                        for post in self.config["posts"]
+                    }
+                    for slot in self.config["slots"][day]
+                }
+                for day in self.config["slots"]
+            }
+        }
+        for key, var in self.variables.items():
+            if key[0] != VariableType.SPAN:
+                continue
+            day, slot, post, agent = key[1:]
+            if var.value() == 1:
+                solution["schedule"][day][slot][post] = agent
+        if debug:
+            with open("debug.tsv", "w", encoding="utf8") as file:
+                file.write("vartype\tkey\tvaridx\tvalue\n")
+                for key, variable in self.variables.items():
+                    file.write("%s\t%s\t%s\t%s\n" % (
+                        key[0].name,
+                        key[1:],
+                        variable,
+                        variable.value()
+                    ))
+        return solution
+    
+    def _preprocess_config(self):
+        # Pre-processing the config
+        for post, constraints in self.config["constraints"]["posts"].items():
+            for i in range(len(constraints)):
+                constraints[i] = tuple(constraints[i])
+        self.config["durations"] = compute_slots_durations(self.config)
 
-    # Creating variables
-    variables = dict()
-    varidx = 0
-    for day in config["slots"]:
-        for slot in config["slots"][day]:
-            for post in config["posts"]:
-                if (day, slot) in config["constraints"]["posts"].get(post, []):
-                    continue
-                for agent in config["agents"]:
-                    key = (VariableType.SPAN, day, slot, post, agent)
-                    varidx += 1
-                    variables[key] = pulp.LpVariable(str(varidx), lowBound=0, upBound=1, cat=pulp.const.LpBinary)
-
-    # All spans must contain exactly one agent.
-    # An agent can not be in two different places at the same time.
-    for day in config["slots"]:
-        for slot in config["slots"][day]:
-            for post in config["posts"]:
-                if (day, slot) in config["constraints"]["posts"].get(post, []):
-                    continue
-                e = sum([
-                    variables[(VariableType.SPAN, day, slot, post, agent)]
-                    for agent in config["agents"]
-                    if (VariableType.SPAN, day, slot, post, agent) in variables
-                ])
-                model.addConstraint(pulp.LpConstraint(e, rhs=1))
-            for agent in config["agents"]:
-                e = sum([
-                    variables[(VariableType.SPAN, day, slot, post, agent)]
-                    for post in config["posts"]
-                    if (VariableType.SPAN, day, slot, post, agent) in variables
-                ])
-                model.addConstraint(pulp.LpConstraint(
-                    e, sense=pulp.const.LpConstraintLE, rhs=1))
-
-    # Agent absences
-    for agent in config["constraints"]["agentsAbsence"]:
-        for day, slot in config["constraints"]["agentsAbsence"][agent]:
-            for post in config["posts"]:
-                key = (VariableType.SPAN, day, slot, post, agent)
-                if key not in variables:
-                    continue
-                model.addConstraint(pulp.LpConstraint(
-                    e=variables[key],
-                    sense=pulp.const.LpConstraintEQ,
-                    rhs=0
-                ))
-
-    # Posts attributions
-    for post in config["constraints"]["postsAttributions"]:
-        for agent in config["constraints"]["postsAttributions"][post]:
-            for day in config["slots"]:
-                for slot in config["slots"][day]:
-                    key = (VariableType.SPAN, day, slot, post, agent)
-                    if key not in variables:
+    def _create_variables(self):
+        for day in self.config["slots"]:
+            for slot in self.config["slots"][day]:
+                for post in self.config["posts"]:
+                    if (day, slot) in self.config["constraints"]["posts"].get(post, []):
                         continue
-                    model.addConstraint(pulp.LpConstraint(
-                        e=variables[key],
+                    for agent in self.config["agents"]:
+                        key = (VariableType.SPAN, day, slot, post, agent)
+                        self.varidx += 1
+                        self.variables[key] = pulp.LpVariable(str(self.varidx), lowBound=0, upBound=1, cat=pulp.const.LpBinary)
+
+    def _add_constraints_fill(self):
+        # All spans must contain exactly one agent.
+        # An agent can not be in two different places at the same time.
+        for day in self.config["slots"]:
+            for slot in self.config["slots"][day]:
+                for post in self.config["posts"]:
+                    if (day, slot) in self.config["constraints"]["posts"].get(post, []):
+                        continue
+                    e = sum([
+                        self.variables[(VariableType.SPAN, day, slot, post, agent)]
+                        for agent in self.config["agents"]
+                        if (VariableType.SPAN, day, slot, post, agent) in self.variables
+                    ])
+                    self.model.addConstraint(pulp.LpConstraint(e, rhs=1))
+                for agent in self.config["agents"]:
+                    e = sum([
+                        self.variables[(VariableType.SPAN, day, slot, post, agent)]
+                        for post in self.config["posts"]
+                        if (VariableType.SPAN, day, slot, post, agent) in self.variables
+                    ])
+                    self.model.addConstraint(pulp.LpConstraint(e, sense=pulp.const.LpConstraintLE, rhs=1))
+    
+    def _add_constraints_absences(self):
+        for agent in self.config["constraints"]["agentsAbsence"]:
+            for day, slot in self.config["constraints"]["agentsAbsence"][agent]:
+                for post in self.config["posts"]:
+                    key = (VariableType.SPAN, day, slot, post, agent)
+                    if key not in self.variables:
+                        continue
+                    self.model.addConstraint(pulp.LpConstraint(
+                        e=self.variables[key],
                         sense=pulp.const.LpConstraintEQ,
                         rhs=0
                     ))
-
-    # If possible, try not to do two spans in a row.
-    if config["objectives"].get("avoidTwiceInARow", 0) > 0:
-        for day in config["slots"]:
-            for agent in config["agents"]:
-                for slot_prev, slot_next in zip(config["slots"][day][:-1], config["slots"][day][1:]):
+    
+    def _add_constraints_attributions(self):
+        for post in self.config["constraints"]["postsAttributions"]:
+            for agent in self.config["constraints"]["postsAttributions"][post]:
+                for day in self.config["slots"]:
+                    for slot in self.config["slots"][day]:
+                        key = (VariableType.SPAN, day, slot, post, agent)
+                        if key not in self.variables:
+                            continue
+                        self.model.addConstraint(pulp.LpConstraint(
+                            e=self.variables[key],
+                            sense=pulp.const.LpConstraintEQ,
+                            rhs=0
+                        ))
+    
+    def _add_constraints_limits(self):
+        for agent in self.config["constraints"]["limits"]:
+            self.model.addConstraint(pulp.LpConstraint(
+                e=sum([
+                    self.config["durations"][(day, slot)] * self.variables[(VariableType.SPAN, day, slot, post, agent)]
+                    for day in self.config["slots"]
+                    for slot in self.config["slots"][day]
+                    for post in self.config["posts"]
+                    if (VariableType.SPAN, day, slot, post, agent) in self.variables
+                ]),
+                sense=pulp.const.LpConstraintLE,
+                rhs=float(self.config["constraints"]["limits"][agent])
+            ))
+    
+    def _add_objective_twiceinrow(self):
+        # If possible, try not to do two spans in a row.
+        if self.config["objectives"].get("avoidTwiceInARow", 0) <= 0:
+            return
+        for day in self.config["slots"]:
+            for agent in self.config["agents"]:
+                for slot_prev, slot_next in zip(self.config["slots"][day][:-1], self.config["slots"][day][1:]):
                     key = (VariableType.OBJ_TWICE, day, agent, slot_prev, slot_next)
-                    varidx += 1
+                    self.varidx += 1
                     y = pulp.LpVariable(
-                        str(varidx), lowBound=0, upBound=1, cat=pulp.const.LpBinary)
-                    variables[key] = y
+                        str(self.varidx), lowBound=0, upBound=1, cat=pulp.const.LpBinary)
+                    self.variables[key] = y
                     e1 = sum([
-                        variables[(VariableType.SPAN, day,
-                                   slot_prev, post, agent)]
-                        for post in config["posts"]
-                        if (VariableType.SPAN, day, slot_prev, post, agent) in variables
+                        self.variables[(VariableType.SPAN, day,
+                                slot_prev, post, agent)]
+                        for post in self.config["posts"]
+                        if (VariableType.SPAN, day, slot_prev, post, agent) in self.variables
                     ])
                     e2 = sum([
-                        variables[(VariableType.SPAN, day,
-                                   slot_next, post, agent)]
-                        for post in config["posts"]
-                        if (VariableType.SPAN, day, slot_next, post, agent) in variables
+                        self.variables[(VariableType.SPAN, day,
+                                slot_next, post, agent)]
+                        for post in self.config["posts"]
+                        if (VariableType.SPAN, day, slot_next, post, agent) in self.variables
                     ])
-                    model.addConstraint(pulp.LpConstraint(
+                    self.model.addConstraint(pulp.LpConstraint(
                         e=e1 + e2 - 1 - y,
                         sense=pulp.const.LpConstraintLE,
                         rhs=0
                     ))
-                    model.addConstraint(pulp.LpConstraint(
+                    self.model.addConstraint(pulp.LpConstraint(
                         e=y - e1,
                         sense=pulp.const.LpConstraintLE,
                         rhs=0
                     ))
-                    model.addConstraint(pulp.LpConstraint(
+                    self.model.addConstraint(pulp.LpConstraint(
                         e=y - e2,
                         sense=pulp.const.LpConstraintLE,
                         rhs=0
                     ))
-                    model.objective += config["objectives"]["avoidTwiceInARow"] * y
-
-    # Try to make average weekly time equal accross people
-    if config["objectives"].get("standardizeWeeklyTotal", 0) > 0:
-
+                    self.model.objective += self.config["objectives"]["avoidTwiceInARow"] * y
+    
+    def _add_objective_quotas_abs(self):
+        if self.config["objectives"].get("standardizeWeeklyTotal", 0) <= 0:
+            return
         weekly_total = 0
-        for day in config["slots"]:
-            for slot in config["slots"][day]:
-                weekly_total += durations[(day, slot)] * len(config["posts"])
-        for post in config["constraints"]["posts"]:
-            for day, slot in config["constraints"]["posts"][post]:
-                weekly_total -= durations[(day, slot)]
-        weekly_average = weekly_total / len(config["agents"])
-
-        # weekly_average = (sum(map(len, config["slots"].values())) * len(config["posts"]) - sum(
-        #     map(len, config["constraints"]["posts"].values()))) / len(config["agents"])
-        # weekly_max = weekly_average * len(config["agents"])
-        for agent in config["agents"]:
-            target = float(config["objectives"]["refTimes"].get(agent, weekly_average))
+        for day in self.config["slots"]:
+            for slot in self.config["slots"][day]:
+                weekly_total += self.config["durations"][(day, slot)] * len(self.config["posts"])
+        for post in self.config["constraints"]["posts"]:
+            for day, slot in self.config["constraints"]["posts"][post]:
+                weekly_total -= self.config["durations"][(day, slot)]
+        weekly_average = weekly_total / len(self.config["agents"])
+        for agent in self.config["agents"]:
+            target = float(self.config["objectives"]["refTimes"].get(agent, weekly_average))
             e = sum([
-                durations[(day, slot)] * variables[(VariableType.SPAN, day, slot, post, agent)]
-                for day in config["slots"]
-                for slot in config["slots"][day]
-                for post in config["posts"]
-                if (VariableType.SPAN, day, slot, post, agent) in variables
+                self.config["durations"][(day, slot)] * self.variables[(VariableType.SPAN, day, slot, post, agent)]
+                for day in self.config["slots"]
+                for slot in self.config["slots"][day]
+                for post in self.config["posts"]
+                if (VariableType.SPAN, day, slot, post, agent) in self.variables
             ])
-            varidx += 1
-            y = pulp.LpVariable(str(varidx), lowBound=0, upBound=weekly_total, cat=pulp.const.LpContinuous)
-            variables[(VariableType.OBJ_TOTAL, agent)] = y
-            model.addConstraint(pulp.LpConstraint(
+            self.varidx += 1
+            y = pulp.LpVariable(str(self.varidx), lowBound=0, upBound=weekly_total, cat=pulp.const.LpContinuous)
+            self.variables[(VariableType.OBJ_TOTAL, agent)] = y
+            self.model.addConstraint(pulp.LpConstraint(
                 e=y - (e - target),
                 sense=pulp.const.LpConstraintGE,
                 rhs=0
             ))
-            model.addConstraint(pulp.LpConstraint(
+            self.model.addConstraint(pulp.LpConstraint(
                 e=y + (e - target),
                 sense=pulp.const.LpConstraintGE,
                 rhs=0
             ))
-            model.objective += config["objectives"]["standardizeWeeklyTotal"] * y
+            self.model.objective += self.config["objectives"]["standardizeWeeklyTotal"] * y
 
-    for agent in config["constraints"]["limits"]:
-        model.addConstraint(pulp.LpConstraint(
-            e=sum([
-                durations[(day, slot)] * variables[(VariableType.SPAN, day, slot, post, agent)]
-                for day in config["slots"]
-                for slot in config["slots"][day]
-                for post in config["posts"]
-                if (VariableType.SPAN, day, slot, post, agent) in variables
-            ]),
-            sense=pulp.const.LpConstraintLE,
-            rhs=float(config["constraints"]["limits"][agent])
-        ))
 
-    solver = pulp.PULP_CBC_CMD(timeLimit=20, logPath="solver.log")
-    result = model.solve(solver)
-
-    solution = {
-        "feasible": result == 1,
-        "schedule": {
-            day: {
-                slot: {
-                    post: None
-                    for post in config["posts"]
-                }
-                for slot in config["slots"][day]
-            }
-            for day in config["slots"]
-        }
-    }
-    for key, var in variables.items():
-        if key[0] != VariableType.SPAN:
-            continue
-        day, slot, post, agent = key[1:]
-        if var.value() == 1:
-            solution["schedule"][day][slot][post] = agent
-
-    if debug:
-        with open("debug.tsv", "w", encoding="utf8") as file:
-            file.write("vartype\tkey\tvaridx\tvalue\n")
-            for key, variable in variables.items():
-                file.write("%s\t%s\t%s\t%s\n" % (
-                    key[0].name,
-                    key[1:],
-                    variable,
-                    variable.value()
-                ))
-
+def generate(config):
+    reasoner = Reasoner(config)
+    reasoner.build()
+    solution = reasoner.solve()
     return solution
 
 
