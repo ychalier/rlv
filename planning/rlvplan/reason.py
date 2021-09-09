@@ -16,10 +16,6 @@ class VariableType(enum.Enum):
     OBJ_TWICE_SAME = 3
 
 
-with open(os.path.join(__file__, os.pardir, "config.json"), "r", encoding="utf8") as file:
-    DEFAULT_CONFIG = json.load(file)
-
-
 def compute_slots_durations(config):
     durations = dict()
     for day in config["slots"]:
@@ -48,7 +44,7 @@ class Reasoner:
         # self._add_objective_quotas_abs()
         self._add_objective_quotas_quad()
     
-    def solve(self, debug=True):
+    def solve(self, debug=False):
         solver = pulp.PULP_CBC_CMD(timeLimit=20, logPath="solver.log")
         result = self.model.solve(solver)
         solution = {
@@ -306,13 +302,15 @@ class Reasoner:
                 self.model.objective += self.config["objectives"]["standardizeWeeklyTotal"] * y * (h ** 2)
 
 
-def generate(config):
+def generate(config, debug=False):
     reasoner = Reasoner(config)
     reasoner.build()
-    solution = reasoner.solve()
+    solution = reasoner.solve(debug=debug)
     return solution
 
 
 if __name__ == "__main__":
+    with open(os.path.join(__file__, os.pardir, "config.json"), "r", encoding="utf8") as file:
+        DEFAULT_CONFIG = json.load(file)
     solution = generate(DEFAULT_CONFIG)
     print(json.dumps(solution, indent=4))

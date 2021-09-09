@@ -9,6 +9,7 @@ import threading
 import webbrowser
 import http.server
 import urllib.parse
+import tempfile
 
 import xlsxwriter
 import pyexcel_ods
@@ -32,10 +33,11 @@ class RequestHandler(http.server.BaseHTTPRequestHandler):
     def do_GET(self):
         if self.path == "/":
             self.path = "/index.html"
-        if os.path.isfile(self.path[1:]):
+        fpath = os.path.join(__file__, os.pardir, self.path[1:])
+        if os.path.isfile(fpath):
             self.send_response(200)
             self.end_headers()
-            with open(self.path[1:], "rb") as file:
+            with open(fpath, "rb") as file:
                 self.wfile.write(file.read())
         elif self.path == "/answer":
             if self.server.controller.daemon.computing:
@@ -328,7 +330,7 @@ class Daemon(threading.Thread):
         self.exception = None
         self.computing = True
         try:
-            self.solution = rlvplan.reason.generate(task)
+            self.solution = rlvplan.reason.generate(task, debug=False)
         except Exception as err:
             self.exception = err
         self.computing = False
@@ -368,5 +370,6 @@ def main():
     if is_port_in_use(PORT):
         print(f"Port {PORT} is already used.")
     else:
+        os.chdir(tempfile.gettempdir())
         controller = Controller()
         controller.start()
