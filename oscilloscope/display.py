@@ -1,44 +1,43 @@
-import matplotlib.pyplot as plt
-import serial
-import re
-import matplotlib.animation as animation
+import matplotlib.pyplot
+import matplotlib.animation
 import threading
-import time
-
-ard = serial.Serial("COM3", 9600)
-fig = plt.figure()
-ax1 = fig.add_subplot(1,1,1)
-
-winsize = 128
-
-def animate(i):
-    global PLOT_DATA
-    ax1.clear()
-    data = record()
-    # ax1.set_title(data[-1])
-    # ax1.plot(data[:-1])
-    ax1.plot(PLOT_DATA, "+-")
+import serial
 
 
-PLOT_DATA = [0] * winsize
+OPERATING_VOLTAGE = 5
+MAX_RESOLUTION = 256
+SAMPLING_FREQUENCY = 4096
+WINSIZE = int(.1 * SAMPLING_FREQUENCY)
 
-class MyThread(threading.Thread):
+
+WINDOW = [0] * WINSIZE
+TIMES = [1000. * i / SAMPLING_FREQUENCY for i in range(WINSIZE)]
+FIGURE = matplotlib.pyplot.figure()
+AXIS = FIGURE.add_subplot(1, 1, 1)
+
+
+def animate(_):
+    global AXIS
+    global WINDOW
+    global TIMES
+    AXIS.clear()
+    AXIS.plot(TIMES, WINDOW, "+-", linewidth=.5)
+    AXIS.set_ylabel("Voltage (V)")
+    AXIS.set_xlabel("Time (ms)")
+
+
+class SamplerThread(threading.Thread):
 
     def run(self):
-        global PLOT_DATA
+        global WINDOW
+        arduino = serial.Serial("COM3", 9600)
         while True:
-            b = int.from_bytes(ard.read(1), byteorder="little")
-            # b1 = int.from_bytes(ard.read(1), byteorder=order)
-            # b2 = int.from_bytes(ard.read(1), byteorder=order)
-            # b = b1 * 256 + b2
-            # print(b)
-            PLOT_DATA.pop(0)
-            PLOT_DATA.append(b)
+            b = int.from_bytes(arduino.read(1), byteorder="little")
+            WINDOW.pop(0)
+            WINDOW.append(float(b) / MAX_RESOLUTION * OPERATING_VOLTAGE)
 
 
-thread = MyThread(daemon=True)
-thread.start()
-ax1.set_xlim(0, winsize)
-ax1.set_ylim(0, 1024)
-ani = animation.FuncAnimation(fig, animate, interval=100)
-plt.show()
+if __name__ == "__main__":
+    SamplerThread(daemon=True).start()
+    animation = matplotlib.animation.FuncAnimation(FIGURE, animate, interval=50)
+    matplotlib.pyplot.show()
