@@ -6,6 +6,7 @@
 
 int samples[SAMPLE_SIZE];
 unsigned long sampling_period = int(1000000. / SAMPLE_FREQUENCY);
+unsigned long sampling_duration = 0;
 const int sample_size = SAMPLE_SIZE;
 
 void setup()
@@ -32,6 +33,7 @@ void loop()
 
 void acquire_samples()
 {
+  unsigned long start = micros();
   for (int i = 0; i < SAMPLE_SIZE; i++)
   {
     unsigned long now = micros();
@@ -41,6 +43,7 @@ void acquire_samples()
       // pass
     }
   }
+  sampling_duration = micros() - start;
 }
 
 int count_crossings_rising(int frontier)
@@ -91,5 +94,5 @@ float compute_frequency()
   int rising, falling;
   count_crossings((max + min) / 2, rising, falling);
   int crossings = (rising + falling) / 2;
-  return (float)crossings / (float)(SAMPLE_SIZE * (float)sampling_period / 1000000.);
+  return (float)crossings / ((float)sampling_duration / 1000000.);
 }
