@@ -1,0 +1,14 @@
+.slave-container {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: 2;
+    background: black;
+}
+
+#connected-slaves .card .card-footer {
+    padding-bottom: .8rem;
+}

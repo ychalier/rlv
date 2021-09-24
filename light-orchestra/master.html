@@ -1,17 +1,40 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html lang="fr">
 
 <head>
     <meta charset="utf8" />
     <title>Master &mid; Orchestre de lumière</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/ychalier/pifekit/pifekit.min.css" />
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/ychalier/pifekit/pifekit.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
 </head>
 
-<body>
+<body class="container">
     <h1>Master</h1>
-    <button onclick="testBroadcast()">Test Broadcast</button>
+    <p>
+        Connected slaves:
+    </p>
+    <div id="connected-slaves"></div>
+    <button class="btn btn-primary" onclick="testList()">Refresh</button>
+    <hr>
+    <input id="broadcast-color" type="color" /> <button onclick="testBroadcast()">	Broadcast</button>
+    <template id="template-slave">
+        <div class="card my-2">
+            <div class="card-image"></div>
+            <div class="card-header">
+                <div class="card-title"></div>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-primary btn-up"><i class="icon icon-arrow-up"></i></button>
+                <button class="btn btn-primary btn-down"><i class="icon icon-arrow-down"></i></button>
+            </div>
+        <div>
+    </template>
     <script type="text/javascript" src="main.js"></script>
-    <script type="text/javascript">setupMaster();</script>
+    <script type="text/javascript">
+        setupMaster();
+    </script>
 </body>
 
 </html>
