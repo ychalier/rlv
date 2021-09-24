@@ -7,3 +7,5 @@ Dépôt regroupant les différents projets de développement créés et utilisé
 - [L'Algorithme de la foudre](lightning/)
 - [Générateur de plannings](planning/)
 - [Couverture du territoire](couverture-territoire/)
+- [L'Orchestre de lumière](light-orchestra/)
+- [Oscilloscope Arduino](oscilloscope/)
