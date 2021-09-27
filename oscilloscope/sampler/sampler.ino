@@ -1,13 +1,24 @@
 #define WAVE_IN A0
-#define SAMPLE_SIZE 512
-#define SAMPLE_FREQUENCY 4096 // Hz
 #define DELIMITER 42
 #define DELIMITER_LENGTH 5
 
-int samples[SAMPLE_SIZE];
+#define SAMPLE_FREQUENCY 4096 // Hz
+#define EXPECTED_THRESHOLD_CROSSINGS 10
+#define SAMPLING_SIZE 512
+
+int samples[SAMPLING_SIZE];
 unsigned long sampling_period = int(1000000. / SAMPLE_FREQUENCY);
-unsigned long sampling_duration = 0;
-const int sample_size = SAMPLE_SIZE;
+const int sample_size = SAMPLING_SIZE;
+
+unsigned long t_first;
+unsigned long t_last;
+unsigned long t_prev;
+unsigned long t_cur;
+int v_prev;
+int v_cur;
+int v_min;
+int v_max;
+int v_threshold;
 
 void setup()
 {
@@ -25,7 +36,7 @@ void loop()
   }
   Serial.write((byte *)&sample_size, 2);
   Serial.write((byte *)&frequency, 4);
-  for (int i = 0; i < SAMPLE_SIZE; i++)
+  for (int i = 0; i < SAMPLING_SIZE; i++)
   {
     Serial.write((byte)round(samples[i] / 4));
   }
@@ -34,7 +45,7 @@ void loop()
 void acquire_samples()
 {
   unsigned long start = micros();
-  for (int i = 0; i < SAMPLE_SIZE; i++)
+  for (int i = 0; i < SAMPLING_SIZE; i++)
   {
     unsigned long now = micros();
     samples[i] = analogRead(WAVE_IN);
@@ -43,56 +54,69 @@ void acquire_samples()
       // pass
     }
   }
-  sampling_duration = micros() - start;
 }
 
-int count_crossings_rising(int frontier)
+void estimate_threshold()
 {
-  int crossings = 0;
-  for (int i = 0; i < SAMPLE_SIZE - 1; i++)
-  {
-    if (samples[i] <= frontier && samples[i + 1] >= frontier)
+    for (int i = 0; i < SAMPLING_SIZE; i++)
     {
-      crossings++;
+        v_cur = analogRead(WAVE_IN);
+        if (v_cur < v_min)
+        {
+            v_min = v_cur;
+        }
+        if (v_cur > v_max)
+        {
+            v_max = v_cur;
+        }
     }
-  }
-  return crossings;
+    v_threshold = (v_min + v_max) / 2;
 }
 
-void count_crossings(int frontier, int &rising, int &falling)
+void timed_analog_read()
 {
-  rising = 0;
-  falling = 0;
-  for (int i = 0; i < SAMPLE_SIZE - 1; i++)
-  {
-    if (samples[i] <= frontier && samples[i + 1] >= frontier)
-    {
-      rising++;
-    }
-    if (samples[i] >= frontier && samples[i + 1] <= frontier)
-    {
-      falling++;
-    }
-  }
+    v_cur = analogRead(WAVE_IN);
+    t_cur = micros();
+}
+
+float compute_threshold_time()
+{
+    float alpha = (float)(v_threshold - v_prev) / (float)(v_cur - v_prev);
+    return (1. - alpha) * (float)t_prev + alpha * t_cur; 
 }
 
 float compute_frequency()
 {
-  int min = 1024;
-  int max = 0;
-  for (int i = 0; i < SAMPLE_SIZE; i++)
-  {
-    if (samples[i] > max)
+    bool found = false;
+    int count = 0;
+    while (!found)
     {
-      max = samples[i];
+        estimate_threshold();
+        timed_analog_read();
+        v_prev = v_cur;
+        t_prev = t_cur;
+        for (int i = 0; i < SAMPLING_SIZE; i++)
+        {
+            timed_analog_read();
+            if (v_prev <= v_threshold && v_cur >= v_threshold)
+            {
+                t_first = compute_threshold_time();
+                found = true;
+                break;
+            }
+        }
     }
-    if (samples[i] < min)
+    while (count < EXPECTED_THRESHOLD_CROSSINGS)
     {
-      min = samples[i];
+        timed_analog_read();
+        if (v_prev <= v_threshold && v_cur >= v_threshold)
+        {
+            count++;
+            if (count == EXPECTED_THRESHOLD_CROSSINGS)
+            {
+                t_last = compute_threshold_time();
+            }
+        }
     }
-  }
-  int rising, falling;
-  count_crossings((max + min) / 2, rising, falling);
-  int crossings = (rising + falling) / 2;
-  return (float)crossings / ((float)sampling_duration / 1000000.);
+    return (float)count / (t_last - t_first);
 }
