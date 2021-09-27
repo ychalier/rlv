@@ -4,9 +4,9 @@ Implémentation d'un système inspiré de l'installation [City Lights Orchestra]
 
 ![Illustration de la vidéo YouTube « City Lights Orchestra » par Antoine Schmitt](https://img.youtube.com/vi/Sun0TFQgPXk/maxresdefault.jpg)
 
-## Getting Started
+## Guide de démarrage
 
-### Server Dependencies
+### Dépendances serveur
 
 ```
 asyncio
