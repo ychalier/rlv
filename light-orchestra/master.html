@@ -12,24 +12,74 @@
 
 <body class="container">
     <h1>Master</h1>
-    <p>
-        Connected slaves:
-    </p>
-    <div id="connected-slaves"></div>
-    <button class="btn btn-primary" onclick="testList()">Refresh</button>
-    <hr>
-    <input id="broadcast-color" type="color" /> <button onclick="testBroadcast()">	Broadcast</button>
-    <template id="template-slave">
-        <div class="card my-2">
-            <div class="card-image"></div>
-            <div class="card-header">
-                <div class="card-title"></div>
+    <div class="columns">
+        <div class="column col-6">
+            <div class="panel">
+                <div class="panel-header">
+                    <div class="panel-title h5">Slaves</div>
+                </div>
+                <div id="connected-slaves" class="panel-body"></div>
+                <div class="panel-footer">
+                    <button class="btn btn-primary" onclick="fetchSlaves()">Refresh</button>
+                </div>
             </div>
-            <div class="card-footer">
+        </div>
+        <div class="column col-6">
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title h5">Broadcast a color</div>
+                </div>
+                <div class="card-body">
+                    <input class="form-input" id="input-broadcast-color" type="color" />
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-primary" id="button-broadcast">Broadcast</button>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title h5">Gradient</div>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label class="form-label" for="input-gradient-keyframes">Keyframes</label>
+                        <input class="form-input" id="input-gradient-keyframes" type="text" value="#000000 0%, #ffffff 100%" style="font-family: Fira Code, monospace;" />
+                        <div class="form-input-hint">
+                            <button class="btn btn-color" keyframes="#f2627c 0%, #277bcc 50%, #f2627c 100%"></button>
+                            <button class="btn btn-color" keyframes="#ff0000 0%, #ff7f00 14%, #ffff00 28%, #008000 42%, #0000ff 56%, #4b0082 70%, #9400d3 84%, #ff0000 100%"></button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="input-gradient-speed">Speed</label>
+                        <input class="form-input" id="input-gradient-speed" type="number" step="0.1" value="1" />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="input-gradient-spread">Spread</label>
+                        <input class="form-input" id="input-gradient-spread" type="number" step="0.1" value="0" />
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-primary" id="button-gradient">Start</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <template id="template-slave">
+        <div class="tile my-1">
+            <div class="tile-icon"><i class="icon icon-icon-resize-horiz"></i></div>
+            <div class="tile-content">
+                <div class="tile-title"></div>
+            </div>
+            <div class="tile-action">
                 <button class="btn btn-primary btn-up"><i class="icon icon-arrow-up"></i></button>
                 <button class="btn btn-primary btn-down"><i class="icon icon-arrow-down"></i></button>
             </div>
-        <div>
+        </div>
     </template>
     <script type="text/javascript" src="main.js"></script>
     <script type="text/javascript">

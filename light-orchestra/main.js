@@ -1,7 +1,52 @@
-const WEBSOCKET_URL = "ws://atelier-mediatheque.rlv.eu/wst";
+const WEBSOCKET_URL = "wss://lightorchestra:" + prompt("Password?") + "@atelier-mediatheque.rlv.eu/wst2";
 var SLAVES = [];
+var SOCKET;
 
-var socket;
+
+class Controller {
+    constructor(intervalSpeed) {
+        this.interval = null;
+        this.intervalSpeed = intervalSpeed;
+        this.gradient = null;
+    }
+
+    startInterval() {
+        if (this.interval != null) {
+            clearInterval(this.interval);
+            this.interval = null;
+        }
+        let self = this;
+        this.interval = setInterval(() => { self.update(); }, this.intervalSpeed);
+    }
+
+    stopInterval() {
+        clearInterval(this.interval);
+        this.interval = null;
+    }
+
+    startBroadcast(color) {
+        this.gradient = null;
+        this.stopInterval();
+        for (let i = 0; i < SLAVES.length; i++) {
+            setSlaveColor(i, color);
+        }
+    }
+
+    startGradient(gradient) {
+        this.gradient = gradient;
+        this.startInterval();
+    }
+
+    update() {
+        if (this.gradient != null) {
+            this.gradient.update();
+            for (let i = 0; i < SLAVES.length; i++) {
+                setSlaveColor(i, this.gradient.getSlaveColor(i));
+            }
+        }
+    }
+
+}
 
 
 function componentToHex(c) {
@@ -9,9 +54,11 @@ function componentToHex(c) {
     return hex.length == 1 ? "0" + hex : hex;
 }
 
+
 function rgbToHex(r, g, b) {
     return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
 }
+
 
 function hexToRgb(hex) {
     var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -21,32 +68,6 @@ function hexToRgb(hex) {
         b: parseInt(result[3], 16)
     } : null;
 }
-
-
-
-var GRADIENT = {
-
-    setup: {
-        keyframes: [{
-            value: 0,
-            color: "#f2627c"
-        }, {
-            value: 50,
-            color: "#277bcc"
-        }, {
-            value: 100,
-            color: "#f2627c"
-        }],
-        speed: .5,
-        spread: 2,
-    },
-    progress: 0
-
-}
-
-const INTERVAL_SPEED = 50;
-var gradientInterval = null;
-
 
 function blendColors(colA, colB, alpha) {
     let rgbA = hexToRgb(colA);
@@ -60,47 +81,120 @@ function blendColors(colA, colB, alpha) {
 }
 
 
+class Gradient {
+
+    constructor(setup) {
+        this.setup = {
+            keyframes: [{
+                value: 0,
+                color: "#000000"
+            }, {
+                value: 100,
+                color: "#ffffff"
+            }],
+            speed: 1,
+            spread: 0
+        };
+        if (setup != null) {
+            this.setup = setup;
+        }
+        this.progress = 0;
+    }
+
+    update() {
+        this.progress += this.setup.speed;
+        if (this.progress > 100) this.progress -= 100;
+    }
+
+    getColor(progress) {
+        for (let i = 0; i < this.setup.keyframes.length - 1; i++) {
+            if (this.setup.keyframes[i].value <= progress && progress <= this.setup.keyframes[i + 1].value) {
+                return blendColors(
+                    this.setup.keyframes[i].color,
+                    this.setup.keyframes[i + 1].color,
+                    (progress - this.setup.keyframes[i].value) / (this.setup.keyframes[i + 1].value - this.setup.keyframes[i].value)
+                );
+            }
+        }
+        return "#ffffff";
+    }
+
+    getSlaveColor(slaveIndex) {
+        let slaveProgress = this.progress + this.setup.spread * slaveIndex;
+        if (slaveProgress > 100) slaveProgress -= 100;
+        return this.getColor(slaveProgress);
+    }
+
+    toCss() {
+        let str = "linear-gradient(90deg";
+        this.setup.keyframes.forEach(keyframe => {
+            str += ", " + keyframe.color + " " + keyframe.value + "%"
+        });
+        return str + ")";
+    }
+
+}
+
+var GRADIENT = new Gradient({
+    keyframes: [{
+        value: 0,
+        color: "#f2627c"
+    }, {
+        value: 50,
+        color: "#277bcc"
+    }, {
+        value: 100,
+        color: "#f2627c"
+    }],
+    speed: .5,
+    spread: 2,
+});
+
+function setSlaveColor(slaveIndex, color) {
+    document.getElementById(SLAVES[slaveIndex]).querySelector(".tile-icon").style.background = color;
+    SOCKET.send(JSON.stringify({
+        cmd: "tell",
+        arg: {
+            slave: SLAVES[slaveIndex],
+            message: {
+                cmd: "color",
+                arg: color.substr(1)
+            }
+        }
+    }));
+}
+
 function setupMaster() {
-    socket = new WebSocket(WEBSOCKET_URL);
-    socket.onopen = function(event) {
-        socket.send(JSON.stringify({
+    SOCKET = new WebSocket(WEBSOCKET_URL);
+    SOCKET.onopen = function(event) {
+        SOCKET.send(JSON.stringify({
             cmd: "master",
             arg: "master"
         }));
 
-        gradientInterval = setInterval(() => {
-            // console.log("Hello from interval");
-            GRADIENT.progress += GRADIENT.setup.speed;
-            if (GRADIENT.progress > 100) GRADIENT.progress -= 100;
-            for (let i = 0; i < SLAVES.length; i++) {
-                let progress = GRADIENT.progress + GRADIENT.setup.spread * i;
-                if (progress > 100) progress -= 100;
-                for (let j = 0; j < GRADIENT.setup.keyframes.length - 1; j++) {
-                    if (GRADIENT.setup.keyframes[j].value <= progress && progress <= GRADIENT.setup.keyframes[j + 1].value) {
-                        let color = blendColors(
-                            GRADIENT.setup.keyframes[j].color,
-                            GRADIENT.setup.keyframes[j + 1].color,
-                            (progress - GRADIENT.setup.keyframes[j].value) / (GRADIENT.setup.keyframes[j + 1].value - GRADIENT.setup.keyframes[j].value)
-                        );
-                        socket.send(JSON.stringify({
-                            cmd: "tell",
-                            arg: {
-                                slave: SLAVES[i],
-                                message: {
-                                    cmd: "color",
-                                    arg: color.substr(1)
-                                }
-                            }
-                        }));
-                        break;
-                    }
-                }
-
-            }
-        }, INTERVAL_SPEED);
+        let controller = new Controller(50);
+        document.getElementById("button-broadcast").addEventListener("click", () => {
+            controller.startBroadcast(document.getElementById("input-broadcast-color").value);
+        });
+        document.getElementById("button-gradient").addEventListener("click", () => {
+            let keyframes = [];
+            document.getElementById("input-gradient-keyframes").value.split(",").forEach(part => {
+                let match = part.trim().match(/(#[a-f0-9]+) (\d+)%/);
+                keyframes.push({
+                    value: parseInt(match[2]),
+                    color: match[1]
+                });
+            });
+            let gradient = new Gradient({
+                keyframes: keyframes,
+                speed: parseFloat(document.getElementById("input-gradient-speed").value),
+                spread: parseFloat(document.getElementById("input-gradient-spread").value),
+            });
+            controller.startGradient(gradient);
+        });
 
     };
-    socket.onmessage = function(event) {
+    SOCKET.onmessage = function(event) {
         let message = JSON.parse(event.data);
         // console.log("Received message:", message);
         if (message.cmd == "event") {
@@ -114,6 +208,8 @@ function setupMaster() {
         }
     }
 
+    setTimeout(fetchSlaves, 200);
+
 }
 
 function inflateSlaveList() {
@@ -121,7 +217,8 @@ function inflateSlaveList() {
     container.innerHTML = "";
     SLAVES.forEach((slaveId, index) => {
         let element = importTemplate("template-slave");
-        element.querySelector(".card-title").textContent = slaveId;
+        element.querySelector(".tile").id = slaveId;
+        element.querySelector(".tile-title").textContent = slaveId;
         if (index == 0) element.querySelector(".btn-up").classList.add("disabled");
         if (index == SLAVES.length - 1) element.querySelector(".btn-down").classList.add("disabled");
         element.querySelector(".btn-up").addEventListener("click", () => {
@@ -141,50 +238,36 @@ function inflateSlaveList() {
 }
 
 function setupSlave() {
-    socket = new WebSocket(WEBSOCKET_URL);
-    socket.onopen = function(event) {
-        socket.send(JSON.stringify({
+    SOCKET = new WebSocket(WEBSOCKET_URL);
+    SOCKET.onopen = function(event) {
+        SOCKET.send(JSON.stringify({
             cmd: "slave",
             arg: null
         }));
     };
-    socket.onmessage = function(event) {
+    SOCKET.onmessage = function(event) {
         let message = JSON.parse(event.data);
-        // console.log("Received message:", message);
         if (message.cmd == "color") {
             document.querySelector(".slave-container").style.background = "#" + message.arg;
         }
     }
 }
 
-function testBroadcast() {
-    socket.send(JSON.stringify({
-        cmd: "broadcast",
-        arg: {
-            cmd: "color",
-            arg: document.getElementById("broadcast-color").value.substr(1)
-        }
-    }));
-}
 
-function testTell(slaveId) {
-    socket.send(JSON.stringify({
-        cmd: "tell",
-        arg: {
-            slave: slaveId,
-            message: {
-                cmd: "color",
-                arg: "4f5a9d"
-            }
-        }
-    }));
-}
-
-
-function testList() {
+function fetchSlaves() {
     SLAVES = [];
-    socket.send(JSON.stringify({
+    SOCKET.send(JSON.stringify({
         cmd: "list",
         arg: null
     }));
 }
+
+window.addEventListener("load", () => {
+    document.querySelectorAll(".btn-color").forEach(button => {
+        let keyframes = button.getAttribute("keyframes");
+        button.style.background = "linear-gradient(90deg, " + keyframes + ")";
+        button.addEventListener("click", () => {
+            document.getElementById("input-gradient-keyframes").value = keyframes;
+        });
+    });
+});
