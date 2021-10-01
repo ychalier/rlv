@@ -103,7 +103,9 @@ class Gradient {
 
     update() {
         this.progress += this.setup.speed;
-        if (this.progress > 100) this.progress -= 100;
+        while (this.progress > 100) {
+            this.progress -= 100;
+        }
     }
 
     getColor(progress) {
@@ -121,7 +123,9 @@ class Gradient {
 
     getSlaveColor(slaveIndex) {
         let slaveProgress = this.progress + this.setup.spread * slaveIndex;
-        if (slaveProgress > 100) slaveProgress -= 100;
+        while (slaveProgress > 100) {
+            slaveProgress -= 100;
+        }
         return this.getColor(slaveProgress);
     }
 
