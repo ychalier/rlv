@@ -67,6 +67,36 @@
                 </div>
             </div>
 
+            <br>
+
+            <div class="card" id="card-midi-upload">
+                <div class="card-header">
+                    <div class="card-title h5">MIDI file</div>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label class="form-label">Upload JSON</label>
+                        <input class="form-input" type="file" id="input-upload-json" />
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-primary" id="btn-upload-json">Load</button>
+                </div>
+            </div>
+
+            <div class="card hidden" id="card-midi-play">
+                <div class="card-header">
+                    <div class="card-title h5">MIDI file</div>
+                </div>
+                <div class="card-body">
+                    Duration: <span id="midi-duration"></span> s<br>
+                    Channels: <span id="midi-channels-count"></span>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-primary" id="btn-midi-play"><i class="icon icon-play"></i></button>
+                </div>
+            </div>
+
         </div>
     </div>
     <template id="template-slave">
@@ -81,7 +111,7 @@
             </div>
         </div>
     </template>
-    <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript" src="master.js"></script>
     <script type="text/javascript">
         setupMaster();
     </script>

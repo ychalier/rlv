@@ -266,6 +266,15 @@ function fetchSlaves() {
     }));
 }
 
+
+function loadMidi(data) {
+    document.getElementById("card-midi-upload").classList.add("hidden");
+    document.getElementById("midi-channels-count").textContent = data.channels.length;
+    document.getElementById("midi-duration").textContent = Math.max(...data.channels.map(channel => channel.states[channel.states.length - 1].until)).toFixed(1);
+    document.getElementById("card-midi-play").classList.remove("hidden");
+}
+
+
 window.addEventListener("load", () => {
     document.querySelectorAll(".btn-color").forEach(button => {
         let keyframes = button.getAttribute("keyframes");
@@ -273,5 +282,16 @@ window.addEventListener("load", () => {
         button.addEventListener("click", () => {
             document.getElementById("input-gradient-keyframes").value = keyframes;
         });
+    });
+    document.getElementById("btn-upload-json").addEventListener("click", () => {
+        let file = document.getElementById("input-upload-json").files[0];
+        if (file) {
+            let reader = new FileReader();
+            reader.onload = function(event) {
+                let data = JSON.parse(event.target.result);
+                loadMidi(data);
+            }
+            reader.readAsText(file, "UTF-8");
+        }
     });
 });
