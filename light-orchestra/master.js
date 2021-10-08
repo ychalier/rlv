@@ -232,6 +232,9 @@ function setupMaster() {
         });
         document.getElementById("btn-midi-play").addEventListener("click", () => {
             controller.startMidi(MIDI);
+            console.log(MIDI.audioFile);
+            let audio = new Audio(MIDI.audioFile.name);
+            audio.play();
         });
 
     };
@@ -341,10 +344,12 @@ window.addEventListener("load", () => {
     });
     document.getElementById("btn-upload-json").addEventListener("click", () => {
         let file = document.getElementById("input-upload-json").files[0];
+        let audioFile = document.getElementById("input-upload-audio").files[0];
         if (file) {
             let reader = new FileReader();
             reader.onload = function(event) {
                 let data = JSON.parse(event.target.result);
+                data.audioFile = audioFile;
                 loadMidi(data);
             }
             reader.readAsText(file, "UTF-8");
