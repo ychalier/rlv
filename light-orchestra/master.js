@@ -1,13 +1,17 @@
 const WEBSOCKET_URL = "wss://lightorchestra:" + prompt("Password?") + "@atelier-mediatheque.rlv.eu/wst2";
 var SLAVES = [];
 var SOCKET;
+var MIDI;
 
 
 class Controller {
     constructor(intervalSpeed) {
         this.interval = null;
         this.intervalSpeed = intervalSpeed;
+        this.timeStart = null;
         this.gradient = null;
+        this.midi = null;
+        this.midiChannelIndices = null;
     }
 
     startInterval() {
@@ -17,6 +21,7 @@ class Controller {
         }
         let self = this;
         this.interval = setInterval(() => { self.update(); }, this.intervalSpeed);
+        this.timeStart = new Date();
     }
 
     stopInterval() {
@@ -37,11 +42,40 @@ class Controller {
         this.startInterval();
     }
 
+    startMidi(midi) {
+        this.midi = midi;
+        this.midiChannelIndices = {};
+        this.midi.channels.forEach(channel => {
+            this.midiChannelIndices[channel.id] = 0;
+        })
+        this.startInterval();
+    }
+
     update() {
         if (this.gradient != null) {
             this.gradient.update();
             for (let i = 0; i < SLAVES.length; i++) {
                 setSlaveColor(i, this.gradient.getSlaveColor(i));
+            }
+        } else if (this.midi != null) {
+            // Updating states
+            let t = ((new Date()) - this.timeStart) / 1000;
+            this.midi.channels.forEach(channel => {
+                let j = this.midiChannelIndices[channel.id];
+                while (j < channel.states.length && channel.states[j].until < t) {
+                    j++;
+                }
+                this.midiChannelIndices[channel.id] = j;
+            });
+            // Converting states to colors
+            for (let i = 0; i < SLAVES.length; i++) {
+                // TODO: if slaves are attributed to a specific channel,
+                // change the line below.
+                let channelIndex = i;
+                let channelId = this.midi.channels[channelIndex].id;
+                let stateIndex = this.midiChannelIndices[channelId];
+                let state = this.midi.channels[channelIndex].states[stateIndex];
+                setSlaveColor(i, midiStateToColor(channelId, state));
             }
         }
     }
@@ -196,6 +230,9 @@ function setupMaster() {
             });
             controller.startGradient(gradient);
         });
+        document.getElementById("btn-midi-play").addEventListener("click", () => {
+            controller.startMidi(MIDI);
+        });
 
     };
     SOCKET.onmessage = function(event) {
@@ -272,6 +309,25 @@ function loadMidi(data) {
     document.getElementById("midi-channels-count").textContent = data.channels.length;
     document.getElementById("midi-duration").textContent = Math.max(...data.channels.map(channel => channel.states[channel.states.length - 1].until)).toFixed(1);
     document.getElementById("card-midi-play").classList.remove("hidden");
+    MIDI = data;
+}
+
+
+function hslToHex(h, s, l) {
+    l /= 100;
+    const a = s * Math.min(l, 1 - l) / 100;
+    const f = n => {
+        const k = (n + h / 30) % 12;
+        const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+        return Math.round(255 * color).toString(16).padStart(2, '0');
+    };
+    return `#${f(0)}${f(8)}${f(4)}`;
+}
+
+
+function midiStateToColor(channelId, state) {
+    let hue = Math.min(360, Math.max(0, (state.note * 2.8346)));
+    return hslToHex(hue, 100, state.on ? 50 : 0);
 }
 
 
