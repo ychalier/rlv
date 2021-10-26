@@ -96,6 +96,7 @@ function generatePlan(target) {
     STEPS.forEach((step, index) => {
         indices.push(index);
     });
+    let firstGoodFound = null;
     let minRepeats = null;
     let minSelection = null;
     let parts = enumerateParts(indices);
@@ -104,6 +105,9 @@ function generatePlan(target) {
         let product = parts[j].map(i => STEPS[i].size).reduce((acc, val) => acc * val, BASIC_STEP.size);
         let repeats = target / product;
         if (repeats >= .8) {
+            if (repeats <= 1001 && firstGoodFound == null) {
+                firstGoodFound = j;
+            }
             if (minRepeats == null || repeats < minRepeats) {
                 minRepeats = repeats;
                 minSelection = j;
@@ -113,13 +117,14 @@ function generatePlan(target) {
     if (minRepeats == null) {
         return null;
     } else {
-        shuffleArray(parts[minSelection]);
+        let selected = firstGoodFound == null ? minSelection : firstGoodFound;
+        shuffleArray(parts[selected]);
         let plan = {
             target: target,
             repeats: minRepeats,
             steps: []
         };
-        parts[minSelection].forEach(i => {
+        parts[selected].forEach(i => {
             plan.steps.push(STEPS[i]);
         });
         return plan;
