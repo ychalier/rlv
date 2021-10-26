@@ -22,7 +22,7 @@ const STEPS = [{
         size: 1.906884e+7
     },
     {
-        task: "avancer d'un pas sle long de l'équateur 🌍",
+        task: "avancer d'un pas le long de l'équateur 🌍",
         until: "faire le tour de la Terre",
         precision: "1 m",
         size: 4.0075017e+7
