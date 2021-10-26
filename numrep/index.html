@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+    <meta charset="utf8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Combien ça fait…</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet" />
+
+    <link rel="stylesheet" href="style.css" />
+    <script src="main.js"></script>
+</head>
+
+<body>
+
+    <h1 id="title">Combien ça fait…</h1>
+
+    <form id="form-target">
+        <input id="input-target" type="text" placeholder="8.0658e+67" />
+        <button id="btn-target">Calculer</button>
+    </form>
+
+    <div id="plan-wrapper"></div>
+
+    <div id="snackbar"></div>
+
+    <template id="template-step">
+        <div class="step">
+            <div class="step-prev"></div>
+            <div class="step-content">
+                <span class="step-task"></span>
+                <br>
+                <span class="step-until-wrapper">
+                    <span style="color: grey">Tout recommencer jusqu'à</span>
+                    <span class="step-until"></span>
+                </span>
+            </div>
+        </div>
+    </template>
+
+</body>
+
+</html>
