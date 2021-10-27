@@ -47,6 +47,11 @@ const STEPS = [{
         task: "enlever une goutte d'eau dans l'Océan Pacifique 💧",
         until: "le vider",
         size: 1.4152e25
+    },
+    {
+        task: "écrire une lettre sur une feuille de papier",
+        until: "rédiger l'œuvre complète des Misérables 📚",
+        size: 3.108328e6
     }
 ];
 
