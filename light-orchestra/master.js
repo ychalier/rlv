@@ -231,10 +231,11 @@ function setupMaster() {
             controller.startGradient(gradient);
         });
         document.getElementById("btn-midi-play").addEventListener("click", () => {
-            controller.startMidi(MIDI);
             console.log(MIDI.audioFile);
             let audio = new Audio(MIDI.audioFile.name);
+            audio.load();
             audio.play();
+            controller.startMidi(MIDI);
         });
 
     };
