@@ -2,6 +2,8 @@ const WEBSOCKET_URL = "wss://lightorchestra:" + prompt("Password?") + "@atelier-
 var SLAVES = [];
 var SOCKET;
 var MIDI;
+var DOM_AUDIO;
+var DOM_SOURCE;
 
 
 class Controller {
@@ -231,10 +233,7 @@ function setupMaster() {
             controller.startGradient(gradient);
         });
         document.getElementById("btn-midi-play").addEventListener("click", () => {
-            console.log(MIDI.audioFile);
-            let audio = new Audio(MIDI.audioFile.name);
-            audio.load();
-            audio.play();
+            DOM_AUDIO.play();
             controller.startMidi(MIDI);
         });
 
@@ -344,16 +343,25 @@ window.addEventListener("load", () => {
         });
     });
     document.getElementById("btn-upload-json").addEventListener("click", () => {
-        let file = document.getElementById("input-upload-json").files[0];
+        let midiFile = document.getElementById("input-upload-json").files[0];
         let audioFile = document.getElementById("input-upload-audio").files[0];
-        if (file) {
-            let reader = new FileReader();
-            reader.onload = function(event) {
+        if (midiFile && audioFile) {
+            let midiFileReader = new FileReader();
+            midiFileReader.onload = function(event) {
                 let data = JSON.parse(event.target.result);
-                data.audioFile = audioFile;
                 loadMidi(data);
             }
-            reader.readAsText(file, "UTF-8");
+            midiFileReader.readAsText(midiFile, "UTF-8");
+            let audioFileReader = new FileReader();
+            audioFileReader.onload = function(event) {
+                console.log(event.target.result);
+                DOM_AUDIO = document.createElement("audio");
+                DOM_SOURCE = document.createElement("source");
+                DOM_SOURCE.src = event.target.result;;
+                DOM_AUDIO.type = "audio/mpeg";
+                DOM_AUDIO.appendChild(DOM_SOURCE);
+            };
+            audioFileReader.readAsDataURL(audioFile);
         }
     });
 });
