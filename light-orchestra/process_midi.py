@@ -3,6 +3,15 @@ import argparse
 import mido
 
 
+# TODO: add a target slave count parameter; if the number of tracks is too
+# low, add copies of tracks, starting by tracks with higher amount of notes;
+# if it is too large, merge some tracks, starting by the most correlated ones.
+
+# NOTE: this task could be done by the client JS master, directly selecting
+# the target number of channels depending on how many slaves there are. But
+# that would prevent dynamic addition of a client during the show.
+
+
 def process_midi(path_input):
     midi_file = mido.MidiFile(path_input, clip=True)
     messages = []

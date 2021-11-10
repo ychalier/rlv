@@ -74,7 +74,7 @@ class Controller {
                 // TODO: if slaves are attributed to a specific channel,
                 // change the line below.
                 let channelIndex = i;
-                let channelId = this.midi.channels[channelIndex].id;
+                let channelId = this.midi.channels[channelIndex].id; // TODO: error over here
                 let stateIndex = this.midiChannelIndices[channelId];
                 let state = this.midi.channels[channelIndex].states[stateIndex];
                 setSlaveColor(i, midiStateToColor(channelId, state));
@@ -329,7 +329,7 @@ function hslToHex(h, s, l) {
 
 
 function midiStateToColor(channelId, state) {
-    let hue = Math.min(360, Math.max(0, (state.note * 2.8346)));
+    let hue = Math.min(360, Math.max(0, (state.note * 2.8346))); // TODO: error over here (a state is undefined)
     return hslToHex(hue, 100, state.on ? 50 : 0);
 }
 
