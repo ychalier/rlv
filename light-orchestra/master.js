@@ -1,4 +1,4 @@
-const WEBSOCKET_URL = "wss://lightorchestra:" + prompt("Password?") + "@atelier-mediatheque.rlv.eu/wst2";
+const WEBSOCKET_URL = "wss://lightorchestra:" + retrievePassword() + "@atelier-mediatheque.rlv.eu/wst2";
 var SLAVES = [];
 var SOCKET;
 var MIDI;
@@ -207,6 +207,18 @@ function setSlaveColor(slaveIndex, color) {
 
 function setupMaster() {
     SOCKET = new WebSocket(WEBSOCKET_URL);
+
+    SOCKET.onerror = function(error) {
+        let snackbar = document.getElementById("snackbar");
+        snackbar.textContent = "The server seems down 😨";
+        snackbar.classList.add("show");
+        snackbar.classList.add("bg-error");
+        setTimeout(() => {
+            snackbar.classList.remove("show");
+            snackbar.classList.remove("bg-error");
+        }, 3000);
+    }
+
     SOCKET.onopen = function(event) {
         SOCKET.send(JSON.stringify({
             cmd: "master",
@@ -254,6 +266,7 @@ function setupMaster() {
     }
 
     setTimeout(fetchSlaves, 200);
+
 
 }
 
@@ -333,6 +346,38 @@ function midiStateToColor(channelId, state) {
     if (state == null || state == undefined) return "#000000";
     let hue = Math.min(360, Math.max(0, (state.note * 2.8346)));
     return hslToHex(hue, 100, state.on ? 50 : 0);
+}
+
+
+function storageAvailable(type) {
+    var storage;
+    try {
+        storage = window[type];
+        var x = "__storage_test__";
+        storage.setItem(x, x);
+        storage.removeItem(x);
+        return true;
+    } catch (e) {
+        return e instanceof DOMException && (
+                e.code === 22 ||
+                e.code === 1014 ||
+                e.name === "QuotaExceededError" ||
+                e.name === "NS_ERROR_DOM_QUOTA_REACHED") &&
+            (storage && storage.length !== 0);
+    }
+}
+
+
+function retrievePassword() {
+    let password = null;
+    if (storageAvailable("localStorage")) {
+        password = localStorage.getItem("websocket_basic_auth_password");
+    }
+    if (password == null) {
+        password = prompt("Password?");
+        localStorage.setItem("websocket_basic_auth_password", password);
+    }
+    return password;
 }
 
 
