@@ -73,8 +73,9 @@ class Controller {
             for (let i = 0; i < SLAVES.length; i++) {
                 // TODO: if slaves are attributed to a specific channel,
                 // change the line below.
-                let channelIndex = i;
-                let channelId = this.midi.channels[channelIndex].id; // TODO: error over here
+                // If there is more slaves than MIDI channels, loop back over channels.
+                let channelIndex = i % this.midi.channels.length;
+                let channelId = this.midi.channels[channelIndex].id;
                 let stateIndex = this.midiChannelIndices[channelId];
                 let state = this.midi.channels[channelIndex].states[stateIndex];
                 setSlaveColor(i, midiStateToColor(channelId, state));
@@ -329,7 +330,8 @@ function hslToHex(h, s, l) {
 
 
 function midiStateToColor(channelId, state) {
-    let hue = Math.min(360, Math.max(0, (state.note * 2.8346))); // TODO: error over here (a state is undefined)
+    if (state == null || state == undefined) return "#000000";
+    let hue = Math.min(360, Math.max(0, (state.note * 2.8346)));
     return hslToHex(hue, 100, state.on ? 50 : 0);
 }
 
@@ -354,7 +356,7 @@ window.addEventListener("load", () => {
             midiFileReader.readAsText(midiFile, "UTF-8");
             let audioFileReader = new FileReader();
             audioFileReader.onload = function(event) {
-                console.log(event.target.result);
+                // console.log(event.target.result);
                 DOM_AUDIO = document.createElement("audio");
                 DOM_SOURCE = document.createElement("source");
                 DOM_SOURCE.src = event.target.result;;
