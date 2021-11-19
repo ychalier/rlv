@@ -1,17 +1,17 @@
 const BASIC_STEP = {
     task: "attendre 1 milliard d'années ⏰",
-    size: 3.155692608e+16
+    size: BigInt(3.155692608e+16)
 }
 
 const STEPS = [{
         task: "mélanger un jeu de 52 cartes puis tirer 5 cartes 🃏",
         until: "obtenir une quinte flush royale",
-        size: 6.49740e+5
+        size: BigInt(6.49740e+5)
     },
     {
         task: "enlever un brin d'herbe d'un grand terrain de foot ⚽",
         until: "raser le terrain",
-        size: 2.316816e+6,
+        size: BigInt(2.316816e+6),
         source: "https://www.youtube.com/watch?v=ouGQWdwT-g0",
         precision: "120 m x 90 m"
     },
@@ -19,39 +19,39 @@ const STEPS = [{
         task: "jouer une grille de loto",
         until: "gagner le gros lot 🍀",
         precision: "5 numéros corrects et le numéro complémentaire",
-        size: 1.906884e+7
+        size: BigInt(1.906884e+7)
     },
     {
         task: "avancer d'un pas le long de l'équateur 🌍",
         until: "faire le tour de la Terre",
         precision: "1 m",
-        size: 4.0075017e+7
+        size: BigInt(4.0075017e+7)
     },
     {
         task: "poser une feuille de papier sur le sol 📜",
         until: "atteindre le Soleil",
         precision: "60 µm",
-        size: 2.49329784485e+15
+        size: BigInt(2.49329784485e+15)
     },
     {
         task: "enlever 1g du mont Everest 🗻",
         until: "le rendre plat",
-        size: 1.6193247609e+17
+        size: BigInt(1.6193247609e+17)
     },
     {
         task: "ajouter un grain de sable dans le Grand Canyon 🌄",
         until: "le remplir",
-        size: 4e+19
+        size: BigInt(4e+19)
     },
     {
         task: "enlever une goutte d'eau dans l'Océan Pacifique 💧",
         until: "le vider",
-        size: 1.4152e25
+        size: BigInt(1.4152e25)
     },
     {
         task: "écrire une lettre sur une feuille de papier",
         until: "rédiger l'œuvre complète des Misérables 📚",
-        size: 3.108328e6
+        size: BigInt(3.108328e6)
     }
 ];
 
@@ -143,9 +143,44 @@ const capitalize = (s) => {
 }
 
 
+function cleanBigNumber(s) {
+    let newString = "";
+    let zeroInARow = 0;
+    let zeroLimitReached = false;
+    const inARowThreshold = 5;
+    if (s.length >= 5 && s.startsWith("99999")) {
+        s = s.replace(/^99999/g, "100000");
+    }
+    for (let i = 0; i < s.length; i++) {
+        let c = s.charAt(i);
+        if (c == "0") {
+            zeroInARow++;
+        } else {
+            zeroInARow = 0;
+        }
+        if (zeroInARow >= inARowThreshold) {
+            zeroLimitReached = true;
+        }
+        if (zeroLimitReached) {
+            newString = newString + "0";
+        } else {
+            newString = newString + c;
+        }
+    }
+    return newString;
+}
+
+
+function separateThousands(x) {
+    const separator = " ";
+    let s = x.toString();
+    return cleanBigNumber(s).replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+}
+
+
 function inflatePlan(plan) {
     let wrapper = document.getElementById("plan-wrapper");
-    wrapper.innerHTML = "<p style='color: grey'>Voici comment attendre pendant " + plan.target + " secondes.</p>";
+    wrapper.innerHTML = "<p style='color: grey'>Voici comment attendre pendant <span style='color: var(--primary);'>" + separateThousands(plan.target) + "</span> secondes.</p>";
 
     let list = document.createElement("div");
     list.id = "step-list";
@@ -168,7 +203,7 @@ function inflatePlan(plan) {
     wrapper.appendChild(list);
 
     let p = document.createElement("p");
-    p.innerHTML = "<span style='color: gray'>Et répéter le tout</span> " + plan.repeats.toFixed(0) + " <span style='color: gray'>fois</span>";
+    p.innerHTML = "<span style='color: gray'>Tout ceci est à faire</span> " + separateThousands(Number(plan.repeats).toFixed(0)) + " <span style='color: gray'>fois</span>";
     wrapper.appendChild(p);
 
     document.body.appendChild(wrapper);
@@ -183,7 +218,7 @@ window.addEventListener("load", () => {
         if (isNaN(value)) {
             toast("Je n'arrive pas à comprendre cette valeur 😞", 3000);
         } else {
-            let plan = generatePlan(value);
+            let plan = generatePlan(BigInt(value));
             if (plan == null || plan == undefined) {
                 toast("Je n'arrive pas à trouver de solution convenable 😥", 3000);
             } else {
