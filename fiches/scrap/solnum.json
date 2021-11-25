@@ -1,0 +1,1741 @@
+{
+    "themes": [{
+            "title": "Premiers pas",
+            "href": "https://www.solidarite-numerique.fr/thematiques/premiers-pas/",
+            "sections": [{
+                    "title": "Ordinateur",
+                    "href": "https://www.solidarite-numerique.fr/thematiques/ordinateur/",
+                    "cards": [{
+                            "title": "Mettre \u00e0 jour Windows 10",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-de\u0301buter-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Vous souhaitez assurer la s\u00e9curit\u00e9 et le bon fonctionnement de votre ordinateur sous Windows 10 ? Ce tutoriel vous propose de choisir quand et comment obtenir les derni\u00e8res mises \u00e0 jour de votre syst\u00e8me d\u2019exploitation r\u00e9guli\u00e8rement.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/mettre-a-jour-windows-10/",
+                            "date": "2021-09-30",
+                            "tags": [
+                                "Microsoft",
+                                "Mise\u00e0Jour",
+                                "Syst\u00e8medExploitation",
+                                "Windows10"
+                            ]
+                        },
+                        {
+                            "title": "Cr\u00e9er des raccourcis sur Windows 10",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-de\u0301buter-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Vous souhaiteriez cr\u00e9er un raccourci sur votre ordinateur ? Ce tutoriel vous aidera \u00e0 en cr\u00e9er pour vos dossiers et fichiers mais \u00e9galement pour des sites Internet.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/creer-des-raccourcis-sur-windows-10/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "LienRapide",
+                                "Num\u00e9rique",
+                                "Ordinateur",
+                                "Raccourci",
+                                "Windows10"
+                            ]
+                        },
+                        {
+                            "title": "Retrouver les t\u00e9l\u00e9chargements sur mon ordinateur",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-de\u0301buter-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Vous avez t\u00e9l\u00e9charg\u00e9 un fichier sur Internet mais vous ne savez pas o\u00f9 il s\u2019est enregistr\u00e9 sur votre ordinateur ? Ce pas-\u00e0-pas vous guide pour retrouver vos t\u00e9l\u00e9chargements sur les principaux navigateurs web.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/retrouver-les-telechargements-sur-mon-ordinateur/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "GoogleChrome",
+                                "MicrosoftEdge",
+                                "MozillaFirefox",
+                                "NavigateurInternet",
+                                "Ordinateur",
+                                "Safari",
+                                "T\u00e9l\u00e9chargement"
+                            ]
+                        },
+                        {
+                            "title": "T\u00e9l\u00e9charger et installer PDFsam Basic",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-de\u0301buter-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Vous souhaitez t\u00e9l\u00e9charger et installer le logiciel PDFSam Basic ? Ce tutoriel vous accompagne du t\u00e9l\u00e9chargement jusqu\u2019\u00e0 la fin de l\u2019installation sur votre ordinateur.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/telecharger-et-installer-pdfsam-basic/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Logiciel",
+                                "LogicielGratuit",
+                                "Ordinateur",
+                                "PDF",
+                                "PDFSam"
+                            ]
+                        },
+                        {
+                            "title": "D\u00e9couvrir des logiciels gratuits et Open Source",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-de\u0301buter-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Vous souhaitez abandonner les logiciels propri\u00e9taires (commerciaux), souvent pr\u00e9install\u00e9s sur votre outil num\u00e9rique, au profit de logiciels libres et gratuits ? Ce panorama vous propose une s\u00e9lection de logiciels alternatifs OpenSource gratuits.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/decouvrir-des-logiciels-gratuits-et-open-source/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Logiciel",
+                                "LogicielsGratuits",
+                                "LogicielsLibres",
+                                "LogicielsOpenSource",
+                                "OpenSource"
+                            ]
+                        },
+                        {
+                            "title": "Prendre et enregistrer une capture d\u2019\u00e9cran depuis mon Mac",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-de\u0301buter-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Vous souhaitez faire une capture d\u2019\u00e9cran de l\u2019\u00e9cran de votre ordinateur Mac ? Ce tutoriel vous explique comment effectuer cette op\u00e9ration et enregistrer cette image en PDF.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/prendre-et-enregistrer-une-capture-d-ecran-depuis-mon-mac/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Apple",
+                                "CaptureD\u00c9cran",
+                                "MacOS",
+                                "Ordinateur"
+                            ]
+                        },
+                        {
+                            "title": "Prendre et enregistrer une capture d\u2019\u00e9cran",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-de\u0301buter-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Vous souhaitez effectuer une capture d\u2019\u00e9cran sous Windows 10? Ce tutoriel vous apprendra les fonctionnalit\u00e9s pour utiliser l\u2019Outil de capture d\u2019\u00e9cran de Windows 10.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/prendre-et-enregistrer-une-capture-d-ecran/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "CaptureD\u00c9cran",
+                                "Ordinateur",
+                                "PDF",
+                                "Windows10"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Internet",
+                    "href": "https://www.solidarite-numerique.fr/thematiques/internet/",
+                    "cards": [{
+                            "title": "Supprimer les cookies sur les navigateurs Firefox, Chrome, Edge",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-de\u0301buter-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Dans certains cas, effacer les cookies de son navigateur est n\u00e9cessaire. Ce tutoriel vous explique comment proc\u00e9der.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/supprimer-les-cookies-sur-les-navigateurs-firefox-chrome-edge/",
+                            "date": "2021-09-30",
+                            "tags": [
+                                "Cookies",
+                                "Donn\u00e9esDeNavigation",
+                                "Donn\u00e9esPersonnelles",
+                                "Historique",
+                                "NavigateurInternet",
+                                "RGPD"
+                            ]
+                        },
+                        {
+                            "title": "Comprendre les cookies",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-de\u0301buter-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Vous souhaitez en savoir plus sur les cookies ? Cette foire aux questions vous aidera \u00e0 comprendre et \u00e0 en apprendre davantage sur leurs sp\u00e9cificit\u00e9s.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/comprendre-les-cookies/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Confidentialit\u00e9",
+                                "Cookies",
+                                "Donn\u00e9esDeNavigation",
+                                "Donn\u00e9esPersonnelles",
+                                "RGPD"
+                            ]
+                        },
+                        {
+                            "title": "D\u00e9couvrir les principaux moteurs de recherche",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-de\u0301buter-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Vous souhaitez en savoir plus sur les moteurs de recherche ? Ce panorama vous pr\u00e9sente les principaux avec leurs sp\u00e9cificit\u00e9s.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/decouvrir-les-principaux-moteurs-de-recherche/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "MoteurDeRecherche",
+                                "Ordinateur",
+                                "RechercheInternet",
+                                "Smartphone"
+                            ]
+                        },
+                        {
+                            "title": "Installer et utiliser Firefox sous Windows",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-de\u0301buter-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Vous souhaitez changer de navigateur et utiliser Firefox ? Ce tutoriel vous d\u00e9taille la proc\u00e9dure d\u2019installation et la configuration pour une premi\u00e8re utilisation de ce navigateur internet.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/installer-et-utiliser-firefox-sous-windows/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Firefox",
+                                "NavigateurInternet",
+                                "OpenSource",
+                                "Ordinateur"
+                            ]
+                        },
+                        {
+                            "title": "D\u00e9couvrir les principaux navigateurs web",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-de\u0301buter-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Vous souhaitez naviguer sur Internet ? Pour cela, vous devez utiliser un navigateur web, mais lequel ?\u00a0 Ce panorama vous pr\u00e9sente les principaux ainsi que leurs sp\u00e9cificit\u00e9s.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/decouvrir-les-principaux-navigateurs-web/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Internet",
+                                "Navigateur",
+                                "NavigateurInternet",
+                                "Ordinateur",
+                                "ProtectionDesDonn\u00e9es",
+                                "Smartphone"
+                            ]
+                        },
+                        {
+                            "title": "Envoyer des fichiers avec WeTransfer",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-de\u0301buter-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Vous souhaitez envoyer des fichiers volumineux \u00e0 vos proches ? Ce tutoriel pas \u00e0 pas vous guidera pour transf\u00e9rer gratuitement et sans inscription jusqu\u2019\u00e0 2Go de fichiers.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/envoyer-des-fichiers-avec-wetransfer/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Transf\u00e9rerDesFichiers",
+                                "WeTransfer"
+                            ]
+                        },
+                        {
+                            "title": "Envoyer des fichiers avec Smash",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-de\u0301buter-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Vous souhaitez envoyer des fichiers volumineux par Smash ? Ce tutoriel pas \u00e0 pas vous guidera dans l\u2019utilisation de ce service en ligne fran\u00e7ais sans publicit\u00e9 , tr\u00e8s simple d\u2019usage et s\u00e9curis\u00e9.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/envoyer-des-fichiers-avec-smash/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Smash",
+                                "Transf\u00e9rerDesFichiers"
+                            ]
+                        },
+                        {
+                            "title": "Cr\u00e9er un compte sur un site",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-de\u0301buter-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Vous souhaitez cr\u00e9er un compte sur un site ou une plateforme ? Ce tutoriel explique les \u00e9tapes pour la cr\u00e9ation d\u2019un compte utilisateur en prenant comme exemple la plateforme Doctolib. Le principe g\u00e9n\u00e9ral sera globalement le m\u00eame sur les autres sites / plateformes.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/creer-un-compte-sur-un-site/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "CompteUtilisateur",
+                                "Cr\u00e9ationDeCompte",
+                                "Doctolib",
+                                "Formulaire"
+                            ]
+                        },
+                        {
+                            "title": "Utiliser mon smartphone Android comme point de connexion Internet",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-de\u0301buter-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Vous voulez utiliser votre smartphone Android comme point de connexion Internet ? Ce tutoriel permet aux personnes n\u2019ayant pas de box Internet chez elles d\u2019utiliser leur connexion 4G sur leur ordinateur et autres outils connectables (smartphone, tablette).",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/utiliser-mon-smartphone-android-comme-point-de-connexion-internet/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Android",
+                                "Connexion",
+                                "Internet",
+                                "PartageDeConnexion",
+                                "Smartphone",
+                                "Wifi"
+                            ]
+                        },
+                        {
+                            "title": "Utiliser mon smartphone iOS comme point de connexion Internet",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-de\u0301buter-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Vous n\u2019avez pas de box Internet chez vous et souhaitez donc utiliser votre smartphone pour avoir acc\u00e8s \u00e0 Internet sur un autre outil connectable (ordinateur, autre smartphone, tablette, etc.) ? Ce tutoriel vous guide dans l\u2019utilisation de votre connexion 4G, de votre iPhone, sur d\u2019autres outils connectables.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/utiliser-mon-smartphone-ios-comme-point-de-connexion-internet/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Connexion",
+                                "iOS",
+                                "PartageDeConnexion",
+                                "Point d'acc\u00e8s mobile",
+                                "R\u00e9seau"
+                            ]
+                        },
+                        {
+                            "title": "Connecter mon ordinateur \u00e0 Internet",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-de\u0301buter-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Vous souhaitez vous connecter \u00e0 internet mais ne savez pas comment proc\u00e9der ? Ce tutoriel explique les diff\u00e9rentes possibilit\u00e9s pour se connecter \u00e0 Internet depuis votre ordinateur.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/connecter-mon-ordinateur-a-internet/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Connexion",
+                                "\u00c9quipement",
+                                "Internet",
+                                "Ordinateur",
+                                "Wifi"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Smartphone",
+                    "href": "https://www.solidarite-numerique.fr/thematiques/smartphone/",
+                    "cards": [{
+                            "title": "Retoucher une photo sur mobile avec Snapseed",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-de\u0301buter-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Snapseed est une application Google de retouche photo totalement gratuite, sans publicit\u00e9, pour am\u00e9liorer les photos depuis un smartphone ou une tablette en quelques secondes. Ce tutoriel a pour objectif de vous apprendre \u00e0 ma\u00eetriser les outils de base pour magnifier vos photos.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/retoucher-une-photo-sur-mobile-avec-snapseed/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Application",
+                                "Photo",
+                                "RetouchePhoto",
+                                "Snapseed",
+                                "Visuel"
+                            ]
+                        },
+                        {
+                            "title": "T\u00e9l\u00e9charger et retrouver un PDF sur iPhone",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-de\u0301buter-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Vous avez t\u00e9l\u00e9charg\u00e9 un document PDF et vous n\u2019arrivez pas \u00e0 le retrouver sur votre iPhone ? Ce tutoriel vous explique comment t\u00e9l\u00e9charger, sur Safari, votre document PDF et le retrouver ensuite sur votre smartphone.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/telecharger-et-retrouver-un-pdf-sur-iphone/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "iPhone",
+                                "PDF",
+                                "Smartphone",
+                                "T\u00e9l\u00e9chargement"
+                            ]
+                        },
+                        {
+                            "title": "T\u00e9l\u00e9charger et retrouver un PDF sur Android",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-de\u0301buter-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Vous avez t\u00e9l\u00e9charg\u00e9 sur votre smartphone Android un document PDF et vous ne le retrouvez pas ? Ce tutoriel vous explique comment le r\u00e9cup\u00e9rer avec le navigateur Chrome.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/telecharger-et-retrouver-un-pdf-sur-android/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "AdobeAcrobatReaderDC",
+                                "Ameli",
+                                "Android",
+                                "PDF",
+                                "Smartphone"
+                            ]
+                        },
+                        {
+                            "title": "Scanner un QR Code avec son smartphone",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-de\u0301buter-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Vous souhaitez scanner un QR Code avec votre smartphone Android ? Ce tutoriel vous guidera avec l\u2019application Scanner Code-barres & QR disponible gratuitement sur le Play Store.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/scanner-un-qr-code-avec-son-smartphone/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Android",
+                                "QRCode",
+                                "Scanner",
+                                "Smartphone"
+                            ]
+                        },
+                        {
+                            "title": "Scanner et enregistrer un document avec l\u2019application Adobe Scan",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-de\u0301buter-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Comment prendre en photo un document papier, le num\u00e9riser et l\u2019envoyer ? Ce tutoriel permet de prendre en photo un document papier et de le num\u00e9riser en document PDF sur un support mobile (Tablette ou Smartphone) avec l\u2019application gratuite Adobe Scan.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/scanner-et-enregistrer-un-document-avec-l-application-adobe-scan/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "AdobeScan",
+                                "Num\u00e9risation",
+                                "Photo",
+                                "Scanner"
+                            ]
+                        },
+                        {
+                            "title": "Installer une application sur iPhone et iPad",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-de\u0301buter-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Vous souhaitez installer une application sur votre iPhone ou votre iPad ? Ce tutoriel vous accompagne durant le processus d\u2019installation depuis le magasin d\u2019applications App Store.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/installer-une-application-sur-iphone-et-ipad/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Apple",
+                                "Application",
+                                "iPad",
+                                "iPhone",
+                                "Smartphone"
+                            ]
+                        },
+                        {
+                            "title": "Installer une application sur Android",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-de\u0301buter-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Vous souhaitez installer une application sur votre smartphone ou tablette Android ? Ce tutoriel vous accompagne durant l\u2019installation d\u2019une application depuis le magasin d\u2019applications Google Play.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/installer-une-application-sur-android/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Application",
+                                "Google",
+                                "GooglePlay",
+                                "Smartphone",
+                                "Tablette"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Bureautique",
+                    "href": "https://www.solidarite-numerique.fr/thematiques/bureautique/",
+                    "cards": [{
+                            "title": "Fusionner et diviser des PDF avec PDFsam Basic",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-de\u0301buter-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Vous souhaitez fusionner ou diviser des PDF avec le logiciel PDFsam Basic ? Ce tutoriel vous accompagne dans la prise en main de ces deux fonctions propos\u00e9es par ce logiciel.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/fusionner-et-diviser-des-pdf-avec-pdfsam-basic/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Logiciel",
+                                "LogicielGratuit",
+                                "Ordinateur",
+                                "PDF",
+                                "PDFSam"
+                            ]
+                        },
+                        {
+                            "title": "D\u00e9couvrir des suites bureautiques en ligne",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-de\u0301buter-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Vous souhaitez r\u00e9diger un courrier, suivre vos comptes ou pr\u00e9parer une pr\u00e9sentation depuis votre ordinateur, mais sans installer de logiciels ? Des sites internet existent pour vous donner acc\u00e8s \u00e0 des outils de traitement de texte, de tableur et de cr\u00e9ation de pr\u00e9sentation. Consultez ce panorama pour faire votre choix !",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/decouvrir-des-suites-bureautiques-en-ligne/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Apple",
+                                "Google",
+                                "GoogleOffice",
+                                "iWork",
+                                "Microsoft",
+                                "Navigateur",
+                                "Office",
+                                "Zoho"
+                            ]
+                        },
+                        {
+                            "title": "Installer la suite bureautique LibreOffice",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-de\u0301buter-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Vous souhaitez installer la suite LibreOffice sur votre ordinateur ? Ce tutoriel vous accompagnera \u00e9tape par \u00e9tape dans l\u2019installation de la suite bureautique.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/installer-la-suite-bureautique-libre-office/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "LibreOffice",
+                                "LogicielsLibres",
+                                "SuiteBureautique",
+                                "Tableur",
+                                "TraitementDeTexte"
+                            ]
+                        },
+                        {
+                            "title": "Remplir et signer un fichier PDF",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-de\u0301buter-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Vous poss\u00e9dez un fichier PDF que vous souhaitez remplir et signer, sans l\u2019imprimer ? Ce tutoriel vous permettra de remplir et de signer un document au format PDF avec Adobe Acrobat ReaderDC, sans utiliser de scanner et d\u2019imprimante.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/remplir-et-signer-un-fichier-pdf/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Administratif",
+                                "AdobeAcrobatReaderDC",
+                                "Num\u00e9risation",
+                                "Ordinateur",
+                                "PDF"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "S\u00e9curit\u00e9",
+                    "href": "https://www.solidarite-numerique.fr/thematiques/securite/",
+                    "cards": [{
+                            "title": "V\u00e9rifier les fuites de donn\u00e9es avec Firefox Monitor",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-de\u0301buter-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Vous souhaitez utiliser Firefox Monitor pour tester une adresse mail et savoir si vos donn\u00e9es ont fuit\u00e9 ? Ce tutoriel vous guide dans l\u2019utilisation et l\u2019interpr\u00e9tation des r\u00e9sultats de cet outil en ligne.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/verifier-les-fuites-de-donnees-avec-firefox-monitor/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Cybers\u00e9curit\u00e9",
+                                "FirefoxMonitor",
+                                "Mail",
+                                "S\u00e9curit\u00e9"
+                            ]
+                        },
+                        {
+                            "title": "Comment me pr\u00e9munir des emails frauduleux ?",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-de\u0301buter-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Ce Questions-R\u00e9ponses vise \u00e0 pr\u00e9senter les bons r\u00e9flexes \u00e0 adopter pour vous pr\u00e9munir des emails potentiellement frauduleux.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/comment-me-premunir-des-emails-frauduleux/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Cybers\u00e9curit\u00e9",
+                                "EmailsFrauduleux",
+                                "Phishing",
+                                "S\u00e9curit\u00e9"
+                            ]
+                        },
+                        {
+                            "title": "Cr\u00e9er un mot de passe s\u00e9curis\u00e9",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-de\u0301buter-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Ce tutoriel donne les cl\u00e9s pour cr\u00e9er un mot de passe complexe \u00e0 m\u00e9moriser facilement afin de limiter les risques de piratages.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/creer-un-mot-de-passe-securise/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Cybers\u00e9curit\u00e9",
+                                "MotDePasse",
+                                "S\u00e9curit\u00e9"
+                            ]
+                        },
+                        {
+                            "title": "Utiliser un gestionnaire de mot de passe",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-de\u0301buter-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Vous cherchez \u00e0 rester ma\u00eetre de la gestion de vos diff\u00e9rents mots de passe ? Ce tutoriel vous offre une alternative par le biais de l\u2019application Bitwarden, gestionnaire de mot de passe open source.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/utiliser-un-gestionnaire-de-mot-de-passe/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Bitwarden",
+                                "Cybers\u00e9curit\u00e9",
+                                "MotDePasse",
+                                "S\u00e9curit\u00e9"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Sant\u00e9",
+            "href": "https://www.solidarite-numerique.fr/thematiques/sante/",
+            "sections": [{
+                    "title": "Rendez-vous m\u00e9dical",
+                    "href": "https://www.solidarite-numerique.fr/thematiques/prise-de-rendez-vous-medical/",
+                    "cards": [{
+                            "title": "Prendre RDV pour la vaccination sur Maiia",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-Sante\u0301-Solidarite\u0301-Nume\u0301rique_2@300x.png",
+                            "description": "Vous souhaitez conna\u00eetre les rendez-vous disponibles pr\u00e8s de chez vous pour vous faire vacciner ? Le site Maiia.com, \u00e0 travers sa solution d\u2019agenda, de prise de rendez-vous et de t\u00e9l\u00e9consultation peut vous y aider.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/prendre-rdv-pour-la-vaccination-sur-maiia/",
+                            "date": "2021-09-23",
+                            "tags": [
+                                "Covid",
+                                "Maiia",
+                                "RendezVous",
+                                "Vaccination"
+                            ]
+                        },
+                        {
+                            "title": "T\u00e9l\u00e9charger mon attestation de vaccination sur Ameli",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-Sante\u0301-Solidarite\u0301-Nume\u0301rique_2@300x.png",
+                            "description": "Vous souhaitez obtenir votre attestation de vaccination sur le site attestation-vaccin.ameli.fr ? Ce tutoriel vous guidera pour vous connecter au t\u00e9l\u00e9service afin de t\u00e9l\u00e9charger le document.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/telecharger-mon-attestation-de-vaccination-sur-ameli/",
+                            "date": "2021-09-27",
+                            "tags": [
+                                "Ameli",
+                                "Attestation",
+                                "D\u00e9marche",
+                                "FranceConnect",
+                                "PassSanitaire",
+                                "TousAntiCovid"
+                            ]
+                        },
+                        {
+                            "title": "Trouver un cr\u00e9neau de vaccination sur Vite ma dose",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-Sante\u0301-Solidarite\u0301-Nume\u0301rique_2@300x.png",
+                            "description": "Vous souhaitez trouver un rendez-vous pour une vaccination contre la Covid19 ? Vite Ma Dose centralise les cr\u00e9neaux disponibles en temps r\u00e9el en fonction de votre zone de recherche.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/trouver-un-creneau-de-vaccination-sur-vite-ma-dose/",
+                            "date": "2021-09-23",
+                            "tags": [
+                                "Cr\u00e9neau",
+                                "Doctolib",
+                                "Maiia",
+                                "RendezVous",
+                                "Vaccination",
+                                "ViteMaDose"
+                            ]
+                        },
+                        {
+                            "title": "Prendre rendez-vous pour une vaccination COVID sur Doctolib",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-Sante\u0301-Solidarite\u0301-Nume\u0301rique_2@300x.png",
+                            "description": "Vous \u00eates \u00e9ligible \u00e0 la vaccination contre le COVID-19 mais vous ne savez pas comment proc\u00e9der pour prendre un rendez-vous en ligne ? Suivez ce guide pour consulter, s\u00e9lectionner et valider un rendez-vous dans un centre de vaccination pr\u00e8s de chez vous, depuis le site Doctolib.fr.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/prendre-rendez-vous-pour-une-vaccination-covid-sur-doctolib/",
+                            "date": "2021-09-23",
+                            "tags": [
+                                "Covid",
+                                "Doctolib",
+                                "RendezVous",
+                                "Vaccination"
+                            ]
+                        },
+                        {
+                            "title": "Prendre rendez-vous sur Ubiclic",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-Sante\u0301-Solidarite\u0301-Nume\u0301rique_2@300x.png",
+                            "description": "Vous souhaitez prendre rendez-vous en ligne avec un professionnel de sant\u00e9 gr\u00e2ce \u00e0 Ubiclic ? Ce tutoriel vous explique comment prendre rendez-vous avec un professionnel inscrit sur Ubiclic en choisissant un cr\u00e9neau libre directement dans son agenda et validez votre RDV.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/prendre-rendez-vous-sur-ubiclic/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Consultation",
+                                "M\u00e9decin",
+                                "RendezVous",
+                                "T\u00e9l\u00e9consultation",
+                                "Ubiclic"
+                            ]
+                        },
+                        {
+                            "title": "Prendre rendez-vous sur Doctolib",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-Sante\u0301-Solidarite\u0301-Nume\u0301rique_2@300x.png",
+                            "description": "Vous souhaitez prendre rendez-vous sur la plateforme m\u00e9dicale Doctolib pour une consultation ou une t\u00e9l\u00e9consultation ? Ce tutoriel vous permettra de prendre rendez-vous depuis Doctolib avec un m\u00e9decin (g\u00e9n\u00e9raliste, dentiste, p\u00e9diatre, gyn\u00e9cologue, dermatologue\u2026).",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/prendre-rendez-vous-sur-doctolib/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Consultation",
+                                "Doctolib",
+                                "M\u00e9decin",
+                                "RendezVous",
+                                "T\u00e9l\u00e9consultation"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Consultation en ligne",
+                    "href": "https://www.solidarite-numerique.fr/thematiques/consultation-en-ligne/",
+                    "cards": [{
+                            "title": "Effectuer une consultation vid\u00e9o sur Doctolib",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-Sante\u0301-Solidarite\u0301-Nume\u0301rique_2@300x.png",
+                            "description": "Vous devez consulter un m\u00e9decin \u00e0 distance ? Ce tutoriel permet d\u2019assister \u00e0 une consultation m\u00e9dicale en visio-conf\u00e9rence via la plateforme Doctolib.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/effectuer-une-consultation_video_sur-doctolib/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Consultation",
+                                "Doctolib",
+                                "M\u00e9decin",
+                                "Sant\u00e9",
+                                "T\u00e9l\u00e9consultation",
+                                "Visioconf\u00e9rence"
+                            ]
+                        },
+                        {
+                            "title": "V\u00e9rifier mon \u00e9quipement avant une visioconf\u00e9rence",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-Sante\u0301-Solidarite\u0301-Nume\u0301rique_2@300x.png",
+                            "description": "Vous avez pris rendez-vous pour une t\u00e9l\u00e9consultation en ligne avec votre m\u00e9decin et vous souhaitez v\u00e9rifier votre \u00e9quipement ? Ce tutoriel vous explique comment v\u00e9rifier votre \u00e9quipement informatique pour pouvoir faire une visio ou consulter votre m\u00e9decin en t\u00e9l\u00e9consultation depuis votre ordinateur.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/verifier-mon-equipement-avant-une-visioconference/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "ConsultationVid\u00e9o",
+                                "\u00c9quipement",
+                                "T\u00e9l\u00e9consultation",
+                                "Visioconf\u00e9rence"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Sant\u00e9 en ligne",
+                    "href": "https://www.solidarite-numerique.fr/thematiques/demarches-de-sante-en-ligne/",
+                    "cards": [{
+                            "title": "Utiliser l\u2019application TousAntiCovid",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-Sante\u0301-Solidarite\u0301-Nume\u0301rique_2@300x.png",
+                            "description": "Vous voulez utiliser l\u2019application du gouvernement TousAntiCovid ? Voici comment l\u2019installer, la param\u00e9trer et l\u2019utiliser dans le cadre du pass sanitaire.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/utiliser-lapplication-tousanticovid/",
+                            "date": "2021-09-23",
+                            "tags": [
+                                "Covid",
+                                "PassSanitaire",
+                                "Smartphone",
+                                "TousAntiCovid",
+                                "Vaccination"
+                            ]
+                        },
+                        {
+                            "title": "D\u00e9couvrir les fonctionnalit\u00e9s de l\u2019application TousAntiCovid",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-Sante\u0301-Solidarite\u0301-Nume\u0301rique_2@300x.png",
+                            "description": "Vous utilisez l\u2019application du gouvernement TousAntiCovid ? Ce tutoriel vous donnera plus d\u2019informations sur les rubriques qu\u2019elle contient.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/decouvrir-les-fonctionnalites-de-lapplication-tousanticovid/",
+                            "date": "2021-09-23",
+                            "tags": [
+                                "Covid",
+                                "PassSanitaire",
+                                "Smartphone",
+                                "TousAntiCovid",
+                                "Vaccination"
+                            ]
+                        },
+                        {
+                            "title": "Commander ses m\u00e9dicaments en pharmacie en ligne",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-Sante\u0301-Solidarite\u0301-Nume\u0301rique_2@300x.png",
+                            "description": "Vous souhaitez commander en ligne vos m\u00e9dicaments prescrits sur ordonnance ? Ce tutoriel vous guide pas \u00e0 pas pour trouver une pharmacie habilit\u00e9e \u00e0 la vente en ligne et utiliser ses services Web.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/commander-ses-medicaments-en-pharmacie-en-ligne/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "CommandeEnLigne",
+                                "M\u00e9dicaments",
+                                "Ordonnance",
+                                "Pharmacie",
+                                "Sant\u00e9"
+                            ]
+                        },
+                        {
+                            "title": "D\u00e9couvrir et utiliser le pass sanitaire",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-Sante\u0301-Solidarite\u0301-Nume\u0301rique_2@300x.png",
+                            "description": "Vous souhaitez en savoir plus sur le pass sanitaire ? Ce Questions-R\u00e9ponses vous \u00e9claire sur son contenu, sa mise en place et son utilisation.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/decouvrir-et-utiliser-le-pass-sanitaire/",
+                            "date": "2021-10-01",
+                            "tags": [
+                                "Attestation",
+                                "Covid",
+                                "PassSanitaire",
+                                "QRCode",
+                                "TousAntiCovid",
+                                "Vaccination"
+                            ]
+                        },
+                        {
+                            "title": "Partager un document sur Doctolib",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-Sante\u0301-Solidarite\u0301-Nume\u0301rique_2@300x.png",
+                            "description": "Vous avez pris un rendez-vous m\u00e9dical sur Doctolib et avez des documents \u00e0 transmettre au m\u00e9decin ? Ce tutoriel permet de partager les fichiers n\u00e9cessaires sur l\u2019espace rendez-vous de Doctolib avant ou pendant la consultation pr\u00e9sentielle ou vid\u00e9o.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/partager-un-document-sur-doctolib/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Consultation",
+                                "Doctolib",
+                                "Documents",
+                                "M\u00e9decin",
+                                "Sant\u00e9"
+                            ]
+                        },
+                        {
+                            "title": "R\u00e9aliser des d\u00e9marches de base sur le site Ameli",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-Sante\u0301-Solidarite\u0301-Nume\u0301rique_2@300x.png",
+                            "description": "Vous souhaitez faire des d\u00e9marches sur le site Ameli.fr ? Ce tutoriel vous explique comment commander une carte vitale, d\u00e9clarer sa perte ou son vol, d\u00e9clarer un accident caus\u00e9 par un tiers, etc.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/realiser-des-demarches-de-base-sur-le-site-ameli/",
+                            "date": "2021-09-23",
+                            "tags": [
+                                "Ameli",
+                                "CarteVitale",
+                                "CPAM",
+                                "Ordinateur",
+                                "S\u00e9curit\u00e9Sociale"
+                            ]
+                        },
+                        {
+                            "title": "Cr\u00e9er un compte Ameli",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-Sante\u0301-Solidarite\u0301-Nume\u0301rique_2@300x.png",
+                            "description": "Vous souhaitez acc\u00e9der \u00e0 votre assurance maladie depuis Internet ? Ce tutoriel vous montre comment cr\u00e9er votre compte Ameli afin de suivre vos remboursements, t\u00e9l\u00e9charger vos relev\u00e9s, attestations et pi\u00e8ces justificatives, contacter votre caisse et m\u00eame commander une carte europ\u00e9enne d\u2019assurance maladie.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/creer-un-compte-ameli/",
+                            "date": "2021-09-24",
+                            "tags": [
+                                "Ameli",
+                                "CPAM",
+                                "FranceConnect",
+                                "Ordinateur",
+                                "S\u00e9curit\u00e9Sociale"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Communiquer",
+            "href": "https://www.solidarite-numerique.fr/thematiques/communiquer/",
+            "sections": [{
+                    "title": "Mails",
+                    "href": "https://www.solidarite-numerique.fr/thematiques/mails/",
+                    "cards": [{
+                            "title": "G\u00e9rer efficacement sa bo\u00eete mail",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-Communiquer-Solidarite\u0301-Nume\u0301rique_2@300x.png",
+                            "description": "Comment g\u00e9rer efficacement sa bo\u00eete mail ? Ce tutoriel vous apprend \u00e0 ma\u00eetriser les options d\u2019envoi, la gestion des dossiers et \u00e0 adopter les bonnes pratiques \u00e0 appliquer au quotidien.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/gerer-efficacement-sa-boite-mail/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "GestionMail",
+                                "Gmail",
+                                "Mail",
+                                "Messagerie",
+                                "Outlook"
+                            ]
+                        },
+                        {
+                            "title": "Configurer le logiciel Courrier de Windows",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-Communiquer-Solidarite\u0301-Nume\u0301rique_2@300x.png",
+                            "description": "Vous souhaitez ajouter une adresse mail au logiciel Courrier de Windows 10 ? Ce tutoriel vous accompagne dans l\u2019ajout de deux types de compte pour utiliser vos adresses directement depuis votre ordinateur.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/configurer-le-logiciel-courrier-de-windows/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Courrier",
+                                "Mail",
+                                "Ordinateur",
+                                "Windows"
+                            ]
+                        },
+                        {
+                            "title": "Installer et ajouter une adresse mail sur Thunderbird",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-Communiquer-Solidarite\u0301-Nume\u0301rique_2@300x.png",
+                            "description": "Vous souhaitez g\u00e9rer vos mails avec une application depuis votre ordinateur ? Ce tutoriel sur Thunderbird vous guidera dans l\u2019installation et l\u2019ajout de vos adresses dans le logiciel.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/installer-et-ajouter-une-adresse-mail-sur-thunderbird/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Mail",
+                                "Ordinateur",
+                                "Thunderbird",
+                                "Windows"
+                            ]
+                        },
+                        {
+                            "title": "Comment me pr\u00e9munir des emails frauduleux ?",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-Communiquer-Solidarite\u0301-Nume\u0301rique_2@300x.png",
+                            "description": "Ce Questions-R\u00e9ponses vise \u00e0 pr\u00e9senter les bons r\u00e9flexes \u00e0 adopter pour vous pr\u00e9munir des emails potentiellement frauduleux.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/comment-me-premunir-des-emails-frauduleux/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Cybers\u00e9curit\u00e9",
+                                "EmailsFrauduleux",
+                                "Phishing",
+                                "S\u00e9curit\u00e9"
+                            ]
+                        },
+                        {
+                            "title": "Utiliser le service de messagerie Gmail",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-Communiquer-Solidarite\u0301-Nume\u0301rique_2@300x.png",
+                            "description": "Vous souhaitez utiliser la messagerie Gmail ? Ce tutoriel vous explique comment envoyer, lire et r\u00e9pondre \u00e0 un mail via ce Webmail.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/utiliser-le-service-de-messagerie-gmail/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Email",
+                                "Gmail",
+                                "Google",
+                                "Messagerie",
+                                "Ordinateur"
+                            ]
+                        },
+                        {
+                            "title": "Cr\u00e9er et g\u00e9rer mon adresse Protonmail",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-Communiquer-Solidarite\u0301-Nume\u0301rique_2@300x.png",
+                            "description": "Vous souhaitez cr\u00e9er une adresse \u00e9lectronique ProtonMail ? Suivez ce tutoriel pour cr\u00e9er et configurer un nouveau compte sur ProtonMail et ainsi obtenir une nouvelle adresse mail qui facilite la communication crypt\u00e9e pour l\u2019envoi et la r\u00e9ception de courriels.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/creer-et-gerer-mon-adresse-protonmail/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Compte",
+                                "Mail",
+                                "Messagerie",
+                                "Ordinateur",
+                                "ProtonMail"
+                            ]
+                        },
+                        {
+                            "title": "Cr\u00e9er et g\u00e9rer une adresse Gmail",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-Communiquer-Solidarite\u0301-Nume\u0301rique_2@300x.png",
+                            "description": "Vous souhaitez communiquer via la messagerie Gmail ? Ce tutoriel vous explique comment cr\u00e9er votre adresse Gmail (Google mail), vous connecter, vous d\u00e9connecter et r\u00e9initialiser votre mot de passe.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/creer-et-gerer-une-adresse-gmail/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Cr\u00e9ationAdresseMail",
+                                "Email",
+                                "Gmail",
+                                "Google",
+                                "Messagerie",
+                                "Ordinateur"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Visioconf\u00e9rence",
+                    "href": "https://www.solidarite-numerique.fr/thematiques/visioconference/",
+                    "cards": [{
+                            "title": "Partager son \u00e9cran avec Jitsi, Skype et Google Meet sur iPhone",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-Communiquer-Solidarite\u0301-Nume\u0301rique_2@300x.png",
+                            "description": "Vous souhaitez partager votre \u00e9cran lors d\u2019une visioconf\u00e9rence depuis votre iPhone ? Apprenez \u00e0 maitriser cette fonctionnalit\u00e9 sur les 3 applications Jitsi, Skype et Google Meet.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/partager-son-ecran-ave-jitsi-skype-et-google-meet-sur-iphone/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "GoogleMeet",
+                                "iPhone",
+                                "Jitsi",
+                                "PartageD\u00e9cran",
+                                "Skype",
+                                "Visioconf\u00e9rence"
+                            ]
+                        },
+                        {
+                            "title": "Partager son \u00e9cran avec Jitsi, Skype et Google Meet avec Android",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-Communiquer-Solidarite\u0301-Nume\u0301rique_2@300x.png",
+                            "description": "Vous souhaitez partager votre \u00e9cran lors d\u2019une visioconf\u00e9rence depuis votre smartphone Android ? Apprenez \u00e0 maitriser cette fonctionnalit\u00e9 sur les 3 applications Jitsi, Skype et Google Meet.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/partager-son-ecran-avec-jitsi-skype-et-google-meet-avec-android/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "GoogleMeet",
+                                "Jitsi",
+                                "PartageD\u00e9cran",
+                                "Skype",
+                                "Smartphone",
+                                "Visioconf\u00e9rence"
+                            ]
+                        },
+                        {
+                            "title": "Partager son \u00e9cran avec Jitsi, Skype et Google Meet",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-Communiquer-Solidarite\u0301-Nume\u0301rique_2@300x.png",
+                            "description": "Vous souhaitez partager votre \u00e9cran lors d\u2019une visioconf\u00e9rence depuis votre ordinateur ? Apprenez \u00e0 maitriser cette fonction sur les 3 applications Web Jitsi, Skype et Google Meet sans installation d\u2019une application d\u00e9di\u00e9e.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/partager-son-ecran-avec-jitsi-skype-et-google-meet/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "GoogleMeet",
+                                "Jitsi",
+                                "PartageD\u00e9cran",
+                                "Skype",
+                                "Visioconf\u00e9rence"
+                            ]
+                        },
+                        {
+                            "title": "Communiquer avec Skype",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-Communiquer-Solidarite\u0301-Nume\u0301rique_2@300x.png",
+                            "description": "Vous souhaitez communiquer via Skype ? Ce tutoriel permet de r\u00e9pondre \u00e0 vos questions concernant l\u2019installation, l\u2019utilisation et le param\u00e9trage de la messagerie instantan\u00e9e Skype.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/communiquer-avec-skype/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Appel",
+                                "DiscussionInstantan\u00e9e",
+                                "Messagerie",
+                                "Skype",
+                                "Visioconf\u00e9rence"
+                            ]
+                        },
+                        {
+                            "title": "V\u00e9rifier mon \u00e9quipement avant une visioconf\u00e9rence",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-Communiquer-Solidarite\u0301-Nume\u0301rique_2@300x.png",
+                            "description": "Vous avez pris rendez-vous pour une t\u00e9l\u00e9consultation en ligne avec votre m\u00e9decin et vous souhaitez v\u00e9rifier votre \u00e9quipement ? Ce tutoriel vous explique comment v\u00e9rifier votre \u00e9quipement informatique pour pouvoir faire une visio ou consulter votre m\u00e9decin en t\u00e9l\u00e9consultation depuis votre ordinateur.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/verifier-mon-equipement-avant-une-visioconference/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "ConsultationVid\u00e9o",
+                                "\u00c9quipement",
+                                "T\u00e9l\u00e9consultation",
+                                "Visioconf\u00e9rence"
+                            ]
+                        },
+                        {
+                            "title": "Cr\u00e9er une visioconf\u00e9rence sur Jitsi",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-Communiquer-Solidarite\u0301-Nume\u0301rique_2@300x.png",
+                            "description": "Vous souhaitez utiliser Jitsi pour vos visioconf\u00e9rences ? Ce tutoriel vous accompagne dans l\u2019utilisation de cette alternative gratuite et open source. Jitsi facilite votre premi\u00e8re vid\u00e9oconf\u00e9rence depuis un navigateur Web ou un smartphone.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/creer-une-visioconference-sur-jitsi/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Communication",
+                                "Jitsi",
+                                "T\u00e9l\u00e9conf\u00e9rence",
+                                "Visioconf\u00e9rence"
+                            ]
+                        },
+                        {
+                            "title": "Utiliser TeamViewer pour du contr\u00f4le \u00e0 distance",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-Communiquer-Solidarite\u0301-Nume\u0301rique_2@300x.png",
+                            "description": "Vous souhaitez utiliser TeamViewer pour contr\u00f4ler \u00e0 distance l\u2019ordinateur d\u2019une autre personne ? Ce tutoriel permet de r\u00e9pondre aux questions li\u00e9es au t\u00e9l\u00e9chargement et \u00e0 l\u2019installation de TeamViewer pour apporter votre aide, acc\u00e9der \u00e0 des fichiers, des applications comme si vous \u00e9tiez en pr\u00e9sentiel.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/utiliser-teamviewer-pour-du-controle-a-distance/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Contr\u00f4le\u00c0Distance",
+                                "Ordinateur",
+                                "TeamViewer",
+                                "T\u00e9l\u00e9assistance"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "R\u00e9seaux sociaux, messageries",
+                    "href": "https://www.solidarite-numerique.fr/thematiques/reseaux-sociaux-messageries/",
+                    "cards": [{
+                            "title": "Cr\u00e9er et param\u00e9trer son compte LinkedIn",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-Communiquer-Solidarite\u0301-Nume\u0301rique_2@300x.png",
+                            "description": "Comment utiliser LinkedIn pour se rendre visible aupr\u00e8s d\u2019une communaut\u00e9 de professionnels ? Ce tuto vous explique comment cr\u00e9er un compte sur ce r\u00e9seau social professionnel afin que d\u2019autres membres en recherche de vos comp\u00e9tences puissent vous contacter pour une mission, une offre de service ou pour \u00e9changer sur vos domaines de comp\u00e9tences.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/creer-et-parametrer-son-compte-linkedin/",
+                            "date": "2021-09-21",
+                            "tags": [
+                                "Communaut\u00e9",
+                                "Entreprise",
+                                "LinkedIn",
+                                "R\u00e9seauxSociaux"
+                            ]
+                        },
+                        {
+                            "title": "Cr\u00e9er un compte Facebook",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-Communiquer-Solidarite\u0301-Nume\u0301rique_2@300x.png",
+                            "description": "Vous souhaitez utiliser Facebook ? Ce tutoriel vous guide pas \u00e0 pas pour cr\u00e9er un compte sur ce r\u00e9seau social.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/creer-un-compte-facebook/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Cr\u00e9ationDeCompte",
+                                "Facebook",
+                                "inscription",
+                                "R\u00e9seauxSociaux"
+                            ]
+                        },
+                        {
+                            "title": "Installer et utiliser la messagerie instantan\u00e9e Facebook Messenger",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-Communiquer-Solidarite\u0301-Nume\u0301rique_2@300x.png",
+                            "description": "Vous souhaitez communiquer avec vos proches via la messagerie de Facebook ? Ce tutoriel permet de r\u00e9pondre aux questions li\u00e9es \u00e0 l\u2019utilisation, l\u2019installation et le param\u00e9trage de la messagerie instantan\u00e9e Facebook Messenger.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/installer-la-messagerie-instantanee-facebook-messenger/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Discusssions",
+                                "Facebook",
+                                "Messagerie",
+                                "Messenger",
+                                "R\u00e9seaux sociaux",
+                                "Visioconf\u00e9rence"
+                            ]
+                        },
+                        {
+                            "title": "Communiquer avec Skype",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-Communiquer-Solidarite\u0301-Nume\u0301rique_2@300x.png",
+                            "description": "Vous souhaitez communiquer via Skype ? Ce tutoriel permet de r\u00e9pondre \u00e0 vos questions concernant l\u2019installation, l\u2019utilisation et le param\u00e9trage de la messagerie instantan\u00e9e Skype.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/communiquer-avec-skype/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Appel",
+                                "DiscussionInstantan\u00e9e",
+                                "Messagerie",
+                                "Skype",
+                                "Visioconf\u00e9rence"
+                            ]
+                        },
+                        {
+                            "title": "Communiquer avec Snapchat depuis mon smartphone",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-Communiquer-Solidarite\u0301-Nume\u0301rique_2@300x.png",
+                            "description": "Vous souhaitez communiquer via le r\u00e9seau social Snapchat ? Ce tutoriel permet de r\u00e9pondre aux questions li\u00e9es au t\u00e9l\u00e9chargement, \u00e0 l\u2019installation, \u00e0 l\u2019utilisation et au param\u00e9trage de la messagerie instantan\u00e9e Snapchat.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/communiquer-avec-snapchat-depuis-mon-smartphone/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Emoji",
+                                "Filtres",
+                                "R\u00e9seauxSociaux",
+                                "Snapchat",
+                                "Story"
+                            ]
+                        },
+                        {
+                            "title": "Communiquer avec Signal sur mon Smartphone",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-Communiquer-Solidarite\u0301-Nume\u0301rique_2@300x.png",
+                            "description": "Vous souhaitez communiquer via Signal ? Ce tutoriel permet de r\u00e9pondre aux questions li\u00e9es au t\u00e9l\u00e9chargement, \u00e0 l\u2019installation, \u00e0 l\u2019utilisation et au param\u00e9trage de la messagerie instantan\u00e9e Signal..",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/communiquer-avec-signal-sur-mon-smartphone/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Communication",
+                                "Messagerie",
+                                "S\u00e9curit\u00e9",
+                                "Signal"
+                            ]
+                        },
+                        {
+                            "title": "Communiquer avec WhatsApp avec mon smartphone",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/ico\u0302ne-Communiquer-Solidarite\u0301-Nume\u0301rique_2@300x.png",
+                            "description": "Vous souhaitez utiliser la messagerie Whatsapp pour communiquer avec vos proches ou votre r\u00e9seau professionnel ? Ce tutoriel permet de r\u00e9pondre aux questions li\u00e9es \u00e0 l\u2019utilisation, l\u2019installation et le param\u00e9trage de cette messagerie instantan\u00e9e.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/communiquer-avec-whatsapp-avec-mon-smartphone/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Appel",
+                                "Communication",
+                                "Messagerie",
+                                "WhatsApp"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "D\u00e9marches administratives",
+            "href": "https://www.solidarite-numerique.fr/thematiques/demarches-administratives/",
+            "sections": [{
+                    "title": "ANTS",
+                    "href": "https://www.solidarite-numerique.fr/thematiques/ants/",
+                    "cards": [{
+                            "title": "Effectuer mes d\u00e9marches sur le site de l\u2019ANTS",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/06/demarches.svg",
+                            "description": "Vous avez besoin de faire une demande de permis de conduire, d\u2019immatriculer votre v\u00e9hicule ou une pr\u00e9-demande de pi\u00e8ce d\u2019identit\u00e9 (Passeport \u2013 Carte Nationale d\u2019Identit\u00e9) ? Vous pourrez sur le site de l\u2019ANTS (Agence Nationale des Titres S\u00e9curis\u00e9s) effectuer ces d\u00e9marches.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/effectuer-mes-demarches-sur-le-site-de-l-ants/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "ANTS",
+                                "D\u00e9marchesAdministratives",
+                                "PermisDeConduire"
+                            ]
+                        },
+                        {
+                            "title": "Cr\u00e9er son compte ANTS",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/06/demarches.svg",
+                            "description": "Vous souhaitez cr\u00e9er votre compte ANTS (Agence Nationale des Titres S\u00e9curis\u00e9s) pour faire une demande de carte d\u2019identit\u00e9, de passeport, de permis de conduire ou de carte grise ? Ce tutoriel vous accompagne, pas \u00e0 pas, dans la cr\u00e9ation de votre espace personnel.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/creer-son-compte-ants/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "ANTS",
+                                "DemandeDeCarteDIdentit\u00e9",
+                                "DemandeDePasseport",
+                                "Immatriculation",
+                                "PermisDeConduire"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Emploi / retraite",
+                    "href": "https://www.solidarite-numerique.fr/thematiques/emploi-retraite/",
+                    "cards": [{
+                            "title": "Estimer mes allocations ch\u00f4mage en cas de perte d\u2019activit\u00e9",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/06/demarches.svg",
+                            "description": "Vous souhaitez connaitre vos droits \u00e0 l\u2019allocation ch\u00f4mage en cas de perte d\u2019emploi ? Ce tutoriel vous guide, pas \u00e0 pas, \u00e0 estimer, depuis votre ordinateur, le montant de vos droits \u00e0 l\u2019allocation ch\u00f4mage en cas de perte d\u2019activit\u00e9, sur le site P\u00f4le Emploi, que vous soyez inscrit ou non.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/estimer-mes-allocations-chomage-en-cas-de-perte-dactivite/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Allocations",
+                                "Ch\u00f4mage",
+                                "Estimation",
+                                "Ordinateur",
+                                "P\u00f4leEmploi"
+                            ]
+                        },
+                        {
+                            "title": "Faire ma premi\u00e8re demande d\u2019inscription P\u00f4le Emploi",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/06/demarches.svg",
+                            "description": "Vous souhaitez effectuer votre premi\u00e8re inscription \u00e0 P\u00f4le emploi en ligne ? Ce tutoriel vous accompagne dans la proc\u00e9dure \u00e0 suivre pour faire votre premi\u00e8re demande inscription \u00e0 P\u00f4le emploi en ligne.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/faire-ma-premiere-demande-d-inscription-pole-emploi/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Allocations",
+                                "EspacePersonnel",
+                                "Proc\u00e9dure d'inscription"
+                            ]
+                        },
+                        {
+                            "title": "M\u2019actualiser aupr\u00e8s de P\u00f4le Emploi",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/06/demarches.svg",
+                            "description": "Vous souhaitez proc\u00e9der \u00e0 l\u2019actualisation de votre situation sur le site P\u00f4le emploi ? Ce tutoriel explique comment r\u00e9aliser cette d\u00e9marche indispensable au maintien de votre inscription et / ou pour d\u00e9clencher le paiement d\u2019une allocation si vous y avez droit.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/m-actualiser-aupres-de-pole-emploi/",
+                            "date": "2021-09-28",
+                            "tags": [
+                                "Actualisation",
+                                "Allocations",
+                                "Ch\u00f4mage",
+                                "Ordinateur",
+                                "P\u00f4leEmploi"
+                            ]
+                        },
+                        {
+                            "title": "Me cr\u00e9er un compte Carsat",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/06/demarches.svg",
+                            "description": "Comment cr\u00e9er un compte sur le site de la CARSAT pour faire sa demande de retraite en ligne ? Ce tutoriel d\u2019\u00eatre permet d\u2019\u00eatre accompagn\u00e9 pour la cr\u00e9ation d\u2019un compte sur le site de l\u2019Assurance retraite.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/me-creer-un-compte-carsat/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "AssuranceRetraite",
+                                "CaisseDeRetraite",
+                                "CARSAT",
+                                "EspacePersonnel"
+                            ]
+                        },
+                        {
+                            "title": "Contacter mon conseiller P\u00f4le emploi",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/06/demarches.svg",
+                            "description": "Vous souhaitez envoyer un message \u00e0 votre conseiller P\u00f4le emploi ? Ce tutoriel explique comment lui envoyer en vous connectant \u00e0 votre compte sur le site P\u00f4le emploi.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/contacter-mon-conseiller-pole-emploi/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Ch\u00f4mage",
+                                "Communiquer",
+                                "Email",
+                                "Ordinateur",
+                                "P\u00f4leEmploi"
+                            ]
+                        },
+                        {
+                            "title": "Obtenir une attestation P\u00f4le Emploi",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/06/demarches.svg",
+                            "description": "Vous souhaitez conna\u00eetre votre situation d\u2019indemnisation \u00e0 P\u00f4le emploi et obtenir une attestation ? Ce tutoriel vous permet de r\u00e9pondre \u00e0 vos questions concernant la connexion au site P\u00f4le emploi, la consultation de votre dossier et la r\u00e9ception d\u2019attestations.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/obtenir-une-attestation-pole-emploi/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Attestation",
+                                "Ch\u00f4mage",
+                                "EspacePersonnel",
+                                "Ordinateur",
+                                "P\u00f4leEmploi"
+                            ]
+                        },
+                        {
+                            "title": "Transf\u00e9rer mon Droit Individuel de Formation (DIF) vers mon Compte Personnel de Formation (CPF)",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/06/demarches.svg",
+                            "description": "Vous souhaitez activer et g\u00e9rer votre Compte Professionnel de Formation (CPF) ? Ce tutoriel d\u00e9crit les \u00e9tapes pour activer votre Compte Professionnel de Formation, consulter vos heures de formation et ajouter vos heures DIF (Droit Individuel \u00e0 la Formation, remplac\u00e9 par le CPF en 2015).",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/transferer-mon-droit-individuel-de-formation-dif-vers-mon-compte-personnel-de-formation-cpf/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Apprentissage",
+                                "CPF",
+                                "Financement",
+                                "FormationContinue",
+                                "ParcoursProfessionnel"
+                            ]
+                        },
+                        {
+                            "title": "Envoyer un document depuis mon espace personnel P\u00f4le Emploi",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/06/demarches.svg",
+                            "description": "Vous avez besoin de transmettre un document \u00e0 P\u00f4le emploi ? Ce tutoriel vous explique pas \u00e0 pas comment proc\u00e9der depuis votre compte sur le site internet P\u00f4le emploi.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/envoyer-un-document-depuis-mon-espace-personnel-pole-emploi/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Actualisation",
+                                "Ch\u00f4mage",
+                                "D\u00e9marche",
+                                "Documents",
+                                "P\u00f4leEmploi"
+                            ]
+                        },
+                        {
+                            "title": "Me connecter \u00e0 mon compte P\u00f4le Emploi",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/06/demarches.svg",
+                            "description": "Vous souhaitez vous connecter \u00e0 votre compte P\u00f4le Emploi ? Ce tutoriel va vous accompagner pour vous connecter \u00e0 votre compte, notamment avec les \u00e9l\u00e9ments d\u2019aide dans le cas de la perte d\u2019identifiant et ou de mot de passe.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/me-connecter-a-mon-compte-pole-emploi/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Ch\u00f4mage",
+                                "EspacePersonnel",
+                                "inscription",
+                                "P\u00f4leEmploi",
+                                "Recherche d'emploi"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Famille / CAF",
+                    "href": "https://www.solidarite-numerique.fr/thematiques/famille-caf/",
+                    "cards": [{
+                            "title": "Prendre rendez-vous avec la CAF",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/06/demarches.svg",
+                            "description": "Vous souhaitez contacter la CAF de votre d\u00e9partement ? Ce tutoriel explique pas \u00e0 pas comment prendre rendez-vous avec un conseiller CAF et lui transmettre un message.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/prendre-rendez-vous-avec-la-caf/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Allocations",
+                                "CAF",
+                                "D\u00e9marche",
+                                "Ordinateur",
+                                "RendezVous"
+                            ]
+                        },
+                        {
+                            "title": "Trouver le site CAF de mon d\u00e9partement",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/06/demarches.svg",
+                            "description": "Vous souhaitez trouver le site CAF de votre d\u00e9partement ? Ce tutoriel regroupe l\u2019ensemble des liens guidant vers les pages d\u2019accueil des sites Internet des CAF de chaque d\u00e9partement.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/trouver-le-site-de-la-caf-de-mon-departement/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Allocataire",
+                                "CAF",
+                                "Carte",
+                                "Localisation"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Imp\u00f4ts",
+                    "href": "https://www.solidarite-numerique.fr/thematiques/impots/",
+                    "cards": [{
+                            "title": "Cr\u00e9er son espace particulier sur impots.gouv.fr",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/06/demarches.svg",
+                            "description": "Vous souhaitez cr\u00e9er votre espace sur impots.gouv.fr ? Ce tutoriel pr\u00e9sente la marche \u00e0 suivre pour activer et configurer un acc\u00e8s au site impots.gouv.fr afin de d\u00e9clarer vos revenus, \u00e9changer avec l\u2019administration fiscale et g\u00e9rer votre pr\u00e9l\u00e8vement \u00e0 la source.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/creer-son-espace-particulier-sur-impots-gouv-fr/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Cr\u00e9ationDeCompte",
+                                "EspacePersonnel",
+                                "FranceConnect",
+                                "Imp\u00f4t"
+                            ]
+                        },
+                        {
+                            "title": "D\u00e9clarer ses revenus sur le site des imp\u00f4ts",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/06/demarches.svg",
+                            "description": "Vous souhaitez d\u00e9clarer vos revenus par internet ? Ce tutoriel va vous accompagner pour vous connecter sur le site https://www.impots.gouv.fr afin de d\u00e9clarer vos revenus en ligne.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/declarer-ses-revenus-sur-le-site-des-impots/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "D\u00e9clarationDImp\u00f4ts",
+                                "Imp\u00f4t",
+                                "Num\u00e9roFiscal",
+                                "Pr\u00e9l\u00e8vement\u00e0laSource"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Autres d\u00e9marches",
+                    "href": "https://www.solidarite-numerique.fr/thematiques/autres-demarches/",
+                    "cards": [{
+                            "title": "D\u00e9couvrir l\u2019aide Vacaf-AVF pour vos vacances en famille",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/06/demarches.svg",
+                            "description": "Vous souhaitez vous informer sur le dispositif Vacaf-AVF de la Caf ? Ce tutoriel vous propose des r\u00e9ponses aux questions les plus pos\u00e9es sur cette aide pour vos s\u00e9jours sur les vacances scolaires.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/decouvrir-laide-vacaf-avf-pour-vos-vacances-en-famille/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Aide",
+                                "Avf",
+                                "CAF",
+                                "D\u00e9marche",
+                                "Vacaf"
+                            ]
+                        },
+                        {
+                            "title": "R\u00e9server vos vacances avec le dispositif Vacaf-AVF",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/06/demarches.svg",
+                            "description": "Vous souhaitez faire une r\u00e9servation dans un centre de vacances agr\u00e9\u00e9 Vacaf-AVF ? Ce tutoriel vous explique la d\u00e9marche pour contacter un centre labellis\u00e9 et r\u00e9server votre s\u00e9jour.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/reserver-vos-vacances-avec-le-dispositif-vacaf-avf/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Allocataires",
+                                "Avf",
+                                "CAF",
+                                "D\u00e9marche",
+                                "Vacaf"
+                            ]
+                        },
+                        {
+                            "title": "Cr\u00e9er mon identit\u00e9 num\u00e9rique sur le site de La Poste",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/06/demarches.svg",
+                            "description": "Vous souhaitez avoir une identit\u00e9 num\u00e9rique pour simplifier vos d\u00e9marches en ligne ? Ce tutoriel vous montre comment la cr\u00e9er facilement sur le site de La Poste pour s\u00e9curiser vos connexions sur les diff\u00e9rents sites administratifs.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/creer-mon-identite-numerique-sur-le-site-de-la-poste/",
+                            "date": "2021-09-23",
+                            "tags": [
+                                "FranceConnect",
+                                "Identification",
+                                "Identit\u00e9Num\u00e9rique",
+                                "LaPoste",
+                                "Ordinateur"
+                            ]
+                        },
+                        {
+                            "title": "Acheter un timbre fiscal en ligne",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/06/demarches.svg",
+                            "description": "Vous avez besoin d\u2019acheter un timbre fiscal \u00e9lectronique pour l\u2019obtention d\u2019une pi\u00e8ce d\u2019identit\u00e9, du permis bateau, d\u2019un titre de s\u00e9jour, etc. ? Ce tutoriel vous explique comment acheter en ligne un timbre fiscal pour vos documents administratifs.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/acheter-un-timbre-fiscal-en-ligne/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "ANTS",
+                                "CarteNationaleDIdentit\u00e9",
+                                "DemandeDeCarteDIdentit\u00e9",
+                                "DemandeDePasseport",
+                                "D\u00e9marchesAdministratives",
+                                "TimbreFiscal"
+                            ]
+                        },
+                        {
+                            "title": "Obtenir un extrait de casier judiciaire en ligne",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/06/demarches.svg",
+                            "description": "Vous souhaitez obtenir un extrait de casier judiciaire rapidement ? Voici la proc\u00e9dure pour faire votre demande en ligne en quelques \u00e9tapes simples.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/obtenir-un-extrait-de-casier-judiciaire-en-ligne/",
+                            "date": "2021-09-23",
+                            "tags": [
+                                "CasierJudiciaire",
+                                "DemandeExtraitCasierJudiciaire"
+                            ]
+                        },
+                        {
+                            "title": "V\u00e9rifier les points de son permis de conduire",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/06/demarches.svg",
+                            "description": "Vous avez besoin de consulter le nombre de points de votre permis conduire ? Ce tutoriel vous explique comment obtenir facilement le solde de vos points avec le service en ligne T\u00e9l\u00e9points.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/verifier-les-points-de-son-permis-de-conduire/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "ANTS",
+                                "PermisDeConduire",
+                                "Relev\u00e9DInformationRestreint",
+                                "RIR",
+                                "T\u00e9l\u00e9points"
+                            ]
+                        },
+                        {
+                            "title": "M\u2019identifier avec FranceConnect",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/06/demarches.svg",
+                            "description": "Vous souhaitez faciliter vos d\u00e9marches administratives en ligne ? Ce tutoriel a pour objectif de vous guider sur l\u2019identification avec FranceConnect pour vos d\u00e9marches administratives.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/m-identifier-avec-franceconnect/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "D\u00e9marche",
+                                "FranceConnect",
+                                "Identification",
+                                "Ordinateur"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Education et formation",
+            "href": "https://www.solidarite-numerique.fr/thematiques/education-et-formation/",
+            "sections": [{
+                    "title": "Scolarit\u00e9",
+                    "href": "https://www.solidarite-numerique.fr/thematiques/scolarite/",
+                    "cards": [{
+                            "title": "D\u00e9couvrir des applications p\u00e9dagogiques pour les 4/6 ans",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/Ico\u0302ne-Apprendre-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Vous aimeriez d\u00e9couvrir des jeux \u00e9ducatifs pour les enfants de la maternelle au CP/CE1 ? Ce tutoriel pr\u00e9sente des applications Android et iOS pour les enfants de 4 \u00e0 6 ans. Elles sont ludiques, les petits apprendront tout en s\u2019amusant.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/decouvrir-des-applications-pedagogiques-pour-les-4-6-ans/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Applications",
+                                "Apprendre",
+                                "EcoleALaMaison",
+                                "Enfants"
+                            ]
+                        },
+                        {
+                            "title": "Acc\u00e9der \u00e0 l\u2019Espace Num\u00e9rique de Travail d\u2019un \u00e9tablissement scolaire",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/Ico\u0302ne-Apprendre-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Vous souhaitez acc\u00e9der aux informations et aux services en ligne propos\u00e9s par l\u2019\u00e9tablissement scolaire de votre enfant ? Ce tutoriel permet de r\u00e9pondre \u00e0 vos questions concernant l\u2019acc\u00e8s au site Web du coll\u00e8ge et/ou du lyc\u00e9e recherch\u00e9, \u00e0 son Espace Num\u00e9rique de Travail (ENT) et \u00e0 Pronote.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/acceder-a-lespace-numerique-de-travail-dun-etablissement-scolaire/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Apprendre",
+                                "Communiquer",
+                                "ENT",
+                                "Pronote",
+                                "Scolarit\u00e9"
+                            ]
+                        },
+                        {
+                            "title": "R\u00e9viser avec mon enfant",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/Ico\u0302ne-Apprendre-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Vous souhaitez d\u00e9couvrir des ressources pour r\u00e9viser avec vos enfants ? Ce panorama vous propose une liste de sites et de podcasts d\u00e9di\u00e9s, accompagn\u00e9s d\u2019une courte description.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/reviser-avec-mon-enfant/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Apprendre",
+                                "EcoleALaMaison",
+                                "R\u00e9viser"
+                            ]
+                        },
+                        {
+                            "title": "Eduscol pour les professeurs",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/Ico\u0302ne-Apprendre-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Comment trouver des le\u00e7ons pour approfondir ses cours ? Eduscol est un site internet de l\u2019\u00c9ducation Nationale qui regroupe des ressources p\u00e9dagogiques. Cette plateforme est destin\u00e9e aux enseignants et accessible aux parents souhaitant aider leurs enfants.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/eduscol-pour-les-professeurs/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "EcoleALaMaison",
+                                "education",
+                                "Eduscol",
+                                "enseignement"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Formation",
+                    "href": "https://www.solidarite-numerique.fr/thematiques/formation/",
+                    "cards": [{
+                            "title": "Lire des livres num\u00e9riques ou e-books",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/Ico\u0302ne-Apprendre-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Vous souhaitez acc\u00e9der \u00e0 une offre culturelle gratuite en ligne ? Ce tutoriel permet de r\u00e9pondre \u00e0 vos questions concernant l\u2019usage de livres num\u00e9riques ou ebooks.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/lire-des-livres-numeriques-ou-e-books/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Biblioth\u00e8que",
+                                "Culture",
+                                "DRM",
+                                "ebook",
+                                "LivresNum\u00e9riques"
+                            ]
+                        },
+                        {
+                            "title": "Qu\u2019est-ce que le PIX et comment l\u2019utiliser ?",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/02/Ico\u0302ne-Apprendre-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "D\u00e9couvrez la plateforme du PIX, initi\u00e9e par l\u2019Etat en 2016 et qui r\u00e9unit diff\u00e9rents acteurs publics engag\u00e9s dans les domaines de l\u2019\u00e9ducation et de la formation. Son enjeu est d\u2019accompagner l\u2019\u00e9l\u00e9vation du niveau g\u00e9n\u00e9ral de comp\u00e9tences num\u00e9riques de chaque citoyen.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/quest-ce-que-le-pix-et-comment-lutiliser/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Autonomie",
+                                "Comp\u00e9tencesNum\u00e9riques",
+                                "Formation",
+                                "Pix"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Au quotidien",
+            "href": "https://www.solidarite-numerique.fr/thematiques/au-quotidien/",
+            "sections": [{
+                    "title": "Se d\u00e9placer",
+                    "href": "https://www.solidarite-numerique.fr/thematiques/se-deplacer/",
+                    "cards": [{
+                        "title": "V\u00e9rifier le rayon de 10 km autour de chez moi",
+                        "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/04/Ico\u0302ne-Sinformer-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                        "description": "Les derni\u00e8res mesures du gouvernement limitent les d\u00e9placements, \u00e0 vol d\u2019oiseau, de plus de 10 km, autour de chez soi. Mais comment conna\u00eetre facilement cette distance \u00e0 respecter ?",
+                        "href": "https://www.solidarite-numerique.fr/tutoriels/verifier-le-rayon-de-10-km-autour-de-chez-moi/",
+                        "date": "2021-09-17",
+                        "tags": [
+                            "AttestationDeD\u00e9placement",
+                            "Confinement",
+                            "Geoportail",
+                            "MesuresDuGouvernement"
+                        ]
+                    }]
+                },
+                {
+                    "title": "Achats, banque, finances",
+                    "href": "https://www.solidarite-numerique.fr/thematiques/achats-banque-finance/",
+                    "cards": [{
+                        "title": "Signaler une fraude \u00e0 la carte bancaire avec Perceval",
+                        "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/04/Ico\u0302ne-Sinformer-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                        "description": "Vous avez \u00e9t\u00e9 victime d\u2019une fraude \u00e0 la carte bancaire sur Internet ? Perceval est un service en ligne qui permet de la signaler afin de faciliter vos d\u00e9marches aupr\u00e8s de votre banque et d\u2019aider les enqu\u00eateurs.",
+                        "href": "https://www.solidarite-numerique.fr/tutoriels/signaler-une-fraude-a-la-carte-bancaire-avec-perceval/",
+                        "date": "2021-09-23",
+                        "tags": [
+                            "Cybercriminalit\u00e9",
+                            "D\u00e9marchesAdministratives",
+                            "FranceConnect",
+                            "Perceval",
+                            "T\u00e9l\u00e9service"
+                        ]
+                    }]
+                },
+                {
+                    "title": "T\u00e9l\u00e9travailler",
+                    "href": "https://www.solidarite-numerique.fr/thematiques/teletravailler-au-quotidien/",
+                    "cards": [{
+                            "title": "Cr\u00e9er et param\u00e9trer son compte LinkedIn",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/04/Ico\u0302ne-Sinformer-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Comment utiliser LinkedIn pour se rendre visible aupr\u00e8s d\u2019une communaut\u00e9 de professionnels ? Ce tuto vous explique comment cr\u00e9er un compte sur ce r\u00e9seau social professionnel afin que d\u2019autres membres en recherche de vos comp\u00e9tences puissent vous contacter pour une mission, une offre de service ou pour \u00e9changer sur vos domaines de comp\u00e9tences.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/creer-et-parametrer-son-compte-linkedin/",
+                            "date": "2021-09-21",
+                            "tags": [
+                                "Communaut\u00e9",
+                                "Entreprise",
+                                "LinkedIn",
+                                "R\u00e9seauxSociaux"
+                            ]
+                        },
+                        {
+                            "title": "D\u00e9couvrir des logiciels gratuits et Open Source",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/04/Ico\u0302ne-Sinformer-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Vous souhaitez abandonner les logiciels propri\u00e9taires (commerciaux), souvent pr\u00e9install\u00e9s sur votre outil num\u00e9rique, au profit de logiciels libres et gratuits ? Ce panorama vous propose une s\u00e9lection de logiciels alternatifs OpenSource gratuits.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/decouvrir-des-logiciels-gratuits-et-open-source/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Logiciel",
+                                "LogicielsGratuits",
+                                "LogicielsLibres",
+                                "LogicielsOpenSource",
+                                "OpenSource"
+                            ]
+                        },
+                        {
+                            "title": "Partager son \u00e9cran avec Jitsi, Skype et Google Meet sur iPhone",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/04/Ico\u0302ne-Sinformer-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Vous souhaitez partager votre \u00e9cran lors d\u2019une visioconf\u00e9rence depuis votre iPhone ? Apprenez \u00e0 maitriser cette fonctionnalit\u00e9 sur les 3 applications Jitsi, Skype et Google Meet.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/partager-son-ecran-ave-jitsi-skype-et-google-meet-sur-iphone/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "GoogleMeet",
+                                "iPhone",
+                                "Jitsi",
+                                "PartageD\u00e9cran",
+                                "Skype",
+                                "Visioconf\u00e9rence"
+                            ]
+                        },
+                        {
+                            "title": "Installer et ajouter une adresse mail sur Thunderbird",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/04/Ico\u0302ne-Sinformer-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Vous souhaitez g\u00e9rer vos mails avec une application depuis votre ordinateur ? Ce tutoriel sur Thunderbird vous guidera dans l\u2019installation et l\u2019ajout de vos adresses dans le logiciel.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/installer-et-ajouter-une-adresse-mail-sur-thunderbird/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Mail",
+                                "Ordinateur",
+                                "Thunderbird",
+                                "Windows"
+                            ]
+                        },
+                        {
+                            "title": "D\u00e9couvrir des suites bureautiques en ligne",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/04/Ico\u0302ne-Sinformer-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Vous souhaitez r\u00e9diger un courrier, suivre vos comptes ou pr\u00e9parer une pr\u00e9sentation depuis votre ordinateur, mais sans installer de logiciels ? Des sites internet existent pour vous donner acc\u00e8s \u00e0 des outils de traitement de texte, de tableur et de cr\u00e9ation de pr\u00e9sentation. Consultez ce panorama pour faire votre choix !",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/decouvrir-des-suites-bureautiques-en-ligne/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Apple",
+                                "Google",
+                                "GoogleOffice",
+                                "iWork",
+                                "Microsoft",
+                                "Navigateur",
+                                "Office",
+                                "Zoho"
+                            ]
+                        },
+                        {
+                            "title": "Partager son \u00e9cran avec Jitsi, Skype et Google Meet avec Android",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/04/Ico\u0302ne-Sinformer-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Vous souhaitez partager votre \u00e9cran lors d\u2019une visioconf\u00e9rence depuis votre smartphone Android ? Apprenez \u00e0 maitriser cette fonctionnalit\u00e9 sur les 3 applications Jitsi, Skype et Google Meet.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/partager-son-ecran-avec-jitsi-skype-et-google-meet-avec-android/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "GoogleMeet",
+                                "Jitsi",
+                                "PartageD\u00e9cran",
+                                "Skype",
+                                "Smartphone",
+                                "Visioconf\u00e9rence"
+                            ]
+                        },
+                        {
+                            "title": "Partager son \u00e9cran avec Jitsi, Skype et Google Meet",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/04/Ico\u0302ne-Sinformer-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Vous souhaitez partager votre \u00e9cran lors d\u2019une visioconf\u00e9rence depuis votre ordinateur ? Apprenez \u00e0 maitriser cette fonction sur les 3 applications Web Jitsi, Skype et Google Meet sans installation d\u2019une application d\u00e9di\u00e9e.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/partager-son-ecran-avec-jitsi-skype-et-google-meet/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "GoogleMeet",
+                                "Jitsi",
+                                "PartageD\u00e9cran",
+                                "Skype",
+                                "Visioconf\u00e9rence"
+                            ]
+                        },
+                        {
+                            "title": "Envoyer des fichiers avec WeTransfer",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/04/Ico\u0302ne-Sinformer-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Vous souhaitez envoyer des fichiers volumineux \u00e0 vos proches ? Ce tutoriel pas \u00e0 pas vous guidera pour transf\u00e9rer gratuitement et sans inscription jusqu\u2019\u00e0 2Go de fichiers.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/envoyer-des-fichiers-avec-wetransfer/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Transf\u00e9rerDesFichiers",
+                                "WeTransfer"
+                            ]
+                        },
+                        {
+                            "title": "Envoyer des fichiers avec Smash",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/04/Ico\u0302ne-Sinformer-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Vous souhaitez envoyer des fichiers volumineux par Smash ? Ce tutoriel pas \u00e0 pas vous guidera dans l\u2019utilisation de ce service en ligne fran\u00e7ais sans publicit\u00e9 , tr\u00e8s simple d\u2019usage et s\u00e9curis\u00e9.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/envoyer-des-fichiers-avec-smash/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Smash",
+                                "Transf\u00e9rerDesFichiers"
+                            ]
+                        },
+                        {
+                            "title": "Installer la suite bureautique LibreOffice",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/04/Ico\u0302ne-Sinformer-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Vous souhaitez installer la suite LibreOffice sur votre ordinateur ? Ce tutoriel vous accompagnera \u00e9tape par \u00e9tape dans l\u2019installation de la suite bureautique.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/installer-la-suite-bureautique-libre-office/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "LibreOffice",
+                                "LogicielsLibres",
+                                "SuiteBureautique",
+                                "Tableur",
+                                "TraitementDeTexte"
+                            ]
+                        },
+                        {
+                            "title": "Communiquer avec Skype",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/04/Ico\u0302ne-Sinformer-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Vous souhaitez communiquer via Skype ? Ce tutoriel permet de r\u00e9pondre \u00e0 vos questions concernant l\u2019installation, l\u2019utilisation et le param\u00e9trage de la messagerie instantan\u00e9e Skype.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/communiquer-avec-skype/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Appel",
+                                "DiscussionInstantan\u00e9e",
+                                "Messagerie",
+                                "Skype",
+                                "Visioconf\u00e9rence"
+                            ]
+                        },
+                        {
+                            "title": "V\u00e9rifier mon \u00e9quipement avant une visioconf\u00e9rence",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/04/Ico\u0302ne-Sinformer-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Vous avez pris rendez-vous pour une t\u00e9l\u00e9consultation en ligne avec votre m\u00e9decin et vous souhaitez v\u00e9rifier votre \u00e9quipement ? Ce tutoriel vous explique comment v\u00e9rifier votre \u00e9quipement informatique pour pouvoir faire une visio ou consulter votre m\u00e9decin en t\u00e9l\u00e9consultation depuis votre ordinateur.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/verifier-mon-equipement-avant-une-visioconference/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "ConsultationVid\u00e9o",
+                                "\u00c9quipement",
+                                "T\u00e9l\u00e9consultation",
+                                "Visioconf\u00e9rence"
+                            ]
+                        },
+                        {
+                            "title": "Cr\u00e9er une visioconf\u00e9rence sur Jitsi",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/04/Ico\u0302ne-Sinformer-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Vous souhaitez utiliser Jitsi pour vos visioconf\u00e9rences ? Ce tutoriel vous accompagne dans l\u2019utilisation de cette alternative gratuite et open source. Jitsi facilite votre premi\u00e8re vid\u00e9oconf\u00e9rence depuis un navigateur Web ou un smartphone.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/creer-une-visioconference-sur-jitsi/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Communication",
+                                "Jitsi",
+                                "T\u00e9l\u00e9conf\u00e9rence",
+                                "Visioconf\u00e9rence"
+                            ]
+                        },
+                        {
+                            "title": "Utiliser TeamViewer pour du contr\u00f4le \u00e0 distance",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/04/Ico\u0302ne-Sinformer-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Vous souhaitez utiliser TeamViewer pour contr\u00f4ler \u00e0 distance l\u2019ordinateur d\u2019une autre personne ? Ce tutoriel permet de r\u00e9pondre aux questions li\u00e9es au t\u00e9l\u00e9chargement et \u00e0 l\u2019installation de TeamViewer pour apporter votre aide, acc\u00e9der \u00e0 des fichiers, des applications comme si vous \u00e9tiez en pr\u00e9sentiel.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/utiliser-teamviewer-pour-du-controle-a-distance/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Contr\u00f4le\u00c0Distance",
+                                "Ordinateur",
+                                "TeamViewer",
+                                "T\u00e9l\u00e9assistance"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "S'informer",
+                    "href": "https://www.solidarite-numerique.fr/thematiques/sinformer/",
+                    "cards": [{
+                            "title": "D\u00e9couvrir des outils pour v\u00e9rifier les fausses informations ou fake news",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/04/Ico\u0302ne-Sinformer-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Vous aimeriez savoir comment v\u00e9rifier la fiabilit\u00e9 de certaines informations ? Ce tutoriel vous pr\u00e9sente quelques outils utiles.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/decouvrir-des-outils-pour-verifier-les-fausses-informations-ou-fake-news/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "FakeNews",
+                                "FausseInformation",
+                                "Rumeur"
+                            ]
+                        },
+                        {
+                            "title": "Utiliser le D\u00e9codex pour v\u00e9rifier les fausses informations ou fake news",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/04/Ico\u0302ne-Sinformer-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Vous souhaitez connaitre les outils du D\u00e9codex ? Ce Tutoriel vous explique comment utiliser ce service gratuit pour v\u00e9rifier la fiabilit\u00e9 d\u2019un site ou d\u2019un profil sur les r\u00e9seaux sociaux.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/utiliser-le-decodex-pour-verifier-les-fausses-informations-ou-fake-news/",
+                            "date": "2021-09-30",
+                            "tags": [
+                                "D\u00e9codex",
+                                "FakeNews",
+                                "FausseInformation",
+                                "Rumeur"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Culture, loisirs",
+                    "href": "https://www.solidarite-numerique.fr/thematiques/culture-loisirs/",
+                    "cards": [{
+                            "title": "Lire des livres num\u00e9riques ou e-books",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/04/Ico\u0302ne-Sinformer-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Vous souhaitez acc\u00e9der \u00e0 une offre culturelle gratuite en ligne ? Ce tutoriel permet de r\u00e9pondre \u00e0 vos questions concernant l\u2019usage de livres num\u00e9riques ou ebooks.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/lire-des-livres-numeriques-ou-e-books/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Biblioth\u00e8que",
+                                "Culture",
+                                "DRM",
+                                "ebook",
+                                "LivresNum\u00e9riques"
+                            ]
+                        },
+                        {
+                            "title": "Acc\u00e9der aux visites virtuelles de lieux culturels",
+                            "thumbnail": "https://www.solidarite-numerique.fr/wp-content/uploads/2021/04/Ico\u0302ne-Sinformer-Solidarite\u0301-Nume\u0301rique_1@300x.png",
+                            "description": "Vous souhaitez acc\u00e9der \u00e0 une offre culturelle gratuite en ligne ? Ce tutoriel met en avant l\u2019utilisation des sites proposant des visites virtuelles de mus\u00e9es, monuments (ch\u00e2teaux, grottes\u2026), villes depuis chez soi, aussi bien pour les adultes que pour les enfants.",
+                            "href": "https://www.solidarite-numerique.fr/tutoriels/acceder-aux-visites-virtuelles-de-lieux-culturels/",
+                            "date": "2021-09-17",
+                            "tags": [
+                                "Art",
+                                "Culture",
+                                "Monuments",
+                                "Mus\u00e9es",
+                                "VisiteVirtuelle"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
