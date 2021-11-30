@@ -49,17 +49,29 @@ function search() {
 
 window.addEventListener("load", () => {
     fetch(DATASET_URL).then(res => res.json()).then(data => {
-        DATASET = data.entries;
-        DATASET.forEach(entry => {
-            entry.normalized = {
-                title: normalize(entry.title),
-                description: entry.description == null ? "" : normalize(entry.description),
-                tags: entry.tags.map(normalize),
-                categories: entry.categories.map(normalize),
+        DATASET = [];
+        var links_memory = [];
+        var pdf_memory = [];
+        data.entries.forEach(entry => {
+            let allow = true;
+            if (entry.link != null && links_memory.includes(entry.link)) {
+                allow = false;
+            }
+            if (entry.pdf != null && pdf_memory.includes(entry.pdf)) {
+                allow = false;
+            }
+            if (allow) {
+                if (entry.link != null) links_memory.push(entry.link);
+                if (entry.pdf != null) pdf_memory.push(entry.pdf);
+                entry.normalized = {
+                    title: normalize(entry.title),
+                    description: entry.description == null ? "" : normalize(entry.description),
+                    tags: entry.tags.map(normalize),
+                    categories: entry.categories.map(normalize),
+                }
+                DATASET.push(entry);
             }
         })
-
-
         shuffleArray(DATASET);
         document.getElementById("modal-loading").classList.remove("active");
         inflateList(DATASET);
