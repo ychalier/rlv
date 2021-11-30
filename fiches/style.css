@@ -1,0 +1,54 @@
+.grid-sizer,
+.grid-item {
+    width: 32%;
+}
+
+.grid-item {
+    margin-bottom: .8rem;
+}
+
+.gutter-sizer {
+    width: 1.67%;
+}
+
+@media(max-width: 800px) {
+    .grid-sizer,
+    .grid-item {
+        width: 49%;
+    }
+    .gutter-sizer {
+        width: 2%;
+    }
+}
+
+@media(max-width: 400px) {
+    #count {
+        display: none;
+    }
+    .grid-sizer,
+    .grid-item {
+        width: 99%;
+    }
+    .gutter-sizer {
+        width: 0%;
+    }
+}
+
+.navbar {
+    height: 4em;
+    padding: .4em;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    /*background: #f0f0f0;*/
+    z-index: 1;
+}
+
+.navbar~* {
+    margin-top: 5em;
+}
+
+.category-label,
+.tag-label {
+    cursor: pointer;
+}

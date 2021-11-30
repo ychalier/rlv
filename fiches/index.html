@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/ychalier/pifekit/pifekit.css" />
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/ychalier/pifekit/pifekit.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+
+    <title>Fiches ressources pour le numérique</title>
+</head>
+
+<body>
+
+    <header class="navbar bg-secondary">
+        <section class="navbar-section">
+        </section>
+        <section class="navbar-center">
+            <form id="form-search">
+                <div class="input-group input-inline">
+                <input class="form-input" type="text" placeholder="Windows, ANTS, …" id="input-search" />
+                <button class="btn btn-primary input-group-btn">Chercher</button>
+                </div>
+            </form>
+        </section>
+        <section class="navbar-section">
+            <div id="count"></div>
+        </section>
+    </header>
+
+    <div class="columns container">
+        <div class="column col-2 col-xl-1 col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
+        <div class="column col-8 col-xl-10 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div id="list" class="grid">
+                <div class="grid-sizer"></div>
+                <div class="gutter-sizer"></div>
+            </div>
+        </div>
+        <div class="column col-2 col-xl-1 col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
+    </div>
+
+    <script type="text/javascript" src="master.js"></script>
+
+    <template id="template-card">
+        <div class="grid-item">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title h5"><span class="fiche-titre"></span></div>
+                    <div class="card-subtitle">
+                        <div class="fiche-categories"></div>
+                        <div class="fiche-tags text-gray"></div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <span class="fiche-description"></span>
+                </div>
+                <div class="card-footer">
+                    <a class="btn fiche-link"><i class="icon icon-link"></i> Lien</a>
+                    <a class="btn fiche-pdf"><i class="icon icon-download"></i> PDF</a>
+                    <br>
+                    <span class="fiche-source text-tiny text-gray" title="Source"></span>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="template-tag">
+        #<span class="tag-label"></span>
+    </template>
+
+    <template id="template-category">
+        <span class="category-label label"></span>
+    </template>
+
+    <div class="modal active" id="modal-loading">
+        <span class="modal-overlay" style="opacity: 0.2;"></span>
+        <div class="loading loading-lg" title="Chargement..."></div>
+    </div>
+
+</body>
+
+</html>
