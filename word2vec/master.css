@@ -1,0 +1,61 @@
+body {
+    background-color: #202020;
+}
+
+#graph {
+    margin: 0;
+    display: block;
+    position: relative;
+    background-color: white;
+    border-radius: 4px;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#axis-y {
+    display: flex;
+    flex-direction: column-reverse;
+    border-right: 2px solid white;
+    justify-content: space-between;
+    margin-right: 1rem;
+    margin-bottom: 40px;
+}
+
+#axis-x {
+    display: flex;
+    flex-direction: row;
+    border-top: 2px solid white;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.axis input {
+    border: none;
+    background: none;
+    color: white;
+    padding: 4px;
+    margin: 4px;
+}
+
+#axis-y input {
+    text-align: right;
+}
+
+#axis-x input[name="to"] {
+    text-align: right;
+}
+
+#commands {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 2rem auto;
+}
+
+#form-add-word {
+    margin-left: 2rem;
+}

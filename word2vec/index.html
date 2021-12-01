@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf8" />
+    <link rel="stylesheet" href="master.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.3.2/math.min.js"></script>
+    <script src="Chart.min.js"></script>
+    <script src="chartjs-plugin-datalabels.js"></script>
+    <script src="master.js"></script>
+    <title>Word2Vec</title>
+</head>
+
+<body>
+
+    <div id="commands">
+        <button id="btn-set-axes">Placer les axes</button>
+        <button id="btn-reset">Réinitialiser</button>
+        <form id="form-add-word">
+            <input type="text" name="word" placeholder="Placer un mot..." />
+            <input type="submit" />
+        </form>
+    </div>
+
+    <div class="row">
+        <div id="axis-y" class="axis">
+            <input type="text" name="from" placeholder="From" value="poor" />
+            <input type="text" name="to" placeholder="To" value="rich" />
+        </div>
+        <div class="column">
+            <canvas id="graph" width="600" height="600"></canvas>
+            <div id="axis-x" class="axis">
+                <input type="text" name="from" placeholder="From" value="woman" />
+                <input type="text" name="to" placeholder="To" value="man" />
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
