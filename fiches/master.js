@@ -15,16 +15,16 @@ function addBools(...x) {
 
 function search() {
     let query = normalize(document.getElementById("input-search").value);
-    let tokens = query.split(" ");
+    // let tokens = query.split(" ");
     let data = [];
     DATASET.forEach(entry => {
         let thereIsAMatchingTag = false;
         entry.normalized.tags.forEach(tag => {
-            thereIsAMatchingTag = thereIsAMatchingTag || tokens.some(token => tag.includes(token));
+            thereIsAMatchingTag = thereIsAMatchingTag || (tag == query);
         });
         let thereIsAMatchingCategory = false;
         entry.normalized.categories.forEach(category => {
-            thereIsAMatchingCategory = thereIsAMatchingCategory || tokens.some(token => category.includes(token));
+            thereIsAMatchingCategory = thereIsAMatchingCategory || category.includes(query);
         });
         let thereIsAMatchingTitle = entry.normalized.title.includes(query);
         let thereIsAMatchingDescription = entry.normalized.description.includes(query);
