@@ -1,5 +1,6 @@
 import json
 import argparse
+from os import stat
 import mido
 
 
@@ -12,8 +13,57 @@ import mido
 # that would prevent dynamic addition of a client during the show.
 
 
-def process_midi(path_input):
-    midi_file = mido.MidiFile(path_input, clip=True)
+def split_concurrent_notes(states):
+    """Input is a list of states occuring on the same channel.
+    """
+    xstates = [{**state} for state in states]
+    currently_on = list()
+    cursor = 0
+    for state in xstates:
+        if state["on"]:
+            state["channel"] = len(currently_on)
+            # state["start"] = cursor
+            currently_on.append(state)
+        else:
+            j = None
+            for i, cur_state in enumerate(currently_on):
+                if state["note"] == cur_state["note"]:
+                    state["channel"] = cur_state["channel"]
+                    j = i
+                    break
+            # print(j)
+            if j is not None:
+                currently_on.pop(j)
+            else:
+                pass               
+                print("Note not found")
+        # cursor = state["until"]
+    return xstates
+    # channels = {}
+    # for state in xstates:
+    #     if "inner_channel" not in state:
+    #         continue
+    #     channel_id = state["inner_channel"]
+    #     del state["inner_channel"]
+    #     channels.setdefault(channel_id, [])
+    #     channels[channel_id].append(state)
+    # for channel_id in channels:
+    #     channels[channel_id].insert(0, {
+    #         "on": True,
+    #         "note": 0,
+    #         "velocity": 0,
+    #         "until": channels[channel_id][0]["start"]
+    #     })
+    #     channels[channel_id].insert(1, {
+    #         "on": False,
+    #         "note": 0,
+    #         "velocity": 0,
+    #         "until": channels[channel_id][1]["start"]
+    #     })
+    # return list(channels.values())
+
+
+def extract_notes(midi_file, split_notes=False):
     messages = []
     cursor = 0
     for message in midi_file:
@@ -26,6 +76,8 @@ def process_midi(path_input):
                 "t": cursor,
                 "channel": message.channel
             })
+    if split_notes:
+        messages = split_concurrent_notes(messages)
     channels = {
         channel: []
         for channel in set([message["channel"] for message in messages])
@@ -65,6 +117,24 @@ def process_midi(path_input):
     }
 
 
+def process_midi(path_input, split_notes=False):
+    midi_file = mido.MidiFile(path_input, clip=True)
+    notes = extract_notes(midi_file, split_notes)
+    return notes
+    # split_channels = []
+    # for channel in notes["channels"]:
+    #     split_channels += split_concurrent_notes(channel["states"])
+    # result = {
+    #     "channels": []
+    # }
+    # for i, states in enumerate(split_channels):
+    #     result["channels"].append({
+    #         "id": i,
+    #         "states":  states
+    #     })
+    # return result
+
+
 def plot(result, n_points=10000):
     import matplotlib.pyplot
     matplotlib.pyplot.figure()
@@ -91,8 +161,9 @@ def main():
     parser.add_argument("input", type=str, help="path to the input MIDI file")
     parser.add_argument("output", type=str, help="path to the output JSON file")
     parser.add_argument("-p", "--plot", action="store_true", help="Plot parsed results")
+    parser.add_argument("-s", "--split", action="store_true", help="Split channels for polyphony")
     args = parser.parse_args()
-    result = process_midi(args.input)
+    result = process_midi(args.input, args.split)
     with open(args.output, "w", encoding="utf8") as file:
         json.dump(result, file)
     if args.plot:
