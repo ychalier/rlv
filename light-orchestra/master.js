@@ -324,28 +324,12 @@ function fetchSlaves() {
 function drawMidiFile(offset) {
     let canvas = document.getElementById("canvas-midi");
 
-    let minNote = null;
-    let maxNote = null;
-    let duration = 0;
-    MIDI.channels.forEach(channel => {
-        channel.states.forEach(state => {
-            if (state.on && (minNote == null || minNote > state.note)) {
-                minNote = state.note;
-            }
-            if (state.on && (maxNote == null || maxNote < state.note)) {
-                maxNote = state.note;
-            }
-            duration = Math.max(duration, state.until);
-        });
-    });
-
     // let width = canvas.offsetWidth;
     let height = canvas.offsetHeight;
 
-
     const timeScale = 0.01;
 
-    let width = duration / timeScale;
+    let width = MIDI.duration / timeScale;
 
     canvas.width = width;
     canvas.style.width = width + "px";
@@ -373,20 +357,10 @@ function drawMidiFile(offset) {
             if (channel.states[j].on) {
                 ctx.fillRect(
                     (cursor - offset) / timeScale,
-                    (channel.states[j].note - minNote) / (maxNote - minNote) * (height - noteHeight),
+                    (channel.states[j].note - MIDI.minNote) / (MIDI.maxNote - MIDI.minNote) * (height - noteHeight),
                     (channel.states[j].until - cursor) / timeScale,
                     noteHeight
                 );
-
-                /*
-                for (let k = j + 1; k < channel.states.length; k++) {
-                    if (!channel.states[k].on && channel.states[k].note == channel.states[i].note) {
-                        // channel.states[k] is start
-                        // channel.states[k] is end
-                        ctx.fillRect(channel.states[i].)
-                    }
-                }
-                */
             }
             cursor = channel.states[j].until;
         }
@@ -400,6 +374,25 @@ function loadMidi(data) {
     document.getElementById("midi-duration").textContent = Math.max(...data.channels.map(channel => channel.states[channel.states.length - 1].until)).toFixed(1);
     document.getElementById("card-midi-play").classList.remove("hidden");
     MIDI = data;
+
+    let minNote = null;
+    let maxNote = null;
+    let duration = 0;
+    MIDI.channels.forEach(channel => {
+        channel.states.forEach(state => {
+            if (state.on && (minNote == null || minNote > state.note)) {
+                minNote = state.note;
+            }
+            if (state.on && (maxNote == null || maxNote < state.note)) {
+                maxNote = state.note;
+            }
+            duration = Math.max(duration, state.until);
+        });
+    });
+    MIDI.minNote = minNote;
+    MIDI.maxNote = maxNote;
+    MIDI.duration = duration;
+
     drawMidiFile(0);
 }
 
@@ -418,7 +411,8 @@ function hslToHex(h, s, l) {
 
 function midiStateToColor(channelId, state) {
     if (state == null || state == undefined) return "#000000";
-    let hue = Math.min(360, Math.max(0, (state.note * 2.8346)));
+    let hue = (state.note - MIDI.minNote) / (MIDI.maxNote - MIDI.minNote) * 360;
+    // let hue = Math.min(360, Math.max(0, (state.note * 2.8346)));
     return hslToHex(hue, 100, state.on ? 50 : 0);
 }
 
