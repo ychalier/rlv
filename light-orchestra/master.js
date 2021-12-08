@@ -321,12 +321,86 @@ function fetchSlaves() {
 }
 
 
+function drawMidiFile(offset) {
+    let canvas = document.getElementById("canvas-midi");
+
+    let minNote = null;
+    let maxNote = null;
+    let duration = 0;
+    MIDI.channels.forEach(channel => {
+        channel.states.forEach(state => {
+            if (state.on && (minNote == null || minNote > state.note)) {
+                minNote = state.note;
+            }
+            if (state.on && (maxNote == null || maxNote < state.note)) {
+                maxNote = state.note;
+            }
+            duration = Math.max(duration, state.until);
+        });
+    });
+
+    // let width = canvas.offsetWidth;
+    let height = canvas.offsetHeight;
+
+
+    const timeScale = 0.01;
+
+    let width = duration / timeScale;
+
+    canvas.width = width;
+    canvas.style.width = width + "px";
+
+    let ctx = canvas.getContext("2d");
+    ctx.fillStyle = "#FFFFFF";
+    ctx.fillRect(0, 0, width, height);
+
+    const noteHeight = 5;
+
+    let colors = [
+        "#FF0000",
+        "#00FF00",
+        "#0000FF",
+        "#00FFFF",
+        "#FF00FF",
+        "#FFFF00",
+    ];
+
+
+    MIDI.channels.forEach((channel, i) => {
+        ctx.fillStyle = colors[i % colors.length];
+        let cursor = 0;
+        for (let j = 0; j < channel.states.length; j++) {
+            if (channel.states[j].on) {
+                ctx.fillRect(
+                    (cursor - offset) / timeScale,
+                    (channel.states[j].note - minNote) / (maxNote - minNote) * (height - noteHeight),
+                    (channel.states[j].until - cursor) / timeScale,
+                    noteHeight
+                );
+
+                /*
+                for (let k = j + 1; k < channel.states.length; k++) {
+                    if (!channel.states[k].on && channel.states[k].note == channel.states[i].note) {
+                        // channel.states[k] is start
+                        // channel.states[k] is end
+                        ctx.fillRect(channel.states[i].)
+                    }
+                }
+                */
+            }
+            cursor = channel.states[j].until;
+        }
+    });
+}
+
+
 function loadMidi(data) {
     document.getElementById("card-midi-upload").classList.add("hidden");
     document.getElementById("midi-channels-count").textContent = data.channels.length;
     document.getElementById("midi-duration").textContent = Math.max(...data.channels.map(channel => channel.states[channel.states.length - 1].until)).toFixed(1);
     document.getElementById("card-midi-play").classList.remove("hidden");
     MIDI = data;
+    drawMidiFile(0);
 }
 
 
