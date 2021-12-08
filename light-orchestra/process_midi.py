@@ -18,11 +18,9 @@ def split_concurrent_notes(states):
     """
     xstates = [{**state} for state in states]
     currently_on = list()
-    cursor = 0
     for state in xstates:
         if state["on"]:
             state["channel"] = len(currently_on)
-            # state["start"] = cursor
             currently_on.append(state)
         else:
             j = None
@@ -31,36 +29,9 @@ def split_concurrent_notes(states):
                     state["channel"] = cur_state["channel"]
                     j = i
                     break
-            # print(j)
             if j is not None:
                 currently_on.pop(j)
-            else:
-                pass               
-                print("Note not found")
-        # cursor = state["until"]
     return xstates
-    # channels = {}
-    # for state in xstates:
-    #     if "inner_channel" not in state:
-    #         continue
-    #     channel_id = state["inner_channel"]
-    #     del state["inner_channel"]
-    #     channels.setdefault(channel_id, [])
-    #     channels[channel_id].append(state)
-    # for channel_id in channels:
-    #     channels[channel_id].insert(0, {
-    #         "on": True,
-    #         "note": 0,
-    #         "velocity": 0,
-    #         "until": channels[channel_id][0]["start"]
-    #     })
-    #     channels[channel_id].insert(1, {
-    #         "on": False,
-    #         "note": 0,
-    #         "velocity": 0,
-    #         "until": channels[channel_id][1]["start"]
-    #     })
-    # return list(channels.values())
 
 
 def extract_notes(midi_file, split_notes=False):
@@ -137,18 +108,6 @@ def process_midi(path_input, split_notes=False, scale=1.0):
             for channel in notes["channels"]
         ]
     }
-    # split_channels = []
-    # for channel in notes["channels"]:
-    #     split_channels += split_concurrent_notes(channel["states"])
-    # result = {
-    #     "channels": []
-    # }
-    # for i, states in enumerate(split_channels):
-    #     result["channels"].append({
-    #         "id": i,
-    #         "states":  states
-    #     })
-    # return result
 
 
 def plot(result, n_points=10000):
