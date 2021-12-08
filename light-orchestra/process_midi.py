@@ -117,10 +117,26 @@ def extract_notes(midi_file, split_notes=False):
     }
 
 
-def process_midi(path_input, split_notes=False):
+def process_midi(path_input, split_notes=False, scale=1.0):
     midi_file = mido.MidiFile(path_input, clip=True)
     notes = extract_notes(midi_file, split_notes)
-    return notes
+    return {
+        "channels": [
+            {
+                "id": channel["id"],
+                "states": [
+                    {
+                        "on": state["on"],
+                        "note": state["note"],
+                        "velocity": state["velocity"],
+                        "until": scale * state["until"]
+                    }
+                    for state in channel["states"]
+                ]
+            }
+            for channel in notes["channels"]
+        ]
+    }
     # split_channels = []
     # for channel in notes["channels"]:
     #     split_channels += split_concurrent_notes(channel["states"])
@@ -162,8 +178,9 @@ def main():
     parser.add_argument("output", type=str, help="path to the output JSON file")
     parser.add_argument("-p", "--plot", action="store_true", help="Plot parsed results")
     parser.add_argument("-s", "--split", action="store_true", help="Split channels for polyphony")
+    parser.add_argument("-c", "--scale", type=float, default=1, help="Scale MIDI timings")
     args = parser.parse_args()
-    result = process_midi(args.input, args.split)
+    result = process_midi(args.input, args.split, args.scale)
     with open(args.output, "w", encoding="utf8") as file:
         json.dump(result, file)
     if args.plot:
