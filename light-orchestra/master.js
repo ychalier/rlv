@@ -248,6 +248,19 @@ function setupMaster() {
         document.getElementById("btn-midi-play").addEventListener("click", () => {
             DOM_AUDIO.play();
             controller.startMidi(MIDI);
+            let start;
+
+            function step(timestamp) {
+                if (start == null) start = timestamp;
+                let progress = timestamp - start;
+                drawMidiFile(progress / 1000);
+                if (progress < MIDI.duration * 1000) {
+                    requestAnimationFrame(step);
+                }
+            }
+            requestAnimationFrame(step);
+
+
         });
 
     };
@@ -341,12 +354,16 @@ function drawMidiFile(offset) {
     const noteHeight = 5;
 
     let colors = [
-        "#FF0000",
-        "#00FF00",
-        "#0000FF",
-        "#00FFFF",
-        "#FF00FF",
-        "#FFFF00",
+        "#7e0b03",
+        "#20bb4e",
+        "#e6d306",
+        "#9c6904",
+        "#1e0a20",
+        "#000f1c",
+        "#d30035",
+        "#0f9789",
+        "#78a6dd",
+        "#0577b9"
     ];
 
 
@@ -356,7 +373,7 @@ function drawMidiFile(offset) {
         for (let j = 0; j < channel.states.length; j++) {
             if (channel.states[j].on) {
                 ctx.fillRect(
-                    (cursor - offset) / timeScale,
+                    cursor / timeScale,
                     (channel.states[j].note - MIDI.minNote) / (MIDI.maxNote - MIDI.minNote) * (height - noteHeight),
                     (channel.states[j].until - cursor) / timeScale,
                     noteHeight
@@ -365,6 +382,12 @@ function drawMidiFile(offset) {
             cursor = channel.states[j].until;
         }
     });
+
+    canvas.parentNode.scrollLeft = Math.max(0, offset / timeScale - 0.5 * canvas.parentNode.offsetWidth);
+
+    ctx.fillStyle = "#000000";
+    ctx.fillRect(offset / timeScale, 0, 1, height);
+
 }
 
 
