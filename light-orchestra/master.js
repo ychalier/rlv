@@ -1,4 +1,5 @@
-const WEBSOCKET_URL = "wss://lightorchestra:" + retrievePassword() + "@atelier-mediatheque.rlv.eu/wst2";
+// const WEBSOCKET_URL = "wss://lightorchestra:" + retrievePassword() + "@atelier-mediatheque.rlv.eu/wst2";
+const WEBSOCKET_URL = "ws://localhost:8765";
 var SLAVES = [];
 var SOCKET;
 var MIDI;
@@ -289,7 +290,17 @@ function inflateSlaveList() {
     SLAVES.forEach((slaveId, index) => {
         let element = importTemplate("template-slave");
         element.querySelector(".tile").id = slaveId;
+        element.querySelector(".tile").classList.add("slave");
         element.querySelector(".tile-title").textContent = slaveId;
+        element.querySelector(".tile-title").addEventListener("click", (event) => {
+
+        });
+        element.querySelector(".tile-title").addEventListener("click", (event) => {
+            document.getElementById("input-slave-id").value = slaveId;
+            document.getElementById("input-slave-name").value = slaveId;
+            showModal("modal-slave");
+            document.getElementById("input-slave-name").focus();
+        });
         if (index == 0) element.querySelector(".btn-up").classList.add("disabled");
         if (index == SLAVES.length - 1) element.querySelector(".btn-down").classList.add("disabled");
         element.querySelector(".btn-up").addEventListener("click", () => {
@@ -501,5 +512,11 @@ window.addEventListener("load", () => {
             };
             audioFileReader.readAsDataURL(audioFile);
         }
+    });
+    document.getElementById("form-slave").addEventListener("submit", (event) => {
+        event.preventDefault();
+        let slaveId = document.getElementById("input-slave-id").value;
+        document.getElementById(slaveId).querySelector(".tile-title").textContent = document.getElementById("input-slave-name").value;
+        closeModal("modal-slave");
     });
 });

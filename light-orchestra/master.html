@@ -11,10 +11,9 @@
 </head>
 
 <body class="container">
-    <h1>Master</h1>
     <div class="columns">
         <div class="column col-6">
-            <div class="panel">
+            <div class="panel  my-2">
                 <div class="panel-header">
                     <div class="panel-title h5">Slaves</div>
                 </div>
@@ -23,36 +22,50 @@
                     <button class="btn btn-primary" onclick="fetchSlaves()">Refresh</button>
                 </div>
             </div>
-            <div class="panel my-2">
+        </div>
+        <div class="column col-6">
+
+            <div class="panel my-2" id="card-midi-upload">
                 <div class="panel-header">
-                    <div class="panel-title h5">MIDI File</div>
+                    <div class="panel-title h5">Music Score</div>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label class="form-label">Select JSON file</label>
+                        <input class="form-input" type="file" id="input-upload-json" accept=".json" />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Select MP3 file</label>
+                        <input class="form-input" type="file" id="input-upload-audio" accept=".mp3" />
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <button class="btn btn-primary" id="btn-upload-json">Load</button>
+                </div>
+            </div>
+
+            <div class="panel hidden my-2" id="card-midi-play">
+                <div class="panel-header">
+                    <div class="panel-title h5">MIDI file</div>
+                    <div class="panel-subtitle">
+                        <b><span id="midi-duration"></span></b> s
+                        &nbsp;&middot;&nbsp;
+                        <b><span id="midi-channels-count"></span></b> channel(s)
+                    </div>
                 </div>
                 <div class="panel-body">
                     <canvas id="canvas-midi" height="300"></canvas>
                 </div>
-            </div>
-        </div>
-        <div class="column col-6">
-
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-title h5">Broadcast a color</div>
-                </div>
-                <div class="card-body">
-                    <input class="form-input" id="input-broadcast-color" type="color" />
-                </div>
-                <div class="card-footer">
-                    <button class="btn btn-primary" id="button-broadcast">Broadcast</button>
+                <div class="panel-footer">
+                    <button class="btn btn-primary" id="btn-midi-play"><i class="icon icon-play"></i></button>
                 </div>
             </div>
 
-            <br>
-
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-title h5">Gradient</div>
+            <div class="panel my-2">
+                <div class="panel-header">
+                    <div class="panel-title h5">Gradient</div>
                 </div>
-                <div class="card-body">
+                <div class="panel-body">
                     <div class="form-group">
                         <label class="form-label" for="input-gradient-keyframes">Keyframes</label>
                         <input class="form-input" id="input-gradient-keyframes" type="text" value="#000000 0%, #ffffff 100%" style="font-family: Fira Code, monospace;" />
@@ -70,49 +83,45 @@
                         <input class="form-input" id="input-gradient-spread" type="number" step="0.1" value="0" />
                     </div>
                 </div>
-                <div class="card-footer">
+                <div class="panel-footer">
                     <button class="btn btn-primary" id="button-gradient">Start</button>
                 </div>
             </div>
 
-            <br>
-
-            <div class="card" id="card-midi-upload">
-                <div class="card-header">
-                    <div class="card-title h5">MIDI file</div>
+            <div class="panel my-2">
+                <div class="panel-header">
+                    <div class="panel-title h5">Broadcast a color</div>
                 </div>
-                <div class="card-body">
-                    <div class="form-group">
-                        <label class="form-label">Upload JSON</label>
-                        <input class="form-input" type="file" id="input-upload-json" />
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Upload audio</label>
-                        <input class="form-input" type="file" id="input-upload-audio" />
-                    </div>
+                <div class="panel-body">
+                    <input class="form-input" id="input-broadcast-color" type="color" />
                 </div>
-                <div class="card-footer">
-                    <button class="btn btn-primary" id="btn-upload-json">Load</button>
+                <div class="panel-footer">
+                    <button class="btn btn-primary" id="button-broadcast">Broadcast</button>
                 </div>
-            </div>
-
-            <div class="card hidden" id="card-midi-play">
-                <div class="card-header">
-                    <div class="card-title h5">MIDI file</div>
-                </div>
-                <div class="card-body">
-                    Duration: <span id="midi-duration"></span> s<br>
-                    Channels: <span id="midi-channels-count"></span>
-                </div>
-                <div class="card-footer">
-                    <button class="btn btn-primary" id="btn-midi-play"><i class="icon icon-play"></i></button>
-                </div>
-            </div>
+            </div>          
 
         </div>
     </div>
 
-    <div id="snackbar"></div> 
+    <div id="snackbar"></div>
+
+    <div id="modal-slave" class="modal">
+        <span class="modal-overlay" onclick="closeModal('modal-slave')"></span>
+        <div class="modal-container">
+            <form id="form-slave">
+                <div class="modal-body">
+                    <input id="input-slave-id" hidden />
+                    <div class="form-group">
+                        <label class="form-label" for="input-slave-name">Name</label>
+                        <input class="form-input" id="input-slave-name" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
     <template id="template-slave">
         <div class="tile my-1">

@@ -82,3 +82,11 @@
         opacity: 0;
     }
 }
+
+.slave {
+    cursor: pointer;
+}
+
+.slave .tile-icon {
+    border: 1px solid rgba(0, 0, 0, 0.5);
+}
