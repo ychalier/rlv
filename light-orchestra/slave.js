@@ -1,5 +1,5 @@
-// const WEBSOCKET_URL = "wss://lightorchestra:" + retrievePassword() + "@atelier-mediatheque.rlv.eu/wst2";
-const WEBSOCKET_URL = "ws://localhost:8765";
+const WEBSOCKET_URL = "wss://lightorchestra:" + retrievePassword() + "@atelier-mediatheque.rlv.eu/wst2";
+// const WEBSOCKET_URL = "ws://localhost:8765";
 var SOCKET;
 
 function setupSlave() {

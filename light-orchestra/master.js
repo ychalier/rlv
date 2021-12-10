@@ -1,5 +1,5 @@
-// const WEBSOCKET_URL = "wss://lightorchestra:" + retrievePassword() + "@atelier-mediatheque.rlv.eu/wst2";
-const WEBSOCKET_URL = "ws://localhost:8765";
+const WEBSOCKET_URL = "wss://lightorchestra:" + retrievePassword() + "@atelier-mediatheque.rlv.eu/wst2";
+// const WEBSOCKET_URL = "ws://localhost:8765";
 const INTERVAL_SPEED = 50; // ms
 const MIDI_CHANNELS_COLORS = [
     "#7e0b03",
