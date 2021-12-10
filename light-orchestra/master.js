@@ -1,5 +1,5 @@
 // const WEBSOCKET_URL = "wss://lightorchestra:" + retrievePassword() + "@atelier-mediatheque.rlv.eu/wst2";
-// const WEBSOCKET_URL = "ws://localhost:8765";
+const WEBSOCKET_URL = "ws://localhost:8765";
 const INTERVAL_SPEED = 50; // ms
 const MIDI_CHANNELS_COLORS = [
     "#7e0b03",
@@ -104,6 +104,33 @@ function retrievePassword() {
  *****************************************************************************/
 
 
+class Slave {
+    constructor(slaveId) {
+        this.id = slaveId;
+        this.name = this.getNameFromMemory();
+    }
+
+    getNameFromMemory() {
+        if (storageAvailable("localStorage")) {
+            let oldName = localStorage.getItem("slave_name_" + this.id);
+            if (oldName != null) {
+                return oldName;
+            }
+        }
+        return this.id;
+    }
+
+    setName(newName) {
+        if (storageAvailable("localStorage")) {
+            localStorage.setItem("slave_name_" + this.id, newName);
+        }
+        this.name = newName;
+    }
+
+}
+
+
+
 function setupMaster() {
     SOCKET = new WebSocket(WEBSOCKET_URL);
     SOCKET.onerror = socketOnError;
@@ -135,19 +162,14 @@ function socketOnMessage(event) {
     // console.log("Received message:", message);
     if (message.cmd == "event") {
         if (message.arg.type == "slave_connected") {
-            SLAVES.push(message.arg.content);
+            SLAVES.push(new Slave(message.arg.content))
             inflateSlaveList();
         } else if (message.arg.type == "slave_disconnected") {
-            SLAVES = SLAVES.filter(slaveId => slaveId != message.arg.content);
+            SLAVES = SLAVES.filter(slave => slave.id != message.arg.content);
             inflateSlaveList();
         }
     }
 }
-
-
-/******************************************************************************
- * Communication with slaves
- *****************************************************************************/
 
 
 function setSlaveColor(slaveIndex, color) {
@@ -155,7 +177,7 @@ function setSlaveColor(slaveIndex, color) {
     SOCKET.send(JSON.stringify({
         cmd: "tell",
         arg: {
-            slave: SLAVES[slaveIndex],
+            slave: SLAVES[slaveIndex].id,
             message: {
                 cmd: "color",
                 arg: color.substr(1)
@@ -467,17 +489,17 @@ class Midi {
 function inflateSlaveList() {
     let container = document.getElementById("connected-slaves");
     container.innerHTML = "";
-    SLAVES.forEach((slaveId, index) => {
+    SLAVES.forEach((slave, index) => {
         let element = importTemplate("template-slave");
-        element.querySelector(".tile").id = slaveId;
+        element.querySelector(".tile").id = slave.id;
         element.querySelector(".tile").classList.add("slave");
-        element.querySelector(".tile-title").textContent = slaveId;
+        element.querySelector(".tile-title").textContent = slave.name;
         element.querySelector(".tile-title").addEventListener("click", (event) => {
 
         });
         element.querySelector(".tile-title").addEventListener("click", (event) => {
-            document.getElementById("input-slave-id").value = slaveId;
-            document.getElementById("input-slave-name").value = slaveId;
+            document.getElementById("input-slave-id").value = slave.id;
+            document.getElementById("input-slave-name").value = slave.name;
             showModal("modal-slave");
             document.getElementById("input-slave-name").focus();
         });
@@ -565,7 +587,13 @@ function handleMusicScoreSubmission(event) {
 function onSlaveFormSubmit(event) {
     event.preventDefault();
     let slaveId = document.getElementById("input-slave-id").value;
-    document.getElementById(slaveId).querySelector(".tile-title").textContent = document.getElementById("input-slave-name").value;
+    for (let i = 0; i < SLAVES.length; i++) {
+        if (SLAVES[i].id == slaveId) {
+            SLAVES[i].setName(document.getElementById("input-slave-name").value);
+            break;
+        }
+    }
+    inflateSlaveList();
     closeModal("modal-slave");
 }
 
