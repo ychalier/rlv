@@ -173,7 +173,7 @@ function socketOnMessage(event) {
 
 
 function setSlaveColor(slaveIndex, color) {
-    document.getElementById(SLAVES[slaveIndex]).querySelector(".tile-icon").style.background = color;
+    document.getElementById(SLAVES[slaveIndex].id).querySelector(".tile-icon").style.background = color;
     SOCKET.send(JSON.stringify({
         cmd: "tell",
         arg: {
