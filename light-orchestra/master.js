@@ -7,8 +7,8 @@ const MIDI_CHANNELS_COLORS = [
     "#e6d306",
     "#9c6904",
     "#1e0a20",
-    "#000f1c",
     "#d30035",
+    "#000f1c",
     "#0f9789",
     "#78a6dd",
     "#0577b9"
@@ -108,6 +108,7 @@ class Slave {
     constructor(slaveId) {
         this.id = slaveId;
         this.name = this.getNameFromMemory();
+        this.midiChannel = this.getMidiChannelFromMemory();
     }
 
     getNameFromMemory() {
@@ -120,11 +121,28 @@ class Slave {
         return this.id;
     }
 
+    getMidiChannelFromMemory() {
+        if (storageAvailable("localStorage")) {
+            let oldMidiChannel = localStorage.getItem("slave_midiChannel_" + this.id);
+            if (oldMidiChannel != null) {
+                return parseInt(oldMidiChannel);
+            }
+        }
+        return SLAVES.length;
+    }
+
     setName(newName) {
         if (storageAvailable("localStorage")) {
             localStorage.setItem("slave_name_" + this.id, newName);
         }
         this.name = newName;
+    }
+
+    setMidiChannel(newMidiChannel) {
+        if (storageAvailable("localStorage")) {
+            localStorage.setItem("slave_midiChannel_" + this.id, newMidiChannel);
+        }
+        this.midiChannel = newMidiChannel;
     }
 
 }
@@ -403,10 +421,7 @@ class MusicScoreProgram extends Program {
         });
         // Converting states to colors
         for (let i = 0; i < SLAVES.length; i++) {
-            // TODO: if slaves are attributed to a specific channel,
-            // change the line below.
-            // If there is more slaves than MIDI channels, loop back over channels.
-            let channelIndex = i % this.midi.channels.length;
+            let channelIndex = SLAVES[i].midiChannel;
             let channelId = this.midi.channels[channelIndex].id;
             let stateIndex = this.midiChannelIndices[channelId];
             let state = this.midi.channels[channelIndex].states[stateIndex];
@@ -440,6 +455,10 @@ class Midi {
                 this.duration = Math.max(this.duration, state.until);
             });
         });
+        SLAVES.forEach(slave => {
+            slave.setMidiChannel(slave.midiChannel % this.channels.length);
+        });
+        inflateSlaveList();
         document.getElementById("panel-music-upload").classList.add("hidden");
         document.getElementById("midi-channels-count").textContent = this.channels.length;
         document.getElementById("midi-duration").textContent = this.duration.toFixed(1);
@@ -486,6 +505,17 @@ class Midi {
 }
 
 
+function loadSlaveModal(slave) {
+    document.getElementById("input-slave-id").value = slave.id;
+    document.getElementById("input-slave-name").value = slave.name;
+    document.getElementById("input-slave-midichannel").querySelectorAll("input").forEach(input => {
+        input.checked = input.getAttribute("index") == slave.midiChannel;
+    });
+    showModal("modal-slave");
+    document.getElementById("input-slave-name").focus();
+}
+
+
 function inflateSlaveList() {
     let container = document.getElementById("connected-slaves");
     container.innerHTML = "";
@@ -494,15 +524,11 @@ function inflateSlaveList() {
         element.querySelector(".tile").id = slave.id;
         element.querySelector(".tile").classList.add("slave");
         element.querySelector(".tile-title").textContent = slave.name;
-        element.querySelector(".tile-title").addEventListener("click", (event) => {
-
-        });
-        element.querySelector(".tile-title").addEventListener("click", (event) => {
-            document.getElementById("input-slave-id").value = slave.id;
-            document.getElementById("input-slave-name").value = slave.name;
-            showModal("modal-slave");
-            document.getElementById("input-slave-name").focus();
-        });
+        element.querySelector(".slave-midi-channel").textContent = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("")[slave.midiChannel];
+        element.querySelector(".slave-midi-channel").style.color = MIDI_CHANNELS_COLORS[slave.midiChannel % MIDI_CHANNELS_COLORS.length];
+        element.querySelector(".tile-icon").addEventListener("click", (event) => { loadSlaveModal(slave) });
+        element.querySelector(".tile-title").addEventListener("click", (event) => { loadSlaveModal(slave) });
+        element.querySelector(".tile-subtitle").addEventListener("click", (event) => { loadSlaveModal(slave) });
         if (index == 0) element.querySelector(".btn-up").classList.add("disabled");
         if (index == SLAVES.length - 1) element.querySelector(".btn-down").classList.add("disabled");
         element.querySelector(".btn-up").addEventListener("click", () => {
@@ -590,6 +616,11 @@ function onSlaveFormSubmit(event) {
     for (let i = 0; i < SLAVES.length; i++) {
         if (SLAVES[i].id == slaveId) {
             SLAVES[i].setName(document.getElementById("input-slave-name").value);
+            document.getElementById("input-slave-midichannel").querySelectorAll("input").forEach(input => {
+                if (input.checked) {
+                    SLAVES[i].setMidiChannel(parseInt(input.getAttribute("index")));
+                }
+            });
             break;
         }
     }
@@ -598,8 +629,30 @@ function onSlaveFormSubmit(event) {
 }
 
 
+function createSlaveModalRadio() {
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").forEach((letter, index) => {
+        let label = document.createElement("label");
+        label.className = "form-radio";
+        let input = document.createElement("input");
+        input.type = "radio";
+        input.name = "midiChannel";
+        input.setAttribute("index", index);
+        label.appendChild(input);
+        let icon = document.createElement("i");
+        icon.className = "form-icon";
+        label.appendChild(icon);
+        let span = document.createElement("span");
+        span.textContent = letter;
+        span.style.color = MIDI_CHANNELS_COLORS[index % MIDI_CHANNELS_COLORS.length];
+        label.appendChild(span);
+        document.getElementById("input-slave-midichannel").appendChild(label);
+    });
+}
+
+
 window.addEventListener("load", () => {
     setupGradientButtons();
+    createSlaveModalRadio();
     CONTROLLER = new Controller();
     document.getElementById("button-broadcast").addEventListener("click", startProgramBroadcast);
     document.getElementById("button-gradient").addEventListener("click", startProgramGradient);

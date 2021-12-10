@@ -90,3 +90,8 @@
 .slave .tile-icon {
     border: 1px solid rgba(0, 0, 0, 0.5);
 }
+
+#input-slave-midichannel {
+    max-height: 10em;
+    overflow-y: auto;
+}
