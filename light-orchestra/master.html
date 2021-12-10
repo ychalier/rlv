@@ -13,6 +13,7 @@
 <body class="container">
     <div class="columns">
         <div class="column col-6">
+            <button class="btn btn-primary my-2" onclick="CONTROLLER.stop();">Pause</button>
             <div class="panel  my-2">
                 <div class="panel-header">
                     <div class="panel-title h5">Slaves</div>
@@ -25,7 +26,7 @@
         </div>
         <div class="column col-6">
 
-            <div class="panel my-2" id="card-midi-upload">
+            <div class="panel my-2" id="panel-music-upload">
                 <div class="panel-header">
                     <div class="panel-title h5">Music Score</div>
                 </div>
@@ -40,24 +41,24 @@
                     </div>
                 </div>
                 <div class="panel-footer">
-                    <button class="btn btn-primary" id="btn-upload-json">Load</button>
+                    <button class="btn btn-primary" id="button-music-upload">Load</button>
                 </div>
             </div>
 
-            <div class="panel hidden my-2" id="card-midi-play">
+            <div class="panel hidden my-2" id="panel-music-play">
                 <div class="panel-header">
-                    <div class="panel-title h5">MIDI file</div>
+                    <div class="panel-title h5">Music Score</div>
                     <div class="panel-subtitle">
-                        <b><span id="midi-duration"></span></b> s
-                        &nbsp;&middot;&nbsp;
+                        <b><span id="midi-duration"></span></b> s &nbsp;&middot;&nbsp;
                         <b><span id="midi-channels-count"></span></b> channel(s)
                     </div>
                 </div>
                 <div class="panel-body">
                     <canvas id="canvas-midi" height="300"></canvas>
                 </div>
-                <div class="panel-footer">
-                    <button class="btn btn-primary" id="btn-midi-play"><i class="icon icon-play"></i></button>
+                <div class="panel-footer d-flex" style="align-items: center">
+                    <button class="btn btn-primary" id="button-music-play"><i class="icon icon-play"></i></button>
+                    <audio class="mx-2" id="audio-player" controls></audio>
                 </div>
             </div>
 
@@ -98,7 +99,7 @@
                 <div class="panel-footer">
                     <button class="btn btn-primary" id="button-broadcast">Broadcast</button>
                 </div>
-            </div>          
+            </div>
 
         </div>
     </div>
