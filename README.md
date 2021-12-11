@@ -4,8 +4,14 @@ Dépôt regroupant les différents projets de développement créés et utilisé
 
 ## Table des matières
 
-- [L'Algorithme de la foudre](lightning/)
-- [Générateur de plannings](planning/)
-- [Couverture du territoire](couverture-territoire/)
-- [L'Orchestre de lumière](light-orchestra/)
-- [Oscilloscope Arduino](oscilloscope/)
+Projet | Description
+------ | ------------
+[couverture-territoire](couverture-territoire/) | Recherche d'une couverture optimale d'un ensemble de lieux
+[fiches](fiches/) | Index de fiches ressources pour le numérique
+[light-orchestra](light-orchestra/) | Orchestre de lumière joué par des ordinateurs
+[lightning](lightning/) | Algorithme de simulation de la foudre
+[numrep](numrep/) | Représentation temporelle des nombres gigantesques
+[oscilloscope](oscilloscope/) | Micrologiciel Arduino pour recréer un oscilloscope
+[planning](planning/) | Générateur de plannings
+[syrtis-check](syrtis-check/) | Scraper pour la plateforme Syrtis
+[word2vec](word2vec/) | Représentation visuelle des plongements de mots

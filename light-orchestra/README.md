@@ -6,6 +6,18 @@ Implémentation d'un système inspiré de l'installation [City Lights Orchestra]
 
 ## Guide de démarrage
 
+1. Démarrer le serveur websocket sur la machine distante
+    ```console
+    service websocket start
+    ```
+
+2. Connecter les ordinateurs *esclaves* sur [cette page](https://ychalier.github.io/rlv/light-orchestra/slave.html)
+
+3. Connecter l'ordinateur *maître* sur [cette page](https://ychalier.github.io/rlv/light-orchestra/master.html)
+
+
+Il est possible d'ajouter et de supprimer dynamiquement les terminaux esclaves.
+
 ### Dépendances serveur
 
 ```

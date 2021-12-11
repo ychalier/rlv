@@ -1,1 +1,3 @@
 # Couverture du territoire
+
+Le réseau de lecture publique sur le territoire de Riom Limagne et Volcans est constitué de 27 bibliothèques. On souhaite fournir un service itinérant sur tout le territoire, mais sans pouvoir couvrir ces 27 lieux. Ce module traduit ce problème en un problème d'optimisation linéaire, où pour un nombre *n* donné de lieux, on sélectionne les *n* lieux minimisant la distance moyenne que doivent parcourir les habitants du territoire pour se rendre dans un de ces lieux. Les habitants sont modélisés comme tous résidents au barycentre de leur commune.
