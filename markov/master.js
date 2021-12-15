@@ -79,12 +79,14 @@ function loadNode(nodeLabel) {
                 value: head.node.score
             })
         }
-        for (let child in head.node.children) {
-            toCheck.push({
-                label: child,
-                parent: nodeId,
-                node: head.node.children[child]
-            });
+        if (head.node != undefined) {
+            for (let child in head.node.children) {
+                toCheck.push({
+                    label: child,
+                    parent: nodeId,
+                    node: head.node.children[child]
+                });
+            }
         }
     }
     let nodes = new vis.DataSet(nodeArr);
@@ -191,7 +193,7 @@ function createModelFromText(text, depth, k) {
     let tokens = tokenize(text);
     console.log("There are", tokens.length, "tokens");
     let chain = {};
-    for (let i = 0; i < tokens.length - depth - 1; i++) {
+    for (let i = 0; i < Math.max(1, tokens.length - depth - 1); i++) {
         let seq = tokens.slice(i, i + depth + 1);
         updateChain(chain, seq);
     }
