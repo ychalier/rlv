@@ -123,7 +123,7 @@ function toast(message, duration) {
 
 function tokenize(text) {
     let tokens = [];
-    text.toLowerCase().split(/([.,'\/#!$%\^&\*;:{}=\-_`~()\s])/m).forEach(token => {
+    text.toLowerCase().replace(/’/gi, "'").split(/([.,'\/#!$%\^&\*;:{}=\-_`~()\s])/m).forEach(token => {
         if (token.trim() != "") {
             tokens.push(token.trim());
         }
