@@ -42,7 +42,6 @@ def normalize_chain_node(node):
 
 
 def build_markov_chain(text, depth, k):
-    # chain = dict()
     tokens = [
         t for t  in map(lambda s: s.strip(), re.split(r"(\W)", text.lower()))
         if t != ""
@@ -59,64 +58,24 @@ def build_markov_chain(text, depth, k):
     print("Normalizing...")
     for token in chain:
         normalize_chain_node(chain[token])
-
-
-        
-
     return {
         "chain": chain,
         "tokens": list(set(tokens))
     }
 
 
-    # for i in range(len(tokens) - depth):
-    #     chain[tokens[i]] = explore_from_index(tokens, i, depth, k)
-
-    # for token_raw in re.split(r"(\W)", text.lower()):
-    #     token = token_raw.strip()
-    #     if token == "":
-    #         continue
-    #     if token not in chain:
-    #         chain[token] = {}
-    #         n_tokens += 1
-    #     if prev_token is not None:
-    #         chain[prev_token].setdefault(token, 0)
-    #         chain[prev_token][token] += 1
-    #         n_links += 1
-    #     prev_token = token
-    # print("Markov chain contains", n_tokens, "tokens and", n_links, "links")
-    # if k is not None:
-    #     print("Pruning...")
-    #     for token in chain:
-    #         if len(chain[token].keys()) <= k:
-    #             continue
-    #         chain[token] = {
-    #             label: value
-    #             for label, value in sorted(chain[token].items(), key=lambda x: -x[1])[:k]
-    #         }            
-    # print("Normalizing weights...")
-    # for token in chain:
-    #     total = sum(chain[token].values())
-    #     for key in chain[token]:
-    #         chain[token][key] /= total
-    # return {
-    #     "chain": chain,
-    #     "tokens": set(tokens),
-    #     "depth": depth
-    # }
-
-
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("input", type=str, help="Input text file (utf8)")
-    parser.add_argument("output", type=str, help="Output JSON file (utf8)")
+    parser.add_argument("name", type=str, help="Output name")
     parser.add_argument("-k", "--top-k", type=int, default=0, help="Pruning amount (0 means no pruning)")
     parser.add_argument("-d", "--depth", type=int, default=1, help="Co-occurrences depth (more means more context)")
     args = parser.parse_args()
     with open(args.input, "r", encoding="utf8") as file:
         text = file.read()
     chain = build_markov_chain(text, k=None if args.top_k == 0 else args.top_k, depth=args.depth)
-    with open(args.output, "w", encoding="utf8") as file:
+    output_path = "%s_%d_%d.json" % (args.name, args.depth, args.top_k)
+    with open(output_path, "w", encoding="utf8") as file:
         json.dump(chain, file)
 
 

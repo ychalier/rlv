@@ -1,7 +1,7 @@
-const MODEL_URL = "hp1.json";
 var MODEL = {};
 var NODE_INDEX = {};
 var NODE_ID_INDEX = {};
+var CURRENT_NODE = "harry";
 
 const OPTIONS = {
     layout: {
@@ -30,18 +30,26 @@ const OPTIONS = {
 };
 
 
+function fetchModel(modelUrl) {
+    console.log("Fetching model from", modelUrl);
+    document.getElementById("loader").classList.remove("hidden");
+    fetch(modelUrl).then(res => res.json()).then(loadModel);
+}
+
+
 function loadModel(data) {
     MODEL = data;
     MODEL.tokens.forEach((token, index) => {
         NODE_INDEX[token] = index;
         NODE_ID_INDEX[index] = token;
     })
-    loadNode("harry");
+    loadNode(CURRENT_NODE);
 }
 
 
 function loadNode(nodeLabel) {
     console.log("Loading node", nodeLabel);
+    CURRENT_NODE = nodeLabel;
     document.getElementById("loader").classList.remove("hidden");
     let nodeArr = [];
     let edgeArr = [];
@@ -97,16 +105,22 @@ function loadNode(nodeLabel) {
 
 
 window.addEventListener("load", () => {
-    fetch(MODEL_URL).then(res => res.json()).then(loadModel);
 
     document.getElementById("form-search").addEventListener("submit", (event) => {
         event.preventDefault();
         let token = document.querySelector("#form-search input").value.toLowerCase();
         if (token in MODEL.chain) {
+            document.querySelector("#form-search input").value = "";
             loadNode(token);
         } else {
             // TODO: snackbar
         }
-    })
+    });
+
+    document.getElementById("form-load").addEventListener("submit", (event) => {
+        event.preventDefault();
+        let modelUrl = document.querySelector("#form-load select").value;
+        fetchModel(modelUrl);
+    });
 
 });

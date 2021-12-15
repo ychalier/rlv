@@ -15,7 +15,7 @@
 
 <body class="dark noise">
 
-    <div id="loader">
+    <div id="loader" class="hidden">
         <div class="lds-dual-ring"></div>
     </div>
 
@@ -23,15 +23,36 @@
 
     <div id="commands">
 
-        <form id="form-search">
+        <form id="form-load">
             <div class="form-group">
+                <label class="form-label">Charger un modèle</label>
                 <div class="input-group">
-                    <input class="form-input" />
-                    <button class="btn">Chercher </button>
+                    <select class="form-select">
+                        <option value="models/hp1_1_5.json">hp1_1_5</option>
+                        <option value="models/hp1_1_10.json">hp1_1_10</option>
+                        <option value="models/hp1_1_20.json">hp1_1_20</option>
+                        <option value="models/hp1_1_30.json">hp1_1_30</option>
+                        <option value="models/hp1_2_5.json">hp1_2_5</option>
+                        <option value="models/hp1_2_10.json">hp1_2_10</option>
+                        <option value="models/hp1_3_5.json">hp1_3_5</option>
+                        <option value="models/hp1_3_10.json">hp1_3_10</option>
+                    </select>
+                    <button class="btn"><i class="icon icon-forward"></i></button>
                 </div>
+            </div>
         </form>
 
-        </div>
+        <form id="form-search">
+            <div class="form-group">
+                <label class="form-label">Atteindre un mot</label>
+                <div class="input-group">
+                    <input class="form-input" placeholder="il, harry, ..." />
+                    <button class="btn"><i class="icon icon-forward"></i></button>
+                </div>
+            </div>
+        </form>
+
+    </div>
 
 </body>
 
