@@ -37,17 +37,21 @@
                         <option value="models/hp1_3_5.json">hp1_3_5</option>
                         <option value="models/hp1_3_10.json">hp1_3_10</option>
                     </select>
-                    <button class="btn"><i class="icon icon-forward"></i></button>
+                    <button class="btn btn-primary btn-action"><i class="icon icon-forward"></i></button>
                 </div>
             </div>
         </form>
+
+        <div class="my-2">
+            <button class="btn" onclick="showModal('modal-create')">Générer un modèle</button>
+        </div>
 
         <form id="form-search">
             <div class="form-group">
                 <label class="form-label">Atteindre un mot</label>
                 <div class="input-group">
                     <input class="form-input" placeholder="il, harry, ..." />
-                    <button class="btn"><i class="icon icon-forward"></i></button>
+                    <button class="btn btn-primary btn-action"><i class="icon icon-forward"></i></button>
                 </div>
             </div>
         </form>
@@ -55,6 +59,34 @@
     </div>
 
     <div id="snackbar"></div>
+
+    <div id="modal-create" class="modal">
+        <span class="modal-overlay" onclick="closeModal('modal-create')"></span>
+        <div class="modal-container">
+            <form id="form-create">
+                <div class="modal-header">
+                    <div class="modal-title h5">Générer un modèle</div>
+                    <div class="modal-subtitle text-gray">Utilisez votre propre texte pour créer un modèle de chaîne de Markov</div>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="form-label" for="input-create-text">Texte</label>
+                        <textarea class="form-input" id="input-create-text"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="input-create-depth">Profondeur</label>
+                        <input class="form-input" type="number" id="input-create-depth" value="1" />
+                    <div class="form-group">
+                        <label class="form-label" for="input-create-k">Élagage</label>
+                        <input class="form-input" type="number" id="input-create-k" value="10" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary">Générer</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
 </body>
 

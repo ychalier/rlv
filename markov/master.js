@@ -118,6 +118,96 @@ function toast(message, duration) {
 }
 
 
+
+function tokenize(text) {
+    let tokens = [];
+    text.toLowerCase().split(/([.,'\/#!$%\^&\*;:{}=\-_`~()\s])/m).forEach(token => {
+        if (token.trim() != "") {
+            tokens.push(token.trim());
+        }
+    });
+    return tokens;
+}
+
+
+function updateChain(chain, seq) {
+    if (seq.length == 0) return;
+    head = seq[0];
+    tail = seq.slice(1);
+    if (!(head in chain)) {
+        chain[head] = {
+            children: {},
+            score: 0
+        };
+    }
+    chain[head].score += 1;
+    updateChain(chain[head].children, tail);
+}
+
+
+function pruneChainNode(node, k) {
+    let candidates = [];
+    for (let child in node.children) {
+        candidates.push({
+            label: child,
+            score: node.children[child].score,
+            children: node.children[child].children
+        });
+    }
+    node.children = {};
+    candidates.sort((a, b) => {
+        return a.score - b.score;
+    });
+    for (let i = 0; i < Math.min(candidates.length, k); i++) {
+        node.children[candidates[i].label] = {
+            children: candidates[i].children,
+            score: candidates[i].score
+        }
+    }
+    for (let child in node.children) {
+        pruneChainNode(node.children[child], k);
+    }
+}
+
+
+function normalizeChainNode(node) {
+    let total = 0;
+    for (let child in node.children) {
+        total += node.children[child].score;
+    }
+    if (total > 0) {
+        for (let child in node.children) {
+            node.children[child].score /= total;
+        }
+    }
+    for (let child in node.children) {
+        normalizeChainNode(node.children[child]);
+    }
+}
+
+
+function createModelFromText(text, depth, k) {
+    console.log("Creating model with depth", depth, "and k", k, "for a text of size", text.length);
+    let tokens = tokenize(text);
+    console.log("There are", tokens.length, "tokens");
+    let chain = {};
+    for (let i = 0; i < tokens.length - depth - 1; i++) {
+        let seq = tokens.slice(i, i + depth + 1);
+        updateChain(chain, seq);
+    }
+    for (let token in chain) {
+        pruneChainNode(chain[token], k);
+    }
+    for (let token in chain) {
+        normalizeChainNode(chain[token]);
+    }
+    return {
+        chain: chain,
+        tokens: Array.from(new Set(tokens))
+    }
+}
+
+
 window.addEventListener("load", () => {
 
     document.getElementById("form-search").addEventListener("submit", (event) => {
@@ -139,6 +229,16 @@ window.addEventListener("load", () => {
         event.preventDefault();
         let modelUrl = document.querySelector("#form-load select").value;
         fetchModel(modelUrl);
+    });
+
+    document.getElementById("form-create").addEventListener("submit", (event) => {
+        event.preventDefault();
+        let text = document.getElementById("input-create-text").value;
+        let depth = parseInt(document.getElementById("input-create-depth").value);
+        let k = parseInt(document.getElementById("input-create-k").value);
+        let model = createModelFromText(text, depth, k);
+        closeModal("modal-create");
+        loadModel(model);
     });
 
 });

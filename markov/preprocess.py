@@ -21,6 +21,7 @@ def prune_chain_node(node, k):
     for child in node["children"]:
         candidates.append((child, node["children"][child]["score"], node["children"][child]["children"]))
     node["children"] = {}
+    # TODO: missing sorting
     for child, score, children in candidates[:k]:
         node["children"][child] = {
             "children": children,
