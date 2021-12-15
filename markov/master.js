@@ -1,7 +1,7 @@
-var MODEL = {};
+var MODEL = null;
 var NODE_INDEX = {};
 var NODE_ID_INDEX = {};
-var CURRENT_NODE = "harry";
+var CURRENT_NODE = null;
 
 const OPTIONS = {
     layout: {
@@ -42,7 +42,10 @@ function loadModel(data) {
     MODEL.tokens.forEach((token, index) => {
         NODE_INDEX[token] = index;
         NODE_ID_INDEX[index] = token;
-    })
+    });
+    if (CURRENT_NODE == null) {
+        CURRENT_NODE = MODEL.tokens[0];
+    }
     loadNode(CURRENT_NODE);
 }
 
@@ -104,16 +107,31 @@ function loadNode(nodeLabel) {
 }
 
 
+function toast(message, duration) {
+    let snackbar = document.getElementById("snackbar");
+    snackbar.textContent = message;
+    snackbar.className = "show";
+    setTimeout(function() {
+        snackbar.classList.remove("show");
+        snackbar.textContent = "";
+    }, duration);
+}
+
+
 window.addEventListener("load", () => {
 
     document.getElementById("form-search").addEventListener("submit", (event) => {
         event.preventDefault();
-        let token = document.querySelector("#form-search input").value.toLowerCase();
-        if (token in MODEL.chain) {
-            document.querySelector("#form-search input").value = "";
-            loadNode(token);
+        if (MODEL != null) {
+            let token = document.querySelector("#form-search input").value.toLowerCase();
+            if (token in MODEL.chain) {
+                document.querySelector("#form-search input").value = "";
+                loadNode(token);
+            } else {
+                toast("Ce mot n'est pas dans le modèle 🙁", 3000);
+            }
         } else {
-            // TODO: snackbar
+            toast("Commencez par sélectionner un modèle 😊", 3000);
         }
     });
 
