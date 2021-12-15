@@ -4,21 +4,24 @@ var NODE_INDEX = {};
 var NODE_ID_INDEX = {};
 
 const OPTIONS = {
-    nodes: {
-        /*scaling: {
-            customScalingFunction: function(min, max, total, value) {
-                return value / total;
-            },
-            min: 0,
-            max: 200,
-        },*/
-    },
     layout: {
-        improvedLayout: false,
-        hierarchical: {
-            enabled: false,
-            sortMethod: "directed",
-            // edgeMinimization: true
+        improvedLayout: true,
+    },
+    edges: {
+        arrows: {
+            to: {
+                enabled: true
+            }
+        },
+        color: "hsl(231, 63%, 59%)"
+    },
+    nodes: {
+        color: {
+            border: "hsl(231, 64%, 51%)",
+            background: "hsl(231, 63%, 49%)"
+        },
+        font: {
+            color: "white"
         }
     },
     physics: {
