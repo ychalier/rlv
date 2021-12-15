@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Utiliser la grammaire comme un gabarit</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"> 
+    <style>
+
+html {
+    padding: 0;
+    margin: 0;
+}   
+ 
+body {
+    text-align: center;
+    font-family: "Noto Sans", sans-serif;
+    background: black;
+    color: white;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+}
+
+.part-top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    
+}
+
+.part-middle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 0 16px;
+}
+
+.part-bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 16px;
+}
+
+.part-top-left, .part-top-right {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+h2 {
+    text-align: left;
+    margin: 0;
+}
+
+.part-top p {
+    display: none;
+}
+
+textarea {
+    padding: 16px;
+    resize: none;
+    border: none;
+    border-radius: 4px;
+    background: white;
+    color: black;
+    min-height: 220px;
+}
+
+textarea, pre, code {
+    font-family: 'Ubuntu Mono', monospace;
+    font-size: 15px;
+}
+
+#output {
+    text-align: left;
+    padding: 16px;
+    background: white;
+    color: black;
+    border-radius: 4px;
+}
+
+p code {
+    font-size: inherit;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+}
+
+.buttons button {
+    border: 2px solid white;
+    background: black;
+    color: white;
+    padding: 16px;
+    width: 100%;
+    font: inherit;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.buttons button:hover {
+    color: black;
+    background: white;
+    
+}
+
+.buttons button:first-of-type {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-right: 1px solid white;
+}
+
+.buttons button {
+}
+
+.buttons button:last-of-type {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-left: 1px solid white;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="part-top">
+
+<div class="part-top-left">
+
+<h2>Grammaire</h2>
+
+<p>Éditez les règles ci-dessous en inscrivant vos propres gabarits grammaticaux. Une règle doit concerner une <code>phrase</code>.</p>
+
+<textarea id="grammar">phrase = sujet + verbe
+sujet = déterminant + nom</textarea>
+
+</div>
+
+<div class="part-top-right">
+
+<h2>Lexique</h2>
+
+<p>
+Éditez le lexique ci-dessous en ajoutant vos propres mots et en indiquant leur classe grammaticale.
+</p>
+
+<textarea id="lexicon">mange : verbe
+marche : verbe
+pense : verbe
+aboie : verbe
+un : déterminant
+une : déterminant
+le : déterminant
+la : déterminant
+chien : nom
+chat : nom
+voiture : nom</textarea>
+
+</div>
+
+
+
+</div>
+
+<div class="part-middle">
+
+<div class="buttons">
+
+
+<button id="empty">Effacer</button>
+<button id="reset">Exemple initial</button>
+<button id="gender">Exemple avec accord de genre</button>
+
+</div>
+
+</div>
+
+<div class="part-bottom">
+
+
+
+<h2>Résultat</h2>
+
+<pre id="output">---</pre>
+
+<div class="buttons">
+
+<button id="generate">Générer une phrase</button>
+<button id="generateTen">Générer 10 phrases</button>
+
+</div>
+
+</div>
+
+<script type="text/javascript">
+
+document.getElementById("empty").addEventListener("click", (event) => {
+    document.getElementById("grammar").value = "phrase = ";
+    document.getElementById("lexicon").value = "";
+    document.getElementById("output").innerHTML = "---";
+});
+
+document.getElementById("reset").addEventListener("click", (event) => {
+    document.getElementById("grammar").value = "phrase = sujet + verbe\nsujet = déterminant + nom";
+    document.getElementById("lexicon").value = "mange : verbe\nmarche : verbe\npense : verbe\naboie : verbe\nun : déterminant\nune : déterminant\nle : déterminant\nla : déterminant\nchien : nom\nchat : nom\nvoiture : nom";
+    document.getElementById("output").innerHTML = "---";
+});
+
+document.getElementById("gender").addEventListener("click", (event) => {
+    document.getElementById("grammar").value = "phrase = sujet + verbe\nsujet = déterminant féminin + nom féminin\nsujet = déterminant masculin + nom masculin";
+    document.getElementById("lexicon").value = "mange : verbe\nmarche : verbe\npense : verbe\naboie : verbe\nun : déterminant masculin\nune : déterminant féminin\nle : déterminant masculin\nla : déterminant féminin\nchien : nom masculin\nchat : nom masculin\nvoiture : nom féminin";
+    document.getElementById("output").innerHTML = "---";
+});
+
+function parseGrammar() {
+    let textarea = document.getElementById("grammar");
+    let raw = textarea.value;
+    let grammar = {};
+    raw.trim().split("\n").forEach((item, i) => {
+        let equalSplit = item.trim().split("=");
+        if (equalSplit.length != 2) {
+            alert("Grammaire : erreur détectée à la ligne " + (i + 1) + " : " + item);
+        }
+        else {
+            let plusSplit = equalSplit[1].trim().split("+");
+            if (plusSplit.length == 0) {
+                alert("Grammaire : erreur détectée à la ligne " + (i + 1) + " : " + item);
+            } else {
+                let rule = [];
+                plusSplit.forEach((subItem, j) => {
+                    rule.push(subItem.trim());
+                });
+                let ruleName = equalSplit[0].trim();
+                if (!(ruleName in grammar)) {
+                    grammar[ruleName] = [];
+                }
+                grammar[ruleName].push(rule);
+            }
+        }
+    });
+    return grammar;
+}
+
+
+function parseLexicon() {
+    let textarea = document.getElementById("lexicon");
+    let raw = textarea.value;
+    let lexicon = {};
+    raw.trim().split("\n").forEach((item, i) => {
+        let colonSplit = item.split(":");
+        if (colonSplit.length != 2) {
+            alert("Lexique : erreur détectée à la ligne " + (i + 1) + " : " + item);
+        } else {
+            let literal = colonSplit[0].trim();
+            let posTag = colonSplit[1].trim();
+            if (!(posTag in lexicon)) {
+               lexicon[posTag] = [];
+            }
+            lexicon[posTag].push(literal);
+        }
+    });
+    return lexicon;
+}
+
+
+
+function randomChoice(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+}
+
+
+
+function generatePosTag(grammar, lexicon, tag) {
+    if (tag in lexicon) {
+        return randomChoice(lexicon[tag]);
+    } else if (tag in grammar) {
+        // let rule = grammar[tag];
+        let rules = grammar[tag];
+        let rule = rules[Math.floor(Math.random() * rules.length)];
+        let output = "";
+        rule.forEach((item, i) => {
+            output += generatePosTag(grammar, lexicon, item) + " ";
+        });
+        return output.trim();
+    } else {
+        alert("Impossible de générer un(e) " + tag);
+        return "";
+    }
+}
+
+
+function generateSentence(grammar, lexicon) {
+    if (!("phrase" in grammar)) {
+        alert("La grammaire doit contenir une règle commençant par « phrase = »");
+        return "";
+    }
+    return generatePosTag(grammar, lexicon, "phrase");
+}
+
+
+let generateButton = document.getElementById("generate");
+generateButton.addEventListener("click", (event) => {
+    // console.log("Clicked on the generate button");
+    grammar = parseGrammar();
+    // console.log("Grammar:", grammar);
+    lexicon = parseLexicon();
+    // console.log("Lexicon:", lexicon);
+    sentence = generateSentence(grammar, lexicon);
+    document.getElementById("output").innerHTML = sentence;
+});
+
+let generateTenButton = document.getElementById("generateTen");
+generateTenButton.addEventListener("click", (event) => {
+    grammar = parseGrammar();
+    lexicon = parseLexicon();
+    let text = "";
+    for (let i = 0; i < 10; i++) {
+        text += generateSentence(grammar, lexicon) + "\n";
+    }
+    document.getElementById("output").innerHTML = text.trim();
+});
+</script>
+
+</body>
+
+</html>
