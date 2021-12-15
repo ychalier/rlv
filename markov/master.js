@@ -57,6 +57,7 @@ function loadNode(nodeLabel) {
     let nodeArr = [];
     let edgeArr = [];
     let alreadyAddedNodes = {};
+    let alreadyAddedEdges = {};
     let toCheck = [{
         label: nodeLabel,
         node: MODEL.chain[nodeLabel],
@@ -73,11 +74,17 @@ function loadNode(nodeLabel) {
             alreadyAddedNodes[nodeId] = true;
         }
         if (head.parent != null) {
-            edgeArr.push({
-                from: head.parent,
-                to: nodeId,
-                value: head.node.score
-            })
+            if (head.parent + "_" + nodeId in alreadyAddedEdges) {
+                // pass
+            } else {
+                edgeArr.push({
+                    from: head.parent,
+                    to: nodeId,
+                    value: head.node.score
+                });
+                alreadyAddedEdges[head.parent + "_" + nodeId] = true;
+            }
+
         }
         if (head.node != undefined) {
             for (let child in head.node.children) {
