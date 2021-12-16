@@ -43,7 +43,7 @@ function loadModel(data) {
         NODE_INDEX[token] = index;
         NODE_ID_INDEX[index] = token;
     });
-    if (CURRENT_NODE == null) {
+    if (CURRENT_NODE == null || !(CURRENT_NODE in MODEL.chain)) {
         CURRENT_NODE = MODEL.tokens[0];
     }
     loadNode(CURRENT_NODE);
@@ -234,19 +234,34 @@ window.addEventListener("load", () => {
         }
     });
 
-    document.getElementById("form-load").addEventListener("submit", (event) => {
+    document.getElementById("form-model-choose").addEventListener("submit", (event) => {
         event.preventDefault();
-        let modelUrl = document.querySelector("#form-load select").value;
+        let modelUrl = document.querySelector("#form-model-choose select").value;
         fetchModel(modelUrl);
+        closeModal("modal-select-model");
     });
 
-    document.getElementById("form-create").addEventListener("submit", (event) => {
+    document.getElementById("form-model-import").addEventListener("submit", (event) => {
+        event.preventDefault();
+        let file = document.querySelectorAll("#form-model-import input").files[0];
+        if (file) {
+            let fileReader = new FileReader();
+            fileReader.onload = (event) => {
+                let data = JSON.parse(event.target.result);
+                closeModal("modal-select-model");
+                loadModel(data);
+            }
+            fileReader.readAsText(file, "UTF-8");
+        }
+    });
+
+    document.getElementById("form-model-generate").addEventListener("submit", (event) => {
         event.preventDefault();
         let text = document.getElementById("input-create-text").value;
         let depth = parseInt(document.getElementById("input-create-depth").value);
         let k = parseInt(document.getElementById("input-create-k").value);
         let model = createModelFromText(text, depth, k);
-        closeModal("modal-create");
+        closeModal("modal-select-model");
         loadModel(model);
     });
 

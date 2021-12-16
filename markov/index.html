@@ -23,7 +23,7 @@
 
     <div id="commands">
 
-        <form id="form-load">
+        <!--<form id="form-load">
             <div class="form-group">
                 <label class="form-label">Charger un modèle</label>
                 <div class="input-group">
@@ -41,9 +41,10 @@
                 </div>
             </div>
         </form>
+        -->
 
         <div class="my-2">
-            <button class="btn" onclick="showModal('modal-create')">Générer un modèle</button>
+            <button class="btn" onclick="showModal('modal-select-model')">Sélectionner un modèle</button>
         </div>
 
         <form id="form-search">
@@ -60,15 +61,69 @@
 
     <div id="snackbar"></div>
 
-    <div id="modal-create" class="modal">
-        <span class="modal-overlay" onclick="closeModal('modal-create')"></span>
+    <div id="modal-select-model" class="modal">
+        <span class="modal-overlay" onclick="closeModal('modal-select-model')"></span>
         <div class="modal-container">
-            <form id="form-create">
-                <div class="modal-header">
-                    <div class="modal-title h5">Générer un modèle</div>
-                    <div class="modal-subtitle text-gray">Utilisez votre propre texte pour créer un modèle de chaîne de Markov</div>
-                </div>
-                <div class="modal-body">
+            <div class="modal-header">
+                <div class="modal-title h4">Sélectionner un modèle</div>
+                <!--<div class="modal-subtitle text-gray">Utilisez votre propre texte pour créer un modèle de chaîne de Markov</div>-->
+            </div>
+            <div class="modal-body">
+                <h5>Choisir un modèle existant</h5>
+
+                <p>
+                    Modèles construits à partir de la traduction française d'<i>Harry Potter à l'école des sorciers</i>, pour différentes valeurs de profondeur et d'élagage (pour plus de détails, voir ci-dessous).
+                </p>
+
+                <form id="form-model-choose">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <select class="form-select">
+                                <option value="models/hp1_1_5.json">HP1 (profondeur 1, élagage 5)</option>
+                                <option value="models/hp1_1_10.json">HP1 (profondeur 1, élagage 10)</option>
+                                <option value="models/hp1_1_20.json">HP1 (profondeur 1, élagage 20)</option>
+                                <option value="models/hp1_1_30.json">HP1 (profondeur 1, élagage 30)</option>
+                                <option value="models/hp1_2_5.json">HP1 (profondeur 2, élagage 5)</option>
+                                <option value="models/hp1_2_10.json">HP1 (profondeur 2, élagage 10)</option>
+                                <option value="models/hp1_3_5.json">HP1 (profondeur 3, élagage 5)</option>
+                                <option value="models/hp1_3_10.json">HP1 (profondeur 3, élagage 10)</option>
+                            </select>
+                            <button class="btn btn-primary btn-action"><i class="icon icon-forward"></i></button>
+                        </div>
+                    </div>
+                </form>
+
+                <br>
+                <div class="divider text-center" data-content="OU"></div>
+                <br>
+
+                <h5>Importer un modèle</h5>
+
+                <p>
+                    Utilisez votre propre modèle. Le fichier choisi doit suivre <a href="SCHEMA.md">un schéma précis</a>.
+                </p>
+
+                <form id="form-model-import">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input class="form-input" type="file" accept=".json" />
+                            <button class="btn btn-primary btn-action"><i class="icon icon-forward"></i></button>
+                        </div>
+                    </div>
+                </form>
+
+                <br>
+                <div class="divider text-center" data-content="OU"></div>
+                <br>
+
+                <h5>Générer un modèle</h5>
+
+                <p>
+                    Utilisez votre propre texte pour créer un modèle de chaîne de Markov.
+                </p>
+
+                <form id="form-model-generate">
+
                     <div class="form-group">
                         <label class="form-label" for="input-create-text">Texte</label>
                         <textarea class="form-input" id="input-create-text"></textarea>
@@ -76,15 +131,22 @@
                     <div class="form-group">
                         <label class="form-label" for="input-create-depth">Profondeur</label>
                         <input class="form-input" type="number" id="input-create-depth" value="1" />
+                        <p class="form-input-hint">
+                            La profondeur détermine le nombre de mots à considérer à la suite du mot <i>racine</i>. La plus petite valeur possible est 1.
+                        </p>
+                    </div>
                     <div class="form-group">
                         <label class="form-label" for="input-create-k">Élagage</label>
                         <input class="form-input" type="number" id="input-create-k" value="10" />
+                        <p class="form-input-hint">
+                            Choisir une plus petite valeur permet de simplifier grandement la chaîne obtenue, en ne gardant que les liens entre les mots se suivant le plus fréquemment. Par exemple, une valeur de 10 implique que chaque mot n'aura au maximum que 10 continuations possibles.
+                        </p>
                     </div>
-                </div>
-                <div class="modal-footer">
+
                     <button class="btn btn-primary">Générer</button>
-                </div>
-            </form>
+
+                </form>
+            </div>
         </div>
     </div>
 
