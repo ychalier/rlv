@@ -2,6 +2,8 @@ var MODEL = null;
 var NODE_INDEX = {};
 var NODE_ID_INDEX = {};
 var CURRENT_NODE = null;
+var CURRENT_PARENTS = {};
+var RECORDING = false;
 
 const OPTIONS = {
     layout: {
@@ -37,6 +39,21 @@ function fetchModel(modelUrl) {
 }
 
 
+function resetOutput() {
+    document.getElementById("output").innerHTML = "&nbsp;";
+}
+
+function appendToOutput(token) {
+    let newContent = document.getElementById("output").textContent.trim() + " " + token;
+    setOutput(newContent)
+}
+
+
+function setOutput(sentence) {
+    document.getElementById("output").innerHTML = sentence.trim().replace(/ ([',\.\-])/g, "$1").replace(/(['\-]) /g, "$1");
+}
+
+
 function loadModel(data) {
     MODEL = data;
     MODEL.tokens.forEach((token, index) => {
@@ -46,7 +63,11 @@ function loadModel(data) {
     if (CURRENT_NODE == null || !(CURRENT_NODE in MODEL.chain)) {
         CURRENT_NODE = MODEL.tokens[0];
     }
+    resetOutput();
     loadNode(CURRENT_NODE);
+    if (RECORDING) {
+        appendToOutput(CURRENT_NODE);
+    }
 }
 
 
@@ -58,6 +79,7 @@ function loadNode(nodeLabel) {
     let edgeArr = [];
     let alreadyAddedNodes = {};
     let alreadyAddedEdges = {};
+    CURRENT_PARENTS = {};
     let toCheck = [{
         label: nodeLabel,
         node: MODEL.chain[nodeLabel],
@@ -66,6 +88,9 @@ function loadNode(nodeLabel) {
     while (toCheck.length > 0) {
         let head = toCheck.pop();
         let nodeId = NODE_INDEX[head.label];
+        if (!(head.label in CURRENT_PARENTS)) {
+            CURRENT_PARENTS[head.label] = NODE_ID_INDEX[head.parent];
+        }
         if (!(nodeId in alreadyAddedNodes)) {
             nodeArr.push({
                 id: nodeId,
@@ -107,6 +132,19 @@ function loadNode(nodeLabel) {
     network.on("click", function(params) {
         if (params.nodes.length >= 1) {
             let target = NODE_ID_INDEX[params.nodes[0]];
+            if (RECORDING) {
+                let targetToCheck = target;
+                let toAppendToOutput = [];
+                let seen = {};
+                while (CURRENT_PARENTS[targetToCheck] != null && !(targetToCheck in seen)) {
+                    toAppendToOutput.push(targetToCheck);
+                    seen[targetToCheck] = true;
+                    targetToCheck = CURRENT_PARENTS[targetToCheck];
+                }
+                for (let i = toAppendToOutput.length - 1; i >= 0; i--) {
+                    appendToOutput(toAppendToOutput[i]);
+                }
+            }
             setTimeout(() => { loadNode(target) }, 100);
         }
     });
@@ -217,7 +255,70 @@ function createModelFromText(text, depth, k) {
 }
 
 
+function weighted_random(items, weights) {
+    var i;
+
+    for (i = 0; i < weights.length; i++)
+        weights[i] += weights[i - 1] || 0;
+
+    var random = Math.random() * weights[weights.length - 1];
+
+    for (i = 0; i < weights.length; i++)
+        if (weights[i] > random)
+            break;
+
+    return items[i];
+}
+
+
+function chooseChild(node) {
+    let children = Object.keys(node.children);
+    if (children.length == 0) return null;
+    let weights = [];
+    children.forEach(child => {
+        weights.push(node.children[child].score);
+    });
+    let child = weighted_random(children, weights);
+    return {
+        label: child,
+        score: node.children[child].score,
+        children: node.children[child].children
+    }
+}
+
+
+function generate() {
+    if (CURRENT_NODE == null) return;
+    let cur = {
+        label: CURRENT_NODE,
+        score: 1,
+        children: MODEL.chain[CURRENT_NODE].children
+    };
+    let sentence = "";
+    let over = false;
+    while (!over) {
+        while (!over) {
+            let child = chooseChild(cur);
+            if (child == null) {
+                cur.children = MODEL.chain[cur.label].children;
+                break;
+            } else {
+                sentence += " " + cur.label;
+                if (cur.label == "." || cur.label == "?" || cur.label == "!") {
+                    over = true;
+                    break;
+                }
+                cur = child;
+            }
+        }
+    }
+    return sentence.trim();
+}
+
+
 window.addEventListener("load", () => {
+
+    RECORDING = document.getElementById("input-record").checked;
 
     document.getElementById("form-search").addEventListener("submit", (event) => {
         event.preventDefault();
@@ -225,7 +326,11 @@ window.addEventListener("load", () => {
             let token = document.querySelector("#form-search input").value.toLowerCase();
             if (token in MODEL.chain) {
                 document.querySelector("#form-search input").value = "";
+                resetOutput();
                 loadNode(token);
+                if (RECORDING) {
+                    appendToOutput(token);
+                }
             } else {
                 toast("Ce mot n'est pas dans le modèle 🙁", 3000);
             }
@@ -264,5 +369,39 @@ window.addEventListener("load", () => {
         closeModal("modal-select-model");
         loadModel(model);
     });
+
+    document.getElementById("input-record").addEventListener("input", (event) => {
+        if (event.target.checked) {
+            RECORDING = true;
+            resetOutput();
+            if (CURRENT_NODE != null) {
+                appendToOutput(CURRENT_NODE);
+            }
+        } else {
+            RECORDING = false;
+        }
+    });
+
+    document.getElementById("btn-generate").addEventListener("click", () => {
+        if (MODEL != null) {
+            let sentence = generate();
+            setOutput(sentence);
+        } else {
+            toast("Commencez par sélectionner un modèle 😊", 3000);
+        }
+    });
+
+    document.getElementById("btn-generate-10").addEventListener("click", () => {
+        if (MODEL != null) {
+            let text = "";
+            for (let i = 0; i < 10; i++) {
+                let sentence = generate();
+                text += sentence + "<br><br>";
+            }
+            setOutput(text.trim());
+        } else {
+            toast("Commencez par sélectionner un modèle 😊", 3000);
+        }
+    })
 
 });

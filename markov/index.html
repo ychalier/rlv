@@ -23,26 +23,6 @@
 
     <div id="commands">
 
-        <!--<form id="form-load">
-            <div class="form-group">
-                <label class="form-label">Charger un modèle</label>
-                <div class="input-group">
-                    <select class="form-select">
-                        <option value="models/hp1_1_5.json">hp1_1_5</option>
-                        <option value="models/hp1_1_10.json">hp1_1_10</option>
-                        <option value="models/hp1_1_20.json">hp1_1_20</option>
-                        <option value="models/hp1_1_30.json">hp1_1_30</option>
-                        <option value="models/hp1_2_5.json">hp1_2_5</option>
-                        <option value="models/hp1_2_10.json">hp1_2_10</option>
-                        <option value="models/hp1_3_5.json">hp1_3_5</option>
-                        <option value="models/hp1_3_10.json">hp1_3_10</option>
-                    </select>
-                    <button class="btn btn-primary btn-action"><i class="icon icon-forward"></i></button>
-                </div>
-            </div>
-        </form>
-        -->
-
         <div class="my-2">
             <button class="btn" onclick="showModal('modal-select-model')">Sélectionner un modèle</button>
         </div>
@@ -57,6 +37,25 @@
             </div>
         </form>
 
+        <div class="my-2 card" style="max-width: 30em;">
+            <div class="card-header">
+                <div class="card-title h5">Texte généré</div>
+            </div>
+            <div class="card-body">
+                <div><span class="label p-2" id="output">&nbsp;</span></div>
+                <div class="form-group">
+                    <label class="form-switch">
+                    <input type="checkbox" id="input-record">
+                    <i class="form-icon"></i> Enregistrer
+                    </label>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button class="btn" id="btn-generate">Générer</button>
+                <button class="btn" id="btn-generate-10">Générer 10</button>
+            </div>
+        </div>
+
     </div>
 
     <div id="snackbar"></div>
@@ -66,7 +65,6 @@
         <div class="modal-container">
             <div class="modal-header">
                 <div class="modal-title h4">Sélectionner un modèle</div>
-                <!--<div class="modal-subtitle text-gray">Utilisez votre propre texte pour créer un modèle de chaîne de Markov</div>-->
             </div>
             <div class="modal-body">
                 <h5>Choisir un modèle existant</h5>
