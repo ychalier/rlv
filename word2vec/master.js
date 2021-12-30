@@ -10,10 +10,15 @@ Chart.plugins.register(ChartDataLabels);
 
 async function vectorize(word, callback) {
     let request = new XMLHttpRequest();
-    request.open("GET", "http://localhost:8000/" + word, true);
+    request.open("GET", "http://localhost:8000/vect?word=" + word, true);
     request.onreadystatechange = function() {
         if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-            callback(math.matrix(JSON.parse(this.responseText).vect));
+            let data = JSON.parse(this.responseText);
+            if (data.success) {
+                callback(math.matrix(data.vector));
+            } else {
+                console.log("Vector not found");
+            }
         }
     }
     request.send(null);
@@ -35,10 +40,6 @@ async function setAxes() {
     });
     chart.data.datasets[0].data = [];
     chart.update();
-    // addWord(document.querySelector("#axis-x input[name='from']").value);
-    // addWord(document.querySelector("#axis-x input[name='to']").value);
-    // addWord(document.querySelector("#axis-y input[name='from']").value);
-    // addWord(document.querySelector("#axis-y input[name='to']").value);
     cache.forEach((word) => {
         addWord(word);
     });
