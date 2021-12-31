@@ -58,7 +58,8 @@ class Reasoner:
                     for slot in self.config["slots"][day]
                 }
                 for day in self.config["slots"]
-            }
+            },
+            "infeasible_reasons": []
         }
         for key, var in self.variables.items():
             if key[0] != VariableType.SPAN:
@@ -66,6 +67,7 @@ class Reasoner:
             day, slot, post, agent = key[1:]
             if var.value() == 1:
                 solution["schedule"][day][slot][post] = agent
+        solution["infeasible_reasons"] = self._identify_infeasable()
         if debug:
             with open("debug.tsv", "w", encoding="utf8") as file:
                 file.write("vartype\tkey\tvaridx\tvalue\n")
@@ -77,6 +79,51 @@ class Reasoner:
                         variable.value()
                     ))
         return solution
+
+    def _identify_infeasable(self):
+        reasons = []
+        for day in self.config["slots"]:
+            for slot in self.config["slots"][day]:
+                number_of_posts_to_fill = 0
+                for post in self.config["posts"]:
+                    if (day, slot) in self.config["constraints"]["posts"].get(post, []):
+                        continue
+                    number_of_available_agents = 0
+                    for agent in self.config["agents"]:
+                        if agent in self.config["constraints"]["postsAttributions"].get(post, []):
+                            # The agent can not go to this post
+                            continue
+                        agent_is_present = True
+                        for absence in self.config["constraints"]["agentsAbsence"].get(agent, []):
+                            if absence[0] == day and absence[1] == slot:
+                                agent_is_present = False
+                                break
+                        if agent_is_present:
+                            number_of_available_agents += 1
+                    if number_of_available_agents == 0:
+                        reasons.append("%s %s : aucun agent attribué pour le poste %s" % (
+                            day,
+                            slot,
+                            post
+                        ))
+                    number_of_posts_to_fill += 1
+                number_of_available_agents = 0
+                for agent in self.config["agents"]:
+                    agent_is_present = True
+                    for absence in self.config["constraints"]["agentsAbsence"].get(agent, []):
+                        if absence[0] == day and absence[1] == slot:
+                            agent_is_present = False
+                            break
+                    if agent_is_present:
+                        number_of_available_agents += 1
+                if number_of_available_agents < number_of_posts_to_fill:
+                    reasons.append("%s %s : seulement %d agent(s) disponible(s) pour %d poste(s)" % (
+                        day,
+                        slot,
+                        number_of_available_agents,
+                        number_of_posts_to_fill
+                    ))
+        return reasons
     
     def _preprocess_config(self):
         # Pre-processing the config

@@ -519,7 +519,7 @@ function generate() {
                         if (data.solution.feasible) {
                             loadSolution(data.solution.schedule);
                         } else {
-                            alert("Les contraintes sont trop fortes : aucune solution n'a été trouvée. Essayez d'assouplir quelques contraintes et recommencez.");
+                            alert("Les contraintes sont trop fortes : aucune solution n'a été trouvée. Essayez d'assouplir quelques contraintes et recommencez.\n\n" + data.solution.infeasible_reasons.join("\n"));
                         }
                         clearInterval(interval);
                         document.getElementById("modal-loading").classList.remove("active");
