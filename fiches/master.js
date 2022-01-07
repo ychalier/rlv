@@ -3,16 +3,6 @@ var DATASET = [];
 var MASONRY = null;
 
 
-function addBools(...x) {
-    if (x.length == 0) {
-        return 0;
-    } else {
-        let y = x.pop();
-        return addBools(...x) + (y ? 1 : 0);
-    }
-}
-
-
 function search() {
     let query = normalize(document.getElementById("input-search").value);
     // let tokens = query.split(" ");
@@ -99,17 +89,6 @@ function safeSpace(string) {
     x = x.replace(/(\w)([:\?!])/gm, `$1 $2`); // Insert space befoure some punct
     return x;
 }
-
-
-const shuffleArray = array => {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        const temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-    }
-}
-
 
 
 function inflateList(data) {
