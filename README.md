@@ -7,6 +7,7 @@ Dépôt regroupant les différents projets de développement créés et utilisé
 Projet | Description
 ------ | ------------
 [couverture-territoire](couverture-territoire/) | Recherche d'une couverture optimale d'un ensemble de lieux
+[crosswords](crosswords) | Générateur de mots croisés
 [fiches](fiches/) | Index de fiches ressources pour le numérique
 [light-orchestra](light-orchestra/) | Orchestre de lumière joué par des ordinateurs
 [lightning](lightning/) | Algorithme de simulation de la foudre
