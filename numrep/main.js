@@ -211,19 +211,29 @@ function inflatePlan(plan) {
 }
 
 
+function submitForm() {
+    let value = parseFloat(document.getElementById("input-target").value);
+    if (isNaN(value)) {
+        toast("Je n'arrive pas à comprendre cette valeur 😞", 3000);
+    } else {
+        let plan = generatePlan(BigInt(value));
+        if (plan == null || plan == undefined) {
+            toast("Je n'arrive pas à trouver de solution convenable 😥", 3000);
+        } else {
+            inflatePlan(plan);
+        }
+    }
+}
+
+
 window.addEventListener("load", () => {
     document.getElementById("form-target").addEventListener("submit", (event) => {
         event.preventDefault();
-        let value = parseFloat(document.getElementById("input-target").value);
-        if (isNaN(value)) {
-            toast("Je n'arrive pas à comprendre cette valeur 😞", 3000);
-        } else {
-            let plan = generatePlan(BigInt(value));
-            if (plan == null || plan == undefined) {
-                toast("Je n'arrive pas à trouver de solution convenable 😥", 3000);
-            } else {
-                inflatePlan(plan);
-            }
-        }
+        submitForm();
     });
+    let params = new URLSearchParams(window.location.search);
+    if (params.has("n")) {
+        document.getElementById("input-target").value = params.get("n");
+        submitForm();
+    }
 });
