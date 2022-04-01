@@ -70,6 +70,9 @@
                 <a class="btn dropdown-toggle" tabindex="0">Objectifs</a>
                 <ul class="menu">
                     <li class="menu-item">
+                        <a class="btn btn-link" onclick="showModal('modal-objectives-preferences');">Préférences</a>
+                    </li>
+                    <li class="menu-item">
                         <a class="btn btn-link" onclick="showModal('modal-params-objectives');">Poids</a>
                     </li>
                     <li class="menu-item">
@@ -252,6 +255,17 @@
                         en récompense.
                     </p>
                 </div>
+                <div class="form-group">
+                    <label class="form-label" for="input-objectives-preferencesWeight">Importance des préférences</label>
+                    <input class="form-input" id="input-objectives-preferencesWeight" type="number" />
+                    <p class="form-input-hint">
+                        Plus la valeur renseignée est haute, plus cet objectif sera important relativement aux autres.
+                        <br> Une valeur de <strong>zéro</strong> fera que toutes les préférences (positives comme négatives) seront ignorées.
+                        <br> Une valeur de <strong>un</strong> permet de les prendre en compte.
+                        <br>Avec une valeur supérieur à <strong><u class="tooltip" data-tooltip="Variable selon la configuration">2000</u></strong> fera que certaines préférences pourront prendre le pas sur les objectifs précédents (par exemple, ne plus
+                        respecter l'harmonisation des heures).
+                    </p>
+                </div>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-primary" onclick="loadConfigFromModals();closeModal('modal-params-objectives');">Enregistrer</button>
@@ -387,6 +401,24 @@
             <div class="modal-footer">
                 <button class="btn btn-primary" onclick="loadConfigFromModals();closeModal('modal-constraints-attributions');">Enregistrer</button>
                 <button class="btn" onclick="closeModal('modal-constraints-attributions');">Annuler</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal modal-xl" id="modal-objectives-preferences">
+        <a class="modal-overlay" aria-label="Close" onclick="closeModal('modal-objectives-preferences');"></a>
+        <div class="modal-container">
+            <div class="modal-header">
+                <a class="btn btn-clear float-right" aria-label="Close" onclick="closeModal('modal-objectives-preferences');"></a>
+                <div class="modal-title h5">Préférences des agents</div>
+                <div class="modal-subtitle text-gray">Choisir des valeurs entre -1 (préférence négative) et +1 (préférence positive).</div>
+            </div>
+            <div class="modal-body">
+                <table class="table table-hover table-condensed table-firstrow" id="table-objectives-preferences"></table>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="loadConfigFromModals();closeModal('modal-objectives-preferences');">Enregistrer</button>
+                <button class="btn" onclick="closeModal('modal-objectives-preferences');">Annuler</button>
             </div>
         </div>
     </div>

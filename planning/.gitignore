@@ -3,3 +3,4 @@ debug.tsv
 solver.log
 *.egg-info
 dist
+erreurs.txt

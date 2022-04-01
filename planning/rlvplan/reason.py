@@ -3,6 +3,7 @@ import enum
 import json
 import os
 
+import time
 
 import rlvplan
 
@@ -43,6 +44,7 @@ class Reasoner:
         self._add_objective_twiceinrow_samepost()
         # self._add_objective_quotas_abs()
         self._add_objective_quotas_quad()
+        self._add_objective_preferences()
     
     def solve(self, debug=False):
         solver = pulp.PULP_CBC_CMD(timeLimit=20, logPath="solver.log")
@@ -61,6 +63,12 @@ class Reasoner:
             },
             "infeasible_reasons": []
         }
+
+        if result != 1:
+            for constraint in self.model.constraints.values():
+                if not constraint.valid(0):
+                    print(constraint.name)
+
         for key, var in self.variables.items():
             if key[0] != VariableType.SPAN:
                 continue
@@ -146,6 +154,7 @@ class Reasoner:
     def _add_constraints_fill(self):
         # All spans must contain exactly one agent.
         # An agent can not be in two different places at the same time.
+        cid = 0
         for day in self.config["slots"]:
             for slot in self.config["slots"][day]:
                 for post in self.config["posts"]:
@@ -156,14 +165,16 @@ class Reasoner:
                         for agent in self.config["agents"]
                         if (VariableType.SPAN, day, slot, post, agent) in self.variables
                     ])
-                    self.model.addConstraint(pulp.LpConstraint(e, rhs=1))
+                    cid += 1
+                    self.model.addConstraint(pulp.LpConstraint(e, rhs=1, name="fill-post-%s-%s-%s-%d" % (day, slot, post, cid)))
                 for agent in self.config["agents"]:
                     e = sum([
                         self.variables[(VariableType.SPAN, day, slot, post, agent)]
                         for post in self.config["posts"]
                         if (VariableType.SPAN, day, slot, post, agent) in self.variables
                     ])
-                    self.model.addConstraint(pulp.LpConstraint(e, sense=pulp.const.LpConstraintLE, rhs=1))
+                    cid += 1
+                    self.model.addConstraint(pulp.LpConstraint(e, sense=pulp.const.LpConstraintLE, rhs=1, name="fill-agent-%s-%s-%s-%d" % (day, slot, agent, cid)))
     
     def _add_constraints_absences(self):
         for agent in self.config["constraints"]["agentsAbsence"]:
@@ -205,6 +216,16 @@ class Reasoner:
                 sense=pulp.const.LpConstraintLE,
                 rhs=float(self.config["constraints"]["limits"][agent])
             ))
+
+    def _add_objective_preferences(self):
+        for day in self.config["slots"]:
+            for slot in self.config["slots"][day]:
+                for agent in self.config["agents"]:
+                    for post in self.config["posts"]:
+                        key = (VariableType.SPAN, day, slot, post, agent)
+                        if key in self.variables:
+                            variable = self.variables[key]
+                            self.model.objective += variable * (-self.config["objectives"]["preferences"].get(day, {}).get(slot, {}).get(agent, 0)) * self.config["objectives"].get("preferencesWeight", 0)
     
     def _add_objective_twiceinrow(self):
         # If possible, try not to do two spans in a row.

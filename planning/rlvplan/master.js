@@ -3,9 +3,11 @@ const DEFAULT_CONFIG = {
     slots: {},
     agents: [],
     objectives: {
-        avoidTwiceInARow: null,
-        standardizeWeeklyTotal: null,
-        refTimes: {}
+        avoidTwiceInARow: 1,
+        standardizeWeeklyTotal: 1,
+        preferencesWeight: 0,
+        refTimes: {},
+        preferences: {},
     },
     constraints: {
         posts: {},
@@ -44,6 +46,7 @@ function inflateModals() {
     document.getElementById("input-params-agents").value = CURRENT_CONFIG.agents.join("\n");
     document.getElementById("input-objectives-avoidTwiceInARow").value = CURRENT_CONFIG.objectives.avoidTwiceInARow;
     document.getElementById("input-objectives-standardizeWeeklyTotal").value = CURRENT_CONFIG.objectives.standardizeWeeklyTotal;
+    document.getElementById("input-objectives-preferencesWeight").value = CURRENT_CONFIG.objectives.preferencesWeight;
 
     inflateTableSchedule("table-constraints-posts", (td, day, slot, post) => {
         td.classList.add("schedule-cell");
@@ -69,6 +72,7 @@ function inflateModals() {
     });
 
     inflateTableConstraintsAbsences();
+    inflateTableObjectivesPreferences();
     inflateTableConstraintsAttributions();
     inflateTableObjectivesQuotas();
     inflateTableConstraintsLimits();
@@ -273,8 +277,117 @@ function inflateTableConstraintsAbsences() {
 }
 
 
+function inflateTableObjectivesPreferences() {
+    let table = document.getElementById("table-objectives-preferences");
+    table.innerHTML = "";
+    let tHead = document.createElement("thead");
+    let tHeadTr = document.createElement("tr");
+    tHeadTr.innerHTML = "<th></th><th></th>";
+    CURRENT_CONFIG.agents.forEach(agent => {
+        let th = document.createElement("th");
+        th.textContent = agent;
+        tHeadTr.appendChild(th);
+    });
+    tHead.appendChild(tHeadTr);
+    table.appendChild(tHead);
+    let tBody = document.createElement("tbody");
+    for (let day in CURRENT_CONFIG.slots) {
+        for (let i = 0; i < CURRENT_CONFIG.slots[day].length; i++) {
+            let tr = document.createElement("tr");
+            if (i == 0) {
+                tr.classList.add("schedule-table-dayrow");
+                let tdDay = document.createElement("td");
+                tdDay.textContent = day;
+                tdDay.classList.add("td-day");
+                tdDay.setAttribute("rowspan", CURRENT_CONFIG.slots[day].length);
+                tr.appendChild(tdDay);
+            }
+            let tdSlot = document.createElement("td");
+            tdSlot.classList.add("td-slot");
+            tdSlot.textContent = CURRENT_CONFIG.slots[day][i];
+            tr.appendChild(tdSlot);
+            CURRENT_CONFIG.agents.forEach(agent => {
+                let tdAgent = document.createElement("td");
+                let input = document.createElement("input");
+                input.type = "number";
+                input.max = 1;
+                input.min = -1;
+                input.value = 0;
+                input.classList = "form-input";
+                input.style.minWidth = "50px";
+                tdAgent.appendChild(input);
+                tdAgent.classList.add("schedule-cell");
+
+                input.addEventListener("input", () => {
+                    if (input.value == 0) {
+                        tdAgent.classList.remove("bg-success");
+                        tdAgent.classList.remove("bg-error");
+                        input.classList.remove("is-success");
+                        input.classList.remove("is-error");
+                    } else if (input.value > 0) {
+                        tdAgent.classList.add("bg-success");
+                        tdAgent.classList.remove("bg-error");
+                        input.classList.add("is-success");
+                        input.classList.remove("is-error");
+                    } else if (input.value < 0) {
+                        tdAgent.classList.remove("bg-success");
+                        tdAgent.classList.add("bg-error");
+                        input.classList.remove("is-success");
+                        input.classList.add("is-error");
+                    }
+                });
+
+                let slot = CURRENT_CONFIG.slots[day][i];
+                if (day in CURRENT_CONFIG.objectives.preferences &&
+                    slot in CURRENT_CONFIG.objectives.preferences[day] &&
+                    agent in CURRENT_CONFIG.objectives.preferences[day][slot]) {
+                    input.value = CURRENT_CONFIG.objectives.preferences[day][slot][agent];
+                    if (CURRENT_CONFIG.objectives.preferences[day][slot][agent] == 0) {
+                        tdAgent.classList.remove("bg-success");
+                        tdAgent.classList.remove("bg-error");
+                        input.classList.remove("is-success");
+                        input.classList.remove("is-error");
+                    } else if (CURRENT_CONFIG.objectives.preferences[day][slot][agent] > 0) {
+                        tdAgent.classList.add("bg-success");
+                        tdAgent.classList.remove("bg-error");
+                        input.classList.add("is-success");
+                        input.classList.remove("is-error");
+                    } else if (CURRENT_CONFIG.objectives.preferences[day][slot][agent] < 0) {
+                        tdAgent.classList.remove("bg-success");
+                        tdAgent.classList.add("bg-error");
+                        input.classList.remove("is-success");
+                        input.classList.add("is-error");
+                    }
+                }
+
+                tr.appendChild(tdAgent);
+            });
+            tBody.appendChild(tr);
+        }
+    }
+    table.appendChild(tBody);
+}
+
+
 function iterateTableConstraintsAbsences(cellCallback) {
     let table = document.getElementById("table-constraints-absences");
+    let currentDay = null;
+    table.querySelectorAll("tbody tr").forEach(tr => {
+        let tds = Array.prototype.slice.call(tr.querySelectorAll("td"));
+        if (tds.length == CURRENT_CONFIG.agents.length + 2) {
+            currentDay = tds[0].textContent;
+            tds.shift();
+        }
+        let slot = tds[0].textContent;
+        tds.shift();
+        for (let i = 0; i < tds.length; i++) {
+            cellCallback(tds[i], currentDay, slot, CURRENT_CONFIG.agents[i]);
+        }
+    });
+}
+
+function iterateTableObjectivesPreferences(cellCallback) {
+    let table = document.getElementById("table-objectives-preferences");
     let currentDay = null;
     table.querySelectorAll("tbody tr").forEach(tr => {
         let tds = Array.prototype.slice.call(tr.querySelectorAll("td"));
@@ -589,6 +702,7 @@ function loadConfigFromModals() {
     // PARAMS OBJECTIVES
     config.objectives.avoidTwiceInARow = parseInt(document.getElementById("input-objectives-avoidTwiceInARow").value);
     config.objectives.standardizeWeeklyTotal = parseInt(document.getElementById("input-objectives-standardizeWeeklyTotal").value);
+    config.objectives.preferencesWeight = parseFloat(document.getElementById("input-objectives-preferencesWeight").value);
 
     // OBJECTIVES QUOTAS
     document.querySelectorAll("#table-objectives-quotas input").forEach(input => {
@@ -630,7 +744,20 @@ function loadConfigFromModals() {
             }
             config.constraints.postsAttributions[post].push(agent);
         }
-    })
+    });
+
+    // OBJECTIVES PREFERENCES
+    iterateTableObjectivesPreferences((td, day, slot, agent) => {
+        console.log("Hello");
+        let input = td.querySelector("input");
+        if (!(day in config.objectives.preferences)) {
+            config.objectives.preferences[day] = {};
+        }
+        if (!(slot in config.objectives.preferences[day])) {
+            config.objectives.preferences[day][slot] = {};
+        }
+        config.objectives.preferences[day][slot][agent] = parseFloat(input.value);
+    });
 
     if (error != null) {
         alert(error);
