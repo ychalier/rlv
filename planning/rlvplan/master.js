@@ -5,9 +5,11 @@ const DEFAULT_CONFIG = {
     objectives: {
         avoidTwiceInARow: 1,
         standardizeWeeklyTotal: 1,
-        preferencesWeight: 0,
+        preferencesWeight: 1,
+        modelWeight: 1,
         refTimes: {},
         preferences: {},
+        model: {},
     },
     constraints: {
         posts: {},
@@ -47,6 +49,7 @@ function inflateModals() {
     document.getElementById("input-objectives-avoidTwiceInARow").value = CURRENT_CONFIG.objectives.avoidTwiceInARow;
     document.getElementById("input-objectives-standardizeWeeklyTotal").value = CURRENT_CONFIG.objectives.standardizeWeeklyTotal;
     document.getElementById("input-objectives-preferencesWeight").value = CURRENT_CONFIG.objectives.preferencesWeight;
+    document.getElementById("input-objectives-modelWeight").value = CURRENT_CONFIG.objectives.modelWeight;
 
     inflateTableSchedule("table-constraints-posts", (td, day, slot, post) => {
         td.classList.add("schedule-cell");
@@ -76,6 +79,7 @@ function inflateModals() {
     inflateTableConstraintsAttributions();
     inflateTableObjectivesQuotas();
     inflateTableConstraintsLimits();
+    inflateTableObjectivesModel();
 
 }
 
@@ -277,6 +281,79 @@ function inflateTableConstraintsAbsences() {
 }
 
 
+function inflateTableObjectivesModel() {
+    let table = document.getElementById("table-objectives-model");
+    table.innerHTML = "";
+    let tHead = document.createElement("thead");
+    let tHeadTr = document.createElement("tr");
+    tHeadTr.innerHTML = "<th></th><th></th>";
+    CURRENT_CONFIG.posts.forEach(post => {
+        let th = document.createElement("th");
+        th.textContent = post;
+        tHeadTr.appendChild(th);
+    });
+    tHead.appendChild(tHeadTr);
+    table.appendChild(tHead);
+    let tBody = document.createElement("tbody");
+    for (let day in CURRENT_CONFIG.slots) {
+        for (let i = 0; i < CURRENT_CONFIG.slots[day].length; i++) {
+            let tr = document.createElement("tr");
+            if (i == 0) {
+                tr.classList.add("schedule-table-dayrow");
+                let tdDay = document.createElement("td");
+                tdDay.textContent = day;
+                tdDay.classList.add("td-day");
+                tdDay.setAttribute("rowspan", CURRENT_CONFIG.slots[day].length);
+                tr.appendChild(tdDay);
+            }
+            let tdSlot = document.createElement("td");
+            tdSlot.classList.add("td-slot");
+            tdSlot.textContent = CURRENT_CONFIG.slots[day][i];
+            tr.appendChild(tdSlot);
+            CURRENT_CONFIG.posts.forEach(post => {
+                let tdPost = document.createElement("td");
+                let select = document.createElement("select");
+                select.classList.add("form-select");
+
+                let defaultOption = document.createElement("option");
+                defaultOption.value = "";
+                defaultOption.textContent = "—";
+                defaultOption.setAttribute("selected", true);
+                select.appendChild(defaultOption);
+
+                CURRENT_CONFIG.agents.forEach(agent => {
+                    let option = document.createElement("option");
+                    option.value = agent;
+                    option.textContent = agent;
+                    select.appendChild(option);
+                });
+
+                if (CURRENT_CONFIG.objectives.model &&
+                    (day in CURRENT_CONFIG.objectives.model) &&
+                    (CURRENT_CONFIG.slots[day][i] in CURRENT_CONFIG.objectives.model[day] &&
+                        (post in CURRENT_CONFIG.objectives.model[day][CURRENT_CONFIG.slots[day][i]]))) {
+
+                    let modelAgent = CURRENT_CONFIG.objectives.model[day][CURRENT_CONFIG.slots[day][i]][post];
+                    CURRENT_CONFIG.agents.forEach((agent, i) => {
+                        if (agent == modelAgent) {
+                            defaultOption.removeAttribute("selected");
+                            select.options[i + 1].setAttribute("selected", true);
+                        }
+                    })
+
+
+                }
+
+                tdPost.appendChild(select);
+                tr.appendChild(tdPost);
+            });
+            tBody.appendChild(tr);
+        }
+    }
+    table.appendChild(tBody);
+}
+
+
 function inflateTableObjectivesPreferences() {
     let table = document.getElementById("table-objectives-preferences");
     table.innerHTML = "";
@@ -399,6 +476,23 @@ function iterateTableObjectivesPreferences(cellCallback) {
         tds.shift();
         for (let i = 0; i < tds.length; i++) {
             cellCallback(tds[i], currentDay, slot, CURRENT_CONFIG.agents[i]);
+        }
+    });
+}
+
+function iterateTableObjectivesModel(cellCallback) {
+    let table = document.getElementById("table-objectives-model");
+    let currentDay = null;
+    table.querySelectorAll("tbody tr").forEach(tr => {
+        let tds = Array.prototype.slice.call(tr.querySelectorAll("td"));
+        if (tds.length == CURRENT_CONFIG.posts.length + 2) {
+            currentDay = tds[0].textContent;
+            tds.shift();
+        }
+        let slot = tds[0].textContent;
+        tds.shift();
+        for (let i = 0; i < tds.length; i++) {
+            cellCallback(tds[i], currentDay, slot, CURRENT_CONFIG.posts[i]);
         }
     });
 }
@@ -703,6 +797,7 @@ function loadConfigFromModals() {
     config.objectives.avoidTwiceInARow = parseInt(document.getElementById("input-objectives-avoidTwiceInARow").value);
     config.objectives.standardizeWeeklyTotal = parseInt(document.getElementById("input-objectives-standardizeWeeklyTotal").value);
     config.objectives.preferencesWeight = parseFloat(document.getElementById("input-objectives-preferencesWeight").value);
+    config.objectives.modelWeight = parseFloat(document.getElementById("input-objectives-modelWeight").value);
 
     // OBJECTIVES QUOTAS
     document.querySelectorAll("#table-objectives-quotas input").forEach(input => {
@@ -748,7 +843,6 @@ function loadConfigFromModals() {
 
     // OBJECTIVES PREFERENCES
     iterateTableObjectivesPreferences((td, day, slot, agent) => {
-        console.log("Hello");
         let input = td.querySelector("input");
         if (!(day in config.objectives.preferences)) {
             config.objectives.preferences[day] = {};
@@ -757,6 +851,21 @@ function loadConfigFromModals() {
             config.objectives.preferences[day][slot] = {};
         }
         config.objectives.preferences[day][slot][agent] = parseFloat(input.value);
+    });
+
+    // OBJECTIVE MODEL
+    iterateTableObjectivesModel((td, day, slot, post) => {
+        let select = td.querySelector("select");
+        let optionValue = select.options[select.selectedIndex].value;
+        if (optionValue != "") {
+            if (!(day in config.objectives.model)) {
+                config.objectives.model[day] = {};
+            }
+            if (!(slot in config.objectives.model[day])) {
+                config.objectives.model[day][slot] = {};
+            }
+            config.objectives.model[day][slot][post] = optionValue;
+        }
     });
 
     if (error != null) {

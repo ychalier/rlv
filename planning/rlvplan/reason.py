@@ -45,6 +45,7 @@ class Reasoner:
         # self._add_objective_quotas_abs()
         self._add_objective_quotas_quad()
         self._add_objective_preferences()
+        self._add_objective_model()
     
     def solve(self, debug=False):
         solver = pulp.PULP_CBC_CMD(timeLimit=20, logPath="solver.log")
@@ -227,6 +228,16 @@ class Reasoner:
                             variable = self.variables[key]
                             self.model.objective += variable * (-self.config["objectives"]["preferences"].get(day, {}).get(slot, {}).get(agent, 0)) * self.config["objectives"].get("preferencesWeight", 0)
     
+    def _add_objective_model(self):
+        for day in self.config["objectives"]["model"]:
+            for slot in self.config["objectives"]["model"][day]:
+                for post in self.config["objectives"]["model"][day][slot]:
+                    agent = self.config["objectives"]["model"][day][slot][post]
+                    key = (VariableType.SPAN, day, slot, post, agent)
+                    if key in self.variables:
+                        variable = self.variables[key]
+                        self.model.objective += variable * (-self.config["objectives"].get("modelWeight", 0))
+
     def _add_objective_twiceinrow(self):
         # If possible, try not to do two spans in a row.
         if self.config["objectives"].get("avoidTwiceInARow", 0) <= 0:
