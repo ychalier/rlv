@@ -194,6 +194,12 @@ function filterEvents(allEvents, filterLabel) {
 }
 
 
+function getMonthLabel(event) {
+    const MONTHS = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"];
+    return `${MONTHS[event.startDate.month - 1]} ${event.startDate.year}`;
+}
+
+
 function setupCalendarEl(calendarEl) {
     let iCalendarSource = calendarEl.getAttribute("src");
     console.log("Fetching iCalendar data from", iCalendarSource);
@@ -231,7 +237,15 @@ function setupCalendarEl(calendarEl) {
         calendarEl.innerHTML = "";
         setupFilters(calendarEl);
         calendarEl.appendChild(document.createElement("br"));
+        let previousMonth = null;
         allEvents.forEach(event => {
+            let monthLabel = getMonthLabel(event);
+            if (monthLabel != previousMonth) {
+                let monthDivider = document.createElement("h3");
+                monthDivider.textContent = monthLabel;
+                calendarEl.appendChild(monthDivider);
+                previousMonth = monthLabel;
+            }
             setupEvent(calendarEl, event);
         });
         applyDefaultFilters();
