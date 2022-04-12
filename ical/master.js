@@ -108,7 +108,16 @@ function setupEvent(calendarEl, event) {
     let summary = document.createElement("summary");
     summary.style.margin = "-.2em 0 .4em 0";
     tileSubtitle.appendChild(summary);
-    summary.innerHTML = `<span class="label">${event.startDate.hour.toString().padStart(2, "0")}h${event.startDate.minute > 0 ? event.startDate.minute.toString().padStart(2, "0") : ""} – ${event.endDate.hour.toString().padStart(2, "0")}h${event.endDate.minute > 0 ? event.endDate.minute.toString().padStart(2, "0") : ""}</span>${event.location ? " <small>" + event.location + "</small>": ""}`;
+    let summaryTimeLabel = `<span class="label">${event.startDate.hour.toString().padStart(2, "0")}h${event.startDate.minute > 0 ? event.startDate.minute.toString().padStart(2, "0") : ""} – ${event.endDate.hour.toString().padStart(2, "0")}h${event.endDate.minute > 0 ? event.endDate.minute.toString().padStart(2, "0") : ""}</span>`;
+    let summaryLocationLabel = "";
+    if (event.location && event.location.trim().length > 0) {
+        if (!event.location.startsWith("http")) {
+            summaryLocationLabel = ` <small>${event.location}</small>`;
+        } else {
+            summaryLocationLabel = ` <small><a href="${event.location.trim()}">${event.location.trim()}</a></small>`;
+        }
+    }
+    summary.innerHTML = `${summaryTimeLabel}${summaryLocationLabel}`; // ${event.location ? " <small>" + event.location + "</small>": ""}`;
     if (event.description.trim().length > 0) {
         let description = document.createElement("p");
         tileSubtitle.appendChild(description);
@@ -125,7 +134,7 @@ function setupFilterMenuEntries(allEvents) {
     FILTERS.filter(f => { return f.menuEntry != null }).forEach(filter => {
         document.querySelectorAll(`.calendar-filter[calendarFilter="${filter.menuEntry}"]`).forEach(node => {
             let popover = document.createElement("div");
-            popover.className = "popover popover-right";
+            popover.className = "popover popover-bottom";
             popover.style.color = "#50596c";
             let popoverContainer = document.createElement("div");
             popoverContainer.className = "popover-container";
@@ -156,13 +165,14 @@ function setupFilterMenuEntries(allEvents) {
             cardBody.style.overflowY = "auto";
             cardBody.style.maxHeight = "400px";
             filteredEvents.forEach(event => {
+                let eventSummary = event.summary.replace(`${filter.label} - `, "");
                 let tile = document.createElement("div");
                 tile.className = "mb-2"
                 tile.innerHTML = `
                     <span class="label label-primary">${event.startDate.day} ${MONTH_SHORT[event.startDate.month - 1]}</span>
                     <span class="label">${event.startDate.hour.toString().padStart(2, "0")}h${event.startDate.minute > 0 ? event.startDate.minute.toString().padStart(2, "0") : ""} – ${event.endDate.hour.toString().padStart(2, "0")}h${event.endDate.minute > 0 ? event.endDate.minute.toString().padStart(2, "0") : ""}</span>
                     <br>
-                    ${event.summary}
+                    ${eventSummary}
                 `;
                 cardBody.appendChild(tile);
             });
