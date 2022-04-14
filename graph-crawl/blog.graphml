@@ -1,0 +1,1642 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"><key id="d0" for="edge" attr.name="weight" attr.type="long"/>
+<graph edgedefault="directed"><node id="/"/>
+<node id="/blog"/>
+<node id="/agenda"/>
+<node id="/contact"/>
+<node id="/wiki"/>
+<node id="/createlier"/>
+<node id="/wiki/imprimante-3d"/>
+<node id="/wiki/decoupeuses"/>
+<node id="/wiki/brodeuse"/>
+<node id="/wiki/arduino"/>
+<node id="/wiki/micro-bit"/>
+<node id="/wiki/hexapawn"/>
+<node id="/formation"/>
+<node id="/wiki/formation-au-numerique/seances"/>
+<node id="/wiki/formation-au-numerique/ressources"/>
+<node id="/formation-au-numerique/jeudis"/>
+<node id="/formation-au-numerique/vendredis"/>
+<node id="/wiki/formation-au-numerique"/>
+<node id="/wiki/arduino/projets"/>
+<node id="/wiki/arduino/projets/operation-precision"/>
+<node id="/wiki/arduino/projets/vumetre-a-leds"/>
+<node id="/wiki/arduino/projets/robot-savant"/>
+<node id="/wiki/arduino/projets/plus-vite-que-son-ombre"/>
+<node id="/wiki/arduino/projets/lampe-dambiance"/>
+<node id="/wiki/arduino/projets/page:2"/>
+<node id="/wiki/arduino/projets/clavier-musical"/>
+<node id="/wiki/arduino/projets/feu-tricolore"/>
+<node id="/agenda/createlier"/>
+<node id="/agenda/formation-au-numerique"/>
+<node id="/agenda/fil-detincelles"/>
+<node id="/blog/une-histoire-dauteur"/>
+<node id="/user/pages/static/demo-grammaire-gabarit.html"/>
+<node id="/static/tic-tac-toe/index.html"/>
+<node id="/blog/generer-des-dessins-techniques"/>
+<node id="/blog/une-recommandation-two-minutes-paper"/>
+<node id="/blog/debattre-a-noel"/>
+<node id="/blog/le-coeur-de-lintelligence-artificielle-lapprentissage-automatique"/>
+<node id="/blog/broderie-de-masques-a-latelier"/>
+<node id="/blog/affronter-une-ia-faite-de-papier"/>
+<node id="/blog/apero-science-en-direct-sur-twitch"/>
+<node id="/blog/regarder-la-mission-perseverance"/>
+<node id="/blog/imprimer-la-chaine-des-puys-et-la-faille-de-la-limagne"/>
+<node id="/blog/monitorage-de-limprimante-3d"/>
+<node id="/blog/un-ordinateur-ca-ne-fonctionne-quavec-des-0-et-des-1"/>
+<node id="/blog/lemergence-de-lintelligence-artificielle"/>
+<node id="/blog/lemergence"/>
+<node id="/blog/services-dinclusion-numerique"/>
+<node id="/blog/lauteur-de-mots-croises"/>
+<node id="/blog/fabriquer-son-docteur-maboul"/>
+<node id="/blog/une-histoire-de-theorie-s"/>
+<node id="/blog/fabrication-dun-beewrap"/>
+<node id="/blog/les-chaines-youtube-pour-limpression-3d"/>
+<node id="/blog/exemple-dimpression-3d"/>
+<node id="/blog/gerez-vos-mots-de-passe-avec-keepassxc"/>
+<node id="/blog/les-modalites-dacces"/>
+<node id="/agenda/formation-au-numerique/jeudis"/>
+<node id="/agenda/formation-au-numerique/vendredis"/>
+<node id="/blog/page:2"/>
+<node id="/blog/page:3"/>
+<node id="/blog/page:4"/>
+<node id="/blog/page:5"/>
+<edge source="/" target="/">
+  <data key="d0">10</data>
+</edge>
+<edge source="/" target="/blog">
+  <data key="d0">6</data>
+</edge>
+<edge source="/" target="/agenda">
+  <data key="d0">6</data>
+</edge>
+<edge source="/" target="/contact">
+  <data key="d0">6</data>
+</edge>
+<edge source="/" target="/wiki">
+  <data key="d0">6</data>
+</edge>
+<edge source="/" target="/createlier">
+  <data key="d0">2</data>
+</edge>
+<edge source="/blog" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/blog" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog" target="/wiki">
+  <data key="d0">4</data>
+</edge>
+<edge source="/blog" target="/blog/fabriquer-son-docteur-maboul">
+  <data key="d0">2</data>
+</edge>
+<edge source="/blog" target="/blog/lauteur-de-mots-croises">
+  <data key="d0">2</data>
+</edge>
+<edge source="/blog" target="/blog/services-dinclusion-numerique">
+  <data key="d0">2</data>
+</edge>
+<edge source="/blog" target="/blog/lemergence">
+  <data key="d0">2</data>
+</edge>
+<edge source="/blog" target="/blog/lemergence-de-lintelligence-artificielle">
+  <data key="d0">2</data>
+</edge>
+<edge source="/blog" target="/blog/page:2">
+  <data key="d0">2</data>
+</edge>
+<edge source="/blog" target="/blog/page:3">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog" target="/blog/page:4">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog" target="/blog/page:5">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/agenda" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/agenda" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/agenda" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/agenda" target="/contact">
+  <data key="d0">4</data>
+</edge>
+<edge source="/agenda" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/agenda" target="/agenda/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/agenda" target="/agenda/formation-au-numerique">
+  <data key="d0">1</data>
+</edge>
+<edge source="/agenda" target="/agenda/fil-detincelles">
+  <data key="d0">1</data>
+</edge>
+<edge source="/agenda" target="/wiki/arduino">
+  <data key="d0">1</data>
+</edge>
+<edge source="/agenda" target="/wiki/decoupeuses">
+  <data key="d0">1</data>
+</edge>
+<edge source="/agenda" target="/wiki/brodeuse">
+  <data key="d0">1</data>
+</edge>
+<edge source="/agenda" target="/wiki/imprimante-3d">
+  <data key="d0">1</data>
+</edge>
+<edge source="/agenda" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/contact" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/contact" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/contact" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/contact" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/contact" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/contact" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/wiki" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/wiki" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki" target="/wiki/imprimante-3d">
+  <data key="d0">1</data>
+</edge>
+<edge source="/wiki" target="/wiki/decoupeuses">
+  <data key="d0">1</data>
+</edge>
+<edge source="/wiki" target="/wiki/brodeuse">
+  <data key="d0">1</data>
+</edge>
+<edge source="/wiki" target="/wiki/arduino">
+  <data key="d0">1</data>
+</edge>
+<edge source="/wiki" target="/wiki/micro-bit">
+  <data key="d0">1</data>
+</edge>
+<edge source="/wiki" target="/wiki/hexapawn">
+  <data key="d0">1</data>
+</edge>
+<edge source="/wiki" target="/formation">
+  <data key="d0">1</data>
+</edge>
+<edge source="/wiki" target="/wiki/formation-au-numerique/seances">
+  <data key="d0">1</data>
+</edge>
+<edge source="/wiki" target="/wiki/formation-au-numerique/ressources">
+  <data key="d0">1</data>
+</edge>
+<edge source="/wiki" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/createlier" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/createlier" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/createlier" target="/agenda">
+  <data key="d0">4</data>
+</edge>
+<edge source="/createlier" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/createlier" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/createlier" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/wiki/imprimante-3d" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/wiki/imprimante-3d" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/imprimante-3d" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/imprimante-3d" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/imprimante-3d" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/imprimante-3d" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/wiki/decoupeuses" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/wiki/decoupeuses" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/decoupeuses" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/decoupeuses" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/decoupeuses" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/decoupeuses" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/wiki/brodeuse" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/wiki/brodeuse" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/brodeuse" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/brodeuse" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/brodeuse" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/brodeuse" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/wiki/arduino" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/wiki/arduino" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/arduino" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/arduino" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/arduino" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/arduino" target="/wiki/arduino/projets">
+  <data key="d0">1</data>
+</edge>
+<edge source="/wiki/arduino" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/wiki/micro-bit" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/wiki/micro-bit" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/micro-bit" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/micro-bit" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/micro-bit" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/micro-bit" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/wiki/hexapawn" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/wiki/hexapawn" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/hexapawn" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/hexapawn" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/hexapawn" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/hexapawn" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/formation" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/formation" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/formation" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/formation" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/formation" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/formation" target="/formation-au-numerique/jeudis">
+  <data key="d0">1</data>
+</edge>
+<edge source="/formation" target="/formation-au-numerique/vendredis">
+  <data key="d0">1</data>
+</edge>
+<edge source="/formation" target="/wiki/formation-au-numerique">
+  <data key="d0">1</data>
+</edge>
+<edge source="/formation" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/wiki/formation-au-numerique/seances" target="/">
+  <data key="d0">7</data>
+</edge>
+<edge source="/wiki/formation-au-numerique/seances" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/formation-au-numerique/seances" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/formation-au-numerique/seances" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/formation-au-numerique/seances" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/formation-au-numerique/seances" target="/formation">
+  <data key="d0">2</data>
+</edge>
+<edge source="/wiki/formation-au-numerique/seances" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/wiki/formation-au-numerique/ressources" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/wiki/formation-au-numerique/ressources" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/formation-au-numerique/ressources" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/formation-au-numerique/ressources" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/formation-au-numerique/ressources" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/formation-au-numerique/ressources" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/formation-au-numerique/jeudis" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/formation-au-numerique/jeudis" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/formation-au-numerique/jeudis" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/formation-au-numerique/jeudis" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/formation-au-numerique/jeudis" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/formation-au-numerique/jeudis" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/formation-au-numerique/vendredis" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/formation-au-numerique/vendredis" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/formation-au-numerique/vendredis" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/formation-au-numerique/vendredis" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/formation-au-numerique/vendredis" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/formation-au-numerique/vendredis" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/wiki/formation-au-numerique" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/wiki/formation-au-numerique" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/formation-au-numerique" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/formation-au-numerique" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/formation-au-numerique" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/formation-au-numerique" target="/formation">
+  <data key="d0">1</data>
+</edge>
+<edge source="/wiki/formation-au-numerique" target="/wiki/formation-au-numerique/seances">
+  <data key="d0">1</data>
+</edge>
+<edge source="/wiki/formation-au-numerique" target="/wiki/formation-au-numerique/ressources">
+  <data key="d0">1</data>
+</edge>
+<edge source="/wiki/formation-au-numerique" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/wiki/arduino/projets" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/wiki/arduino/projets" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/arduino/projets" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/arduino/projets" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/arduino/projets" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/arduino/projets" target="/wiki/arduino/projets/operation-precision">
+  <data key="d0">2</data>
+</edge>
+<edge source="/wiki/arduino/projets" target="/wiki/arduino/projets/vumetre-a-leds">
+  <data key="d0">2</data>
+</edge>
+<edge source="/wiki/arduino/projets" target="/wiki/arduino/projets/robot-savant">
+  <data key="d0">2</data>
+</edge>
+<edge source="/wiki/arduino/projets" target="/wiki/arduino/projets/plus-vite-que-son-ombre">
+  <data key="d0">2</data>
+</edge>
+<edge source="/wiki/arduino/projets" target="/wiki/arduino/projets/lampe-dambiance">
+  <data key="d0">2</data>
+</edge>
+<edge source="/wiki/arduino/projets" target="/wiki/arduino/projets/page:2">
+  <data key="d0">2</data>
+</edge>
+<edge source="/wiki/arduino/projets" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/wiki/arduino/projets/operation-precision" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/wiki/arduino/projets/operation-precision" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/arduino/projets/operation-precision" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/arduino/projets/operation-precision" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/arduino/projets/operation-precision" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/arduino/projets/operation-precision" target="/wiki/arduino/projets/operation-precision">
+  <data key="d0">1</data>
+</edge>
+<edge source="/wiki/arduino/projets/operation-precision" target="/wiki/decoupeuses">
+  <data key="d0">1</data>
+</edge>
+<edge source="/wiki/arduino/projets/operation-precision" target="/wiki/arduino/projets/vumetre-a-leds">
+  <data key="d0">1</data>
+</edge>
+<edge source="/wiki/arduino/projets/operation-precision" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/wiki/arduino/projets/vumetre-a-leds" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/wiki/arduino/projets/vumetre-a-leds" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/arduino/projets/vumetre-a-leds" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/arduino/projets/vumetre-a-leds" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/arduino/projets/vumetre-a-leds" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/arduino/projets/vumetre-a-leds" target="/wiki/arduino/projets/vumetre-a-leds">
+  <data key="d0">1</data>
+</edge>
+<edge source="/wiki/arduino/projets/vumetre-a-leds" target="/wiki/arduino/projets/robot-savant">
+  <data key="d0">1</data>
+</edge>
+<edge source="/wiki/arduino/projets/vumetre-a-leds" target="/wiki/arduino/projets/operation-precision">
+  <data key="d0">1</data>
+</edge>
+<edge source="/wiki/arduino/projets/vumetre-a-leds" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/wiki/arduino/projets/robot-savant" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/wiki/arduino/projets/robot-savant" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/arduino/projets/robot-savant" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/arduino/projets/robot-savant" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/arduino/projets/robot-savant" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/arduino/projets/robot-savant" target="/wiki/arduino/projets/robot-savant">
+  <data key="d0">1</data>
+</edge>
+<edge source="/wiki/arduino/projets/robot-savant" target="/wiki/arduino/projets/plus-vite-que-son-ombre">
+  <data key="d0">1</data>
+</edge>
+<edge source="/wiki/arduino/projets/robot-savant" target="/wiki/arduino/projets/vumetre-a-leds">
+  <data key="d0">1</data>
+</edge>
+<edge source="/wiki/arduino/projets/robot-savant" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/wiki/arduino/projets/plus-vite-que-son-ombre" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/wiki/arduino/projets/plus-vite-que-son-ombre" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/arduino/projets/plus-vite-que-son-ombre" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/arduino/projets/plus-vite-que-son-ombre" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/arduino/projets/plus-vite-que-son-ombre" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/arduino/projets/plus-vite-que-son-ombre" target="/wiki/arduino/projets/plus-vite-que-son-ombre">
+  <data key="d0">1</data>
+</edge>
+<edge source="/wiki/arduino/projets/plus-vite-que-son-ombre" target="/wiki/arduino/projets/lampe-dambiance">
+  <data key="d0">1</data>
+</edge>
+<edge source="/wiki/arduino/projets/plus-vite-que-son-ombre" target="/wiki/arduino/projets/robot-savant">
+  <data key="d0">1</data>
+</edge>
+<edge source="/wiki/arduino/projets/plus-vite-que-son-ombre" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/wiki/arduino/projets/lampe-dambiance" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/wiki/arduino/projets/lampe-dambiance" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/arduino/projets/lampe-dambiance" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/arduino/projets/lampe-dambiance" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/arduino/projets/lampe-dambiance" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/arduino/projets/lampe-dambiance" target="/wiki/arduino/projets/lampe-dambiance">
+  <data key="d0">1</data>
+</edge>
+<edge source="/wiki/arduino/projets/lampe-dambiance" target="/wiki/arduino/projets/clavier-musical">
+  <data key="d0">1</data>
+</edge>
+<edge source="/wiki/arduino/projets/lampe-dambiance" target="/wiki/arduino/projets/plus-vite-que-son-ombre">
+  <data key="d0">1</data>
+</edge>
+<edge source="/wiki/arduino/projets/lampe-dambiance" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/wiki/arduino/projets/page:2" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/wiki/arduino/projets/page:2" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/arduino/projets/page:2" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/arduino/projets/page:2" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/arduino/projets/page:2" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/arduino/projets/page:2" target="/wiki/arduino/projets/clavier-musical">
+  <data key="d0">2</data>
+</edge>
+<edge source="/wiki/arduino/projets/page:2" target="/wiki/arduino/projets/feu-tricolore">
+  <data key="d0">2</data>
+</edge>
+<edge source="/wiki/arduino/projets/page:2" target="/wiki/arduino/projets">
+  <data key="d0">2</data>
+</edge>
+<edge source="/wiki/arduino/projets/page:2" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/wiki/arduino/projets/clavier-musical" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/wiki/arduino/projets/clavier-musical" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/arduino/projets/clavier-musical" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/arduino/projets/clavier-musical" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/arduino/projets/clavier-musical" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/arduino/projets/clavier-musical" target="/wiki/arduino/projets/clavier-musical">
+  <data key="d0">1</data>
+</edge>
+<edge source="/wiki/arduino/projets/clavier-musical" target="/wiki/arduino/projets/feu-tricolore">
+  <data key="d0">1</data>
+</edge>
+<edge source="/wiki/arduino/projets/clavier-musical" target="/wiki/arduino/projets/lampe-dambiance">
+  <data key="d0">1</data>
+</edge>
+<edge source="/wiki/arduino/projets/clavier-musical" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/wiki/arduino/projets/feu-tricolore" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/wiki/arduino/projets/feu-tricolore" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/arduino/projets/feu-tricolore" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/arduino/projets/feu-tricolore" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/arduino/projets/feu-tricolore" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/wiki/arduino/projets/feu-tricolore" target="/wiki/arduino/projets/feu-tricolore">
+  <data key="d0">1</data>
+</edge>
+<edge source="/wiki/arduino/projets/feu-tricolore" target="/wiki/arduino/projets/clavier-musical">
+  <data key="d0">1</data>
+</edge>
+<edge source="/wiki/arduino/projets/feu-tricolore" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/agenda/createlier" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/agenda/createlier" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/agenda/createlier" target="/agenda">
+  <data key="d0">4</data>
+</edge>
+<edge source="/agenda/createlier" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/agenda/createlier" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/agenda/createlier" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/agenda/formation-au-numerique" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/agenda/formation-au-numerique" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/agenda/formation-au-numerique" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/agenda/formation-au-numerique" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/agenda/formation-au-numerique" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/agenda/formation-au-numerique" target="/agenda/formation-au-numerique/jeudis">
+  <data key="d0">1</data>
+</edge>
+<edge source="/agenda/formation-au-numerique" target="/agenda/formation-au-numerique/vendredis">
+  <data key="d0">1</data>
+</edge>
+<edge source="/agenda/formation-au-numerique" target="/wiki/formation-au-numerique">
+  <data key="d0">1</data>
+</edge>
+<edge source="/agenda/formation-au-numerique" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/agenda/fil-detincelles" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/agenda/fil-detincelles" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/agenda/fil-detincelles" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/agenda/fil-detincelles" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/agenda/fil-detincelles" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/agenda/fil-detincelles" target="/blog/une-histoire-dauteur">
+  <data key="d0">1</data>
+</edge>
+<edge source="/agenda/fil-detincelles" target="/user/pages/static/demo-grammaire-gabarit.html">
+  <data key="d0">1</data>
+</edge>
+<edge source="/agenda/fil-detincelles" target="/static/tic-tac-toe/index.html">
+  <data key="d0">1</data>
+</edge>
+<edge source="/agenda/fil-detincelles" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/une-histoire-dauteur" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/blog/une-histoire-dauteur" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/une-histoire-dauteur" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/une-histoire-dauteur" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/une-histoire-dauteur" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/une-histoire-dauteur" target="/blog/une-histoire-dauteur">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/une-histoire-dauteur" target="/user/pages/static/demo-grammaire-gabarit.html">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/une-histoire-dauteur" target="/blog/generer-des-dessins-techniques">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/une-histoire-dauteur" target="/blog/une-recommandation-two-minutes-paper">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/une-histoire-dauteur" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/generer-des-dessins-techniques" target="/">
+  <data key="d0">10</data>
+</edge>
+<edge source="/blog/generer-des-dessins-techniques" target="/blog">
+  <data key="d0">6</data>
+</edge>
+<edge source="/blog/generer-des-dessins-techniques" target="/agenda">
+  <data key="d0">6</data>
+</edge>
+<edge source="/blog/generer-des-dessins-techniques" target="/contact">
+  <data key="d0">6</data>
+</edge>
+<edge source="/blog/generer-des-dessins-techniques" target="/wiki">
+  <data key="d0">6</data>
+</edge>
+<edge source="/blog/generer-des-dessins-techniques" target="/blog/generer-des-dessins-techniques">
+  <data key="d0">4</data>
+</edge>
+<edge source="/blog/generer-des-dessins-techniques" target="/blog/monitorage-de-limprimante-3d">
+  <data key="d0">2</data>
+</edge>
+<edge source="/blog/generer-des-dessins-techniques" target="/blog/une-histoire-dauteur">
+  <data key="d0">2</data>
+</edge>
+<edge source="/blog/generer-des-dessins-techniques" target="/createlier">
+  <data key="d0">2</data>
+</edge>
+<edge source="/blog/une-recommandation-two-minutes-paper" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/blog/une-recommandation-two-minutes-paper" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/une-recommandation-two-minutes-paper" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/une-recommandation-two-minutes-paper" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/une-recommandation-two-minutes-paper" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/une-recommandation-two-minutes-paper" target="/blog/une-recommandation-two-minutes-paper">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/une-recommandation-two-minutes-paper" target="/blog/une-histoire-dauteur">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/une-recommandation-two-minutes-paper" target="/blog/debattre-a-noel">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/une-recommandation-two-minutes-paper" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/debattre-a-noel" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/blog/debattre-a-noel" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/debattre-a-noel" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/debattre-a-noel" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/debattre-a-noel" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/debattre-a-noel" target="/blog/debattre-a-noel">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/debattre-a-noel" target="/blog/une-recommandation-two-minutes-paper">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/debattre-a-noel" target="/blog/le-coeur-de-lintelligence-artificielle-lapprentissage-automatique">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/debattre-a-noel" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/le-coeur-de-lintelligence-artificielle-lapprentissage-automatique" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/blog/le-coeur-de-lintelligence-artificielle-lapprentissage-automatique" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/le-coeur-de-lintelligence-artificielle-lapprentissage-automatique" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/le-coeur-de-lintelligence-artificielle-lapprentissage-automatique" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/le-coeur-de-lintelligence-artificielle-lapprentissage-automatique" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/le-coeur-de-lintelligence-artificielle-lapprentissage-automatique" target="/blog/le-coeur-de-lintelligence-artificielle-lapprentissage-automatique">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/le-coeur-de-lintelligence-artificielle-lapprentissage-automatique" target="/blog/debattre-a-noel">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/le-coeur-de-lintelligence-artificielle-lapprentissage-automatique" target="/blog/broderie-de-masques-a-latelier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/le-coeur-de-lintelligence-artificielle-lapprentissage-automatique" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/broderie-de-masques-a-latelier" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/blog/broderie-de-masques-a-latelier" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/broderie-de-masques-a-latelier" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/broderie-de-masques-a-latelier" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/broderie-de-masques-a-latelier" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/broderie-de-masques-a-latelier" target="/blog/broderie-de-masques-a-latelier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/broderie-de-masques-a-latelier" target="/blog/le-coeur-de-lintelligence-artificielle-lapprentissage-automatique">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/broderie-de-masques-a-latelier" target="/blog/affronter-une-ia-faite-de-papier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/broderie-de-masques-a-latelier" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/affronter-une-ia-faite-de-papier" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/blog/affronter-une-ia-faite-de-papier" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/affronter-une-ia-faite-de-papier" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/affronter-une-ia-faite-de-papier" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/affronter-une-ia-faite-de-papier" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/affronter-une-ia-faite-de-papier" target="/blog/affronter-une-ia-faite-de-papier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/affronter-une-ia-faite-de-papier" target="/blog/le-coeur-de-lintelligence-artificielle-lapprentissage-automatique">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/affronter-une-ia-faite-de-papier" target="/static/tic-tac-toe/index.html">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/affronter-une-ia-faite-de-papier" target="/blog/broderie-de-masques-a-latelier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/affronter-une-ia-faite-de-papier" target="/blog/apero-science-en-direct-sur-twitch">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/affronter-une-ia-faite-de-papier" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/apero-science-en-direct-sur-twitch" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/blog/apero-science-en-direct-sur-twitch" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/apero-science-en-direct-sur-twitch" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/apero-science-en-direct-sur-twitch" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/apero-science-en-direct-sur-twitch" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/apero-science-en-direct-sur-twitch" target="/blog/apero-science-en-direct-sur-twitch">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/apero-science-en-direct-sur-twitch" target="/blog/affronter-une-ia-faite-de-papier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/apero-science-en-direct-sur-twitch" target="/blog/regarder-la-mission-perseverance">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/apero-science-en-direct-sur-twitch" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/regarder-la-mission-perseverance" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/blog/regarder-la-mission-perseverance" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/regarder-la-mission-perseverance" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/regarder-la-mission-perseverance" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/regarder-la-mission-perseverance" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/regarder-la-mission-perseverance" target="/blog/regarder-la-mission-perseverance">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/regarder-la-mission-perseverance" target="/blog/apero-science-en-direct-sur-twitch">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/regarder-la-mission-perseverance" target="/blog/imprimer-la-chaine-des-puys-et-la-faille-de-la-limagne">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/regarder-la-mission-perseverance" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/imprimer-la-chaine-des-puys-et-la-faille-de-la-limagne" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/blog/imprimer-la-chaine-des-puys-et-la-faille-de-la-limagne" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/imprimer-la-chaine-des-puys-et-la-faille-de-la-limagne" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/imprimer-la-chaine-des-puys-et-la-faille-de-la-limagne" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/imprimer-la-chaine-des-puys-et-la-faille-de-la-limagne" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/imprimer-la-chaine-des-puys-et-la-faille-de-la-limagne" target="/blog/imprimer-la-chaine-des-puys-et-la-faille-de-la-limagne">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/imprimer-la-chaine-des-puys-et-la-faille-de-la-limagne" target="/blog/monitorage-de-limprimante-3d">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/imprimer-la-chaine-des-puys-et-la-faille-de-la-limagne" target="/blog/regarder-la-mission-perseverance">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/imprimer-la-chaine-des-puys-et-la-faille-de-la-limagne" target="/blog/un-ordinateur-ca-ne-fonctionne-quavec-des-0-et-des-1">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/imprimer-la-chaine-des-puys-et-la-faille-de-la-limagne" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/monitorage-de-limprimante-3d" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/blog/monitorage-de-limprimante-3d" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/monitorage-de-limprimante-3d" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/monitorage-de-limprimante-3d" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/monitorage-de-limprimante-3d" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/monitorage-de-limprimante-3d" target="/blog/monitorage-de-limprimante-3d">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/monitorage-de-limprimante-3d" target="/blog/une-histoire-de-theorie-s">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/monitorage-de-limprimante-3d" target="/blog/generer-des-dessins-techniques">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/monitorage-de-limprimante-3d" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/un-ordinateur-ca-ne-fonctionne-quavec-des-0-et-des-1" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/blog/un-ordinateur-ca-ne-fonctionne-quavec-des-0-et-des-1" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/un-ordinateur-ca-ne-fonctionne-quavec-des-0-et-des-1" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/un-ordinateur-ca-ne-fonctionne-quavec-des-0-et-des-1" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/un-ordinateur-ca-ne-fonctionne-quavec-des-0-et-des-1" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/un-ordinateur-ca-ne-fonctionne-quavec-des-0-et-des-1" target="/blog/un-ordinateur-ca-ne-fonctionne-quavec-des-0-et-des-1">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/un-ordinateur-ca-ne-fonctionne-quavec-des-0-et-des-1" target="/blog/le-coeur-de-lintelligence-artificielle-lapprentissage-automatique">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/un-ordinateur-ca-ne-fonctionne-quavec-des-0-et-des-1" target="/blog/imprimer-la-chaine-des-puys-et-la-faille-de-la-limagne">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/un-ordinateur-ca-ne-fonctionne-quavec-des-0-et-des-1" target="/blog/lemergence-de-lintelligence-artificielle">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/un-ordinateur-ca-ne-fonctionne-quavec-des-0-et-des-1" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/lemergence-de-lintelligence-artificielle" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/blog/lemergence-de-lintelligence-artificielle" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/lemergence-de-lintelligence-artificielle" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/lemergence-de-lintelligence-artificielle" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/lemergence-de-lintelligence-artificielle" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/lemergence-de-lintelligence-artificielle" target="/blog/lemergence-de-lintelligence-artificielle">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/lemergence-de-lintelligence-artificielle" target="/blog/un-ordinateur-ca-ne-fonctionne-quavec-des-0-et-des-1">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/lemergence-de-lintelligence-artificielle" target="/blog/lemergence">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/lemergence-de-lintelligence-artificielle" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/lemergence" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/blog/lemergence" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/lemergence" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/lemergence" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/lemergence" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/lemergence" target="/blog/lemergence">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/lemergence" target="/blog/lemergence-de-lintelligence-artificielle">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/lemergence" target="/blog/services-dinclusion-numerique">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/lemergence" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/services-dinclusion-numerique" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/blog/services-dinclusion-numerique" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/services-dinclusion-numerique" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/services-dinclusion-numerique" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/services-dinclusion-numerique" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/services-dinclusion-numerique" target="/blog/services-dinclusion-numerique">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/services-dinclusion-numerique" target="/blog/lemergence">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/services-dinclusion-numerique" target="/blog/lauteur-de-mots-croises">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/services-dinclusion-numerique" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/lauteur-de-mots-croises" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/blog/lauteur-de-mots-croises" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/lauteur-de-mots-croises" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/lauteur-de-mots-croises" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/lauteur-de-mots-croises" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/lauteur-de-mots-croises" target="/blog/lauteur-de-mots-croises">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/lauteur-de-mots-croises" target="/blog/services-dinclusion-numerique">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/lauteur-de-mots-croises" target="/blog/fabriquer-son-docteur-maboul">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/lauteur-de-mots-croises" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/fabriquer-son-docteur-maboul" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/blog/fabriquer-son-docteur-maboul" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/fabriquer-son-docteur-maboul" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/fabriquer-son-docteur-maboul" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/fabriquer-son-docteur-maboul" target="/wiki">
+  <data key="d0">4</data>
+</edge>
+<edge source="/blog/fabriquer-son-docteur-maboul" target="/blog/fabriquer-son-docteur-maboul">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/fabriquer-son-docteur-maboul" target="/wiki/arduino/projets/operation-precision">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/fabriquer-son-docteur-maboul" target="/blog/lauteur-de-mots-croises">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/fabriquer-son-docteur-maboul" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/une-histoire-de-theorie-s" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/blog/une-histoire-de-theorie-s" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/une-histoire-de-theorie-s" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/une-histoire-de-theorie-s" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/une-histoire-de-theorie-s" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/une-histoire-de-theorie-s" target="/blog/une-histoire-de-theorie-s">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/une-histoire-de-theorie-s" target="/blog/fabrication-dun-beewrap">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/une-histoire-de-theorie-s" target="/blog/monitorage-de-limprimante-3d">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/une-histoire-de-theorie-s" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/fabrication-dun-beewrap" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/blog/fabrication-dun-beewrap" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/fabrication-dun-beewrap" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/fabrication-dun-beewrap" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/fabrication-dun-beewrap" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/fabrication-dun-beewrap" target="/blog/fabrication-dun-beewrap">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/fabrication-dun-beewrap" target="/blog/les-chaines-youtube-pour-limpression-3d">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/fabrication-dun-beewrap" target="/blog/une-histoire-de-theorie-s">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/fabrication-dun-beewrap" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/les-chaines-youtube-pour-limpression-3d" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/blog/les-chaines-youtube-pour-limpression-3d" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/les-chaines-youtube-pour-limpression-3d" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/les-chaines-youtube-pour-limpression-3d" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/les-chaines-youtube-pour-limpression-3d" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/les-chaines-youtube-pour-limpression-3d" target="/blog/les-chaines-youtube-pour-limpression-3d">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/les-chaines-youtube-pour-limpression-3d" target="/blog/exemple-dimpression-3d">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/les-chaines-youtube-pour-limpression-3d" target="/blog/fabrication-dun-beewrap">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/les-chaines-youtube-pour-limpression-3d" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/exemple-dimpression-3d" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/blog/exemple-dimpression-3d" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/exemple-dimpression-3d" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/exemple-dimpression-3d" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/exemple-dimpression-3d" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/exemple-dimpression-3d" target="/blog/exemple-dimpression-3d">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/exemple-dimpression-3d" target="/blog/gerez-vos-mots-de-passe-avec-keepassxc">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/exemple-dimpression-3d" target="/blog/les-chaines-youtube-pour-limpression-3d">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/exemple-dimpression-3d" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/gerez-vos-mots-de-passe-avec-keepassxc" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/blog/gerez-vos-mots-de-passe-avec-keepassxc" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/gerez-vos-mots-de-passe-avec-keepassxc" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/gerez-vos-mots-de-passe-avec-keepassxc" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/gerez-vos-mots-de-passe-avec-keepassxc" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/gerez-vos-mots-de-passe-avec-keepassxc" target="/blog/gerez-vos-mots-de-passe-avec-keepassxc">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/gerez-vos-mots-de-passe-avec-keepassxc" target="/blog/les-modalites-dacces">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/gerez-vos-mots-de-passe-avec-keepassxc" target="/blog/exemple-dimpression-3d">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/gerez-vos-mots-de-passe-avec-keepassxc" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/les-modalites-dacces" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/blog/les-modalites-dacces" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/les-modalites-dacces" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/les-modalites-dacces" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/les-modalites-dacces" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/les-modalites-dacces" target="/blog/les-modalites-dacces">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/les-modalites-dacces" target="/blog/gerez-vos-mots-de-passe-avec-keepassxc">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/les-modalites-dacces" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/agenda/formation-au-numerique/jeudis" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/agenda/formation-au-numerique/jeudis" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/agenda/formation-au-numerique/jeudis" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/agenda/formation-au-numerique/jeudis" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/agenda/formation-au-numerique/jeudis" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/agenda/formation-au-numerique/jeudis" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/agenda/formation-au-numerique/vendredis" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/agenda/formation-au-numerique/vendredis" target="/blog">
+  <data key="d0">3</data>
+</edge>
+<edge source="/agenda/formation-au-numerique/vendredis" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/agenda/formation-au-numerique/vendredis" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/agenda/formation-au-numerique/vendredis" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/agenda/formation-au-numerique/vendredis" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/page:2" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/blog/page:2" target="/blog">
+  <data key="d0">5</data>
+</edge>
+<edge source="/blog/page:2" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/page:2" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/page:2" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/page:2" target="/blog/un-ordinateur-ca-ne-fonctionne-quavec-des-0-et-des-1">
+  <data key="d0">2</data>
+</edge>
+<edge source="/blog/page:2" target="/blog/imprimer-la-chaine-des-puys-et-la-faille-de-la-limagne">
+  <data key="d0">2</data>
+</edge>
+<edge source="/blog/page:2" target="/blog/regarder-la-mission-perseverance">
+  <data key="d0">2</data>
+</edge>
+<edge source="/blog/page:2" target="/blog/apero-science-en-direct-sur-twitch">
+  <data key="d0">2</data>
+</edge>
+<edge source="/blog/page:2" target="/blog/affronter-une-ia-faite-de-papier">
+  <data key="d0">2</data>
+</edge>
+<edge source="/blog/page:2" target="/blog/le-coeur-de-lintelligence-artificielle-lapprentissage-automatique">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/page:2" target="/blog/page:3">
+  <data key="d0">2</data>
+</edge>
+<edge source="/blog/page:2" target="/blog/page:4">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/page:2" target="/blog/page:5">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/page:2" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/page:3" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/blog/page:3" target="/blog">
+  <data key="d0">4</data>
+</edge>
+<edge source="/blog/page:3" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/page:3" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/page:3" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/page:3" target="/blog/broderie-de-masques-a-latelier">
+  <data key="d0">2</data>
+</edge>
+<edge source="/blog/page:3" target="/blog/le-coeur-de-lintelligence-artificielle-lapprentissage-automatique">
+  <data key="d0">2</data>
+</edge>
+<edge source="/blog/page:3" target="/blog/debattre-a-noel">
+  <data key="d0">2</data>
+</edge>
+<edge source="/blog/page:3" target="/blog/une-recommandation-two-minutes-paper">
+  <data key="d0">2</data>
+</edge>
+<edge source="/blog/page:3" target="/blog/une-histoire-dauteur">
+  <data key="d0">2</data>
+</edge>
+<edge source="/blog/page:3" target="/blog/page:2">
+  <data key="d0">2</data>
+</edge>
+<edge source="/blog/page:3" target="/blog/page:4">
+  <data key="d0">2</data>
+</edge>
+<edge source="/blog/page:3" target="/blog/page:5">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/page:3" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/page:4" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/blog/page:4" target="/blog">
+  <data key="d0">4</data>
+</edge>
+<edge source="/blog/page:4" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/page:4" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/page:4" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/page:4" target="/blog/generer-des-dessins-techniques">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/page:4" target="/blog/monitorage-de-limprimante-3d">
+  <data key="d0">2</data>
+</edge>
+<edge source="/blog/page:4" target="/blog/une-histoire-de-theorie-s">
+  <data key="d0">2</data>
+</edge>
+<edge source="/blog/page:4" target="/blog/fabrication-dun-beewrap">
+  <data key="d0">2</data>
+</edge>
+<edge source="/blog/page:4" target="/blog/les-chaines-youtube-pour-limpression-3d">
+  <data key="d0">2</data>
+</edge>
+<edge source="/blog/page:4" target="/blog/page:3">
+  <data key="d0">2</data>
+</edge>
+<edge source="/blog/page:4" target="/blog/page:2">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/page:4" target="/blog/page:5">
+  <data key="d0">2</data>
+</edge>
+<edge source="/blog/page:4" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/page:5" target="/">
+  <data key="d0">5</data>
+</edge>
+<edge source="/blog/page:5" target="/blog">
+  <data key="d0">4</data>
+</edge>
+<edge source="/blog/page:5" target="/agenda">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/page:5" target="/contact">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/page:5" target="/wiki">
+  <data key="d0">3</data>
+</edge>
+<edge source="/blog/page:5" target="/blog/exemple-dimpression-3d">
+  <data key="d0">2</data>
+</edge>
+<edge source="/blog/page:5" target="/blog/gerez-vos-mots-de-passe-avec-keepassxc">
+  <data key="d0">2</data>
+</edge>
+<edge source="/blog/page:5" target="/blog/les-modalites-dacces">
+  <data key="d0">2</data>
+</edge>
+<edge source="/blog/page:5" target="/blog/page:4">
+  <data key="d0">2</data>
+</edge>
+<edge source="/blog/page:5" target="/blog/page:2">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/page:5" target="/blog/page:3">
+  <data key="d0">1</data>
+</edge>
+<edge source="/blog/page:5" target="/createlier">
+  <data key="d0">1</data>
+</edge>
+</graph></graphml>
