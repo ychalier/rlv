@@ -1,0 +1,42 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+svg {
+    max-width: 90vw;
+    max-height: 90vh;
+}
+
+.glass {
+    stroke: #000000;
+    stroke-width: 0.420738;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    cursor: pointer;
+    transition: .5s ease;
+}
+
+.glass-outline {
+    fill: none;
+}
+
+.glass-liquid {
+    fill: #88dfe3;
+}
+
+.glass-ice {
+    fill: #ffffff;
+}
+
+.flipped {
+    transform: rotate(180deg);
+}
