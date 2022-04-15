@@ -29,8 +29,20 @@ svg {
     fill: none;
 }
 
-.glass-liquid {
+#glass-1 .glass-liquid {
     fill: #88dfe3;
+}
+
+#glass-2 .glass-liquid {
+    fill: #99e388;
+}
+
+#glass-3 .glass-liquid {
+    fill: #e3db88;
+}
+
+#glass-4 .glass-liquid {
+    fill: #e38888;
 }
 
 .glass-ice {
