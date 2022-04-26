@@ -39,6 +39,33 @@ EMOJIS_FILL = """
 🕷
 """.strip()
 
+# EMOJIS_FILL = """
+# 😀😁😂🤣😃😅😆😉
+# 😊😋😎😍😘🥰😗😙
+# 😚🙂🤗🤩🤔🤨😑😶
+# 🙄😏😣😥😮🤐😯😪
+# 😫🥱😴😌😛😜😝🤤
+# 😒😓😕🙃🤑😲🙁😖
+# 😞😟😤😢😭😦😧😩
+# 🤯😬😰😱🥵🥶😳🤪
+# 😵🥴😡🤬😷🤒🤕🤢
+# 🤮🤧😇🥳🥺🤠🤡🤥
+# 🤫🤭🧐🤓😈👿👹👺
+# 🤖😺😸😹😻😼😽🙀
+# 😾🐱🙉🙊🐵🐶🐺🐱
+# 🦁🐯🦊🦝🐮🐷🐗🐭
+# 🐹🐻🐨🐼🐸🦓🐴🦄
+# 🐔🐲🐒🦍🦮🐕🐩🐕
+# 🐈🐅🐆🐎🦌🦏🦛🐂
+# 🐄🐖🐏🐑🐐🐪🐫🦙
+# 🦘🦨🐘🐁🐀🦔🐇🦎
+# 🐊🐢🐍🐉🦕🦖🦦🦈
+# 🐬🐋🐟🐠🐡🦐🦑🐙
+# 🦞🦀🦆🐓🦃🦅🦢🦚
+# 🦉🐦🐧🐥🐣🦇🦋🐌
+# 🐛🐞🦂
+# """.strip()
+
 EMOJIS_TARGET = """😐😔😠😨😄😿🐃🐳🐤🙈"""
 
 
@@ -116,25 +143,43 @@ def generate_svg(grid, cell_size=15):
             symbol = grid[i][j]
             x = (j + 1.5) * cell_size
             y = (i + 1.5) * cell_size
-            svg_el = f"""<text x="{x}" y="{y}" {style} font-size="8pt">{symbol}</text>\n"""
+            svg_el = f"""<text x="{x}" y="{y}" {style} font-size="8pt" font-family="Segoe UI Emoji">{symbol}</text>\n"""
             svg_content += svg_el
     return svg_content
 
 
-def generate_pdf(svg, output_path, inkscape):
+def generate_txt(grid, output_path):
+    string = ""
+    string += "   "
+    for j, _ in enumerate(grid[0]):
+        string += index_to_letters(j) + " "
+    string += "\n"
+    for i, row in enumerate(grid):
+        string += "%s " % str(i + 1).ljust(3, " ")
+        for char in row:
+            string += char
+        string += "\n"
+    with open(output_path + ".txt", "w", encoding="utf8") as file:
+        file.write(string)
+
+
+def generate_pdf(svg, output_path, inkscape, dpi):
     with open(output_path + ".svg", "w", encoding="utf8") as file:
         file.write(svg)
     subprocess.Popen(
         [
             inkscape,
             output_path + ".svg",
-            "--actions=select-all;object-to-path",
-            "--export-type=pdf",
+            # "--actions=select-all;object-to-path",
+            # "--export-type=pdf",
+            "--export-type=png",
+            f"--export-dpi={dpi}",
         ],
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE
     ).wait()
     os.remove(output_path + ".svg")
+    return output_path + ".png"
 
 
 def generate_pages(
@@ -149,7 +194,9 @@ def generate_pages(
         emojis_target,
         template_file,
         output_dir,
-        inkscape):
+        inkscape,
+        dpi,
+        convert):
     with open(template_file, "r", encoding="utf8") as file:
         template = file.read()
     os.makedirs(output_dir, exist_ok=True)
@@ -158,6 +205,7 @@ def generate_pages(
     page_count = block_count * math.ceil(len(miners) / miner_per_page)
     pbar = tqdm.tqdm(total=page_count, unit="page")
     solutions = {}
+    filenames = []
     for block_number in range(1, block_count + 1):
         for i in range(0, len(miners), miner_per_page):
             challenge_index = 0
@@ -175,8 +223,10 @@ def generate_pages(
                 solutions[(block_number, miners[i + j])] = solution
                 format_keys[f"svg_{challenge_index}"] = generate_svg(grid, cell_size)
                 challenge_index += 1
+                # generate_txt(grid, os.path.join(output_dir, f"{timestamp}_{page_index:03}"))
             svg = template.format(**format_keys)
-            generate_pdf(svg, os.path.join(output_dir, f"{timestamp}_{page_index:03}"), inkscape)
+            filename = generate_pdf(svg, os.path.join(output_dir, f"{timestamp}_{page_index:03}"), inkscape, dpi)
+            filenames.append(filename)
             pbar.update(1)
             page_index += 1
     pbar.close()
@@ -185,11 +235,20 @@ def generate_pages(
             for target in solutions[block_number, miner]:
                 pos = solutions[block_number, miner][target]
                 file.write(f"""{block_number}\t{miner}\t{target}\t{pos['column']}{pos['row']}\n""")
+    subprocess.Popen(
+        [
+            convert,
+            *filenames,
+            os.path.join(output_dir, f"{timestamp}.pdf"),
+        ],
+        # stdout=subprocess.PIPE,
+        # stderr=subprocess.PIPE
+    ).wait()
 
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("-r", "--n-rows", type=int, default=50)
+    parser.add_argument("-r", "--n-rows", type=int, default=68)
     parser.add_argument("-c", "--n-cols", type=int, default=26)
     parser.add_argument("-s", "--cell-size", type=int, default=15)
     parser.add_argument("-b", "--block-count", type=int, default=2)
@@ -201,7 +260,9 @@ def main():
     parser.add_argument("-t", "--use-test-grid", action="store_true")
     parser.add_argument("-ef", "--emojis-fill", type=str, default=EMOJIS_FILL)
     parser.add_argument("-et", "--emojis-target", type=str, default=EMOJIS_TARGET)
+    parser.add_argument("-d", "--dpi", type=int, default=1200)
     parser.add_argument("--inkscape", type=str, default=r"C:\Program Files\Inkscape\bin\inkscape.com")
+    parser.add_argument("--convert", type=str, default=r"C:\Program Files\ImageMagick-7.1.0-Q16-HDRI\convert.exe")
     args = parser.parse_args()
     generate_pages(
         args.block_count,
@@ -215,7 +276,9 @@ def main():
         args.emojis_target,
         args.template_file,
         args.output_dir,
-        args.inkscape
+        args.inkscape,
+        args.dpi,
+        args.convert
     )
     
 
