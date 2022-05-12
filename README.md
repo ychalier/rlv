@@ -6,9 +6,12 @@ Dépôt regroupant les différents projets de développement créés et utilisé
 
 Projet | Description
 ------ | ------------
+[blind-waiter](blind-waiter/) | Simulation du barman aveugle aux gants de boxe
+[charlie](charlie/) | Générateur de planches sur le principe de « Où est Charlie » pour implémenter une preuve de travail humaine
 [couverture-territoire](couverture-territoire/) | Recherche d'une couverture optimale d'un ensemble de lieux
 [crosswords](crosswords) | Générateur de mots croisés
 [fiches](fiches/) | Index de fiches ressources pour le numérique
+[graph](graph/) | Scripts pour récupérer et assembler des données en graphes
 [light-orchestra](light-orchestra/) | Orchestre de lumière joué par des ordinateurs
 [lightning](lightning/) | Algorithme de simulation de la foudre
 [markov](markov/) | Construction d'un modèle de langage par chaîne de Markov
