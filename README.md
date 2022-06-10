@@ -15,6 +15,7 @@ Projet | Description
 [numrep](numrep/) | Représentation temporelle des nombres gigantesques
 [oscilloscope](oscilloscope/) | Micrologiciel Arduino pour recréer un oscilloscope
 [planning](planning/) | Générateur de plannings
+[shepherd](shepherd/index.html) | Problème du chien de berger
 [syrtis-check](syrtis-check/) | Scraper pour la plateforme Syrtis
 [teamviewer](teamviewer/) | Interface pour basculer entre des sessions TeamViewer
 [word2vec](word2vec/) | Représentation visuelle des plongements de mots

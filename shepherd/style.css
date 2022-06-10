@@ -1,0 +1,16 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    padding: 0;
+    margin: 0;
+}
+
+#foreground {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
