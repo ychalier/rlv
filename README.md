@@ -15,6 +15,7 @@ Projet | Description
 [light-orchestra](light-orchestra/) | Orchestre de lumière joué par des ordinateurs
 [lightning](lightning/) | Algorithme de simulation de la foudre
 [markov](markov/) | Construction d'un modèle de langage par chaîne de Markov
+[microbit](microbit/) | Code pour cartes [micro:bit](https://microbit.org/fr/)
 [numrep](numrep/) | Représentation temporelle des nombres gigantesques
 [oscilloscope](oscilloscope/) | Micrologiciel Arduino pour recréer un oscilloscope
 [planning](planning/) | Générateur de plannings
