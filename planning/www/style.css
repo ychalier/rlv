@@ -1,0 +1,100 @@
+th,
+td {
+    text-align: center;
+}
+
+.cell-active {
+    background-color: var(--color-accent-5) !important;
+    color: white;
+}
+
+.navbar {
+    padding-top: .4rem;
+    padding-bottom: .4rem;
+}
+
+.navbar .btn {
+    margin-right: .4rem;
+}
+
+.menu-item .btn {
+    text-align: left;
+}
+
+.modal.modal-xl .modal-overlay {
+    background: var(--color-primary-1);
+}
+
+.modal.modal-xl .modal-container {
+    box-shadow: none;
+    max-width: 85vw;
+    max-height: 85vh;
+}
+
+.modal-body {
+    padding: 0 !important;
+    margin: 0.8rem;
+}
+
+.modal-table,
+.table-hero {
+    border: .01rem solid var(--color-secondary-a);
+    border-collapse: separate;
+}
+
+.modal-table th,
+.modal-table td,
+.table-hero th,
+.table-hero td {
+    min-width: 100px;
+    border: .01rem solid var(--color-secondary-a);
+    transition: background-color .2s ease;
+}
+
+.header-row td,
+.header-row+tr td {
+    border-top-color: var(--color-accent-5);
+    border-top-width: 2px;
+}
+
+.cell-disabled {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc4JyBoZWlnaHQ9JzgnPgogIDxwYXRoIGQ9J00wIDBMOCA4Wk04IDBMMCA4Wicgc3Ryb2tlLXdpZHRoPScwLjUnIHN0cm9rZT0nIzU3NTVkOCcvPgo8L3N2Zz4=");
+    background-repeat: repeat;
+}
+
+.modal-table {
+    margin-bottom: 0;
+}
+
+.table-sticky-first-row,
+.table-sticky-first-column,
+.table-sticky-double-column {
+    position: relative;
+}
+
+.table-sticky-first-row thead th,
+.table-sticky-double-column tbody td:first-child,
+.table-sticky-first-column tbody td:first-child {
+    position: sticky;
+    background: var(--color-primary-1);
+}
+
+.table-sticky-first-row thead th {
+    top: 0;
+    z-index: 2;
+}
+
+.table-sticky-first-column tbody td:first-child,
+.table-sticky-double-column tbody tr.header-row td:first-child {
+    left: 0;
+    z-index: 1;
+}
+
+.table-sticky-double-column tbody tr:not(.header-row) td:first-child {
+    left: 100px;
+    z-index: 1;
+}
+
+.strike {
+    text-decoration: line-through;
+}

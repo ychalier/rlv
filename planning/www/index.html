@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+    <title>Générateur de plannings</title>
+    <meta charset="utf8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/ychalier/pifekit/pifekit.css" />
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/ychalier/pifekit/pifekit.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="js/master.js" type="module"></script>
+</head>
+
+<body class="container">
+
+    <header class="navbar">
+        <section class="navbar-section">
+
+            <div class="dropdown">
+                <a class="btn dropdown-toggle" tabindex="0">Fichier</a>
+                <ul class="menu">
+                    <li class="menu-item">
+                        <a class="btn btn-link" onclick="showModal('modal-file-import-config');">Importer une configuration</a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="btn btn-link" href="javascript:void(0);" id="file-export-config" download="config.json">Exporter la configuration</a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="btn btn-link" onclick="showModal('modal-file-export-solution');">Exporter le planning</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="dropdown">
+                <a class="btn dropdown-toggle" tabindex="0">Configuration</a>
+                <ul class="menu">
+                    <li class="menu-item">
+                        <a class="btn btn-link" id="btn-menu-posts">Postes</a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="btn btn-link" id="btn-menu-slots">Créneaux</a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="btn btn-link" id="btn-menu-agents">Agents</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="dropdown">
+                <a class="btn dropdown-toggle" tabindex="0">Contraintes</a>
+                <ul class="menu">
+                    <li class="menu-item">
+                        <a class="btn btn-link" id="btn-menu-agents-weekly-time-limit">Limites hebdomadaires de temps</a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="btn btn-link" id="btn-menu-agents-absences">Absences des agents</a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="btn btn-link" id="btn-menu-posts-closings">Fermeture des postes</a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="btn btn-link" id="btn-menu-agents-posts-exclusions">Désaffectation des postes</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="dropdown">
+                <a class="btn dropdown-toggle" tabindex="0">Objectifs</a>
+                <ul class="menu">
+                    <li class="menu-item">
+                        <a class="btn btn-link" id="btn-menu-weights">Poids</a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="btn btn-link" id="btn-menu-template-schedule">Planning type</a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="btn btn-link" id="btn-menu-agents-slots-assignations">Préférences des créneaux</a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="btn btn-link" id="btn-menu-agents-weekly-time">Quotas hebdomadaires de temps</a>
+                    </li>
+                </ul>
+            </div>
+
+            <button class="btn btn-primary" id="btn-generate">Générer</button>
+
+        </section>
+    </header>
+
+    <div class="columns">
+
+        <div class="column col-9">
+            <table class="table table-hover table-condensed table-hero" id="table-schedule"></table>
+        </div>
+
+        <div class="column col-3">
+            <table class="table table-hover table-condensed table-hero" id="table-agents"></table>
+        </div>
+
+    </div>
+
+    <div class="modal" id="modal-loading">
+        <a class="modal-overlay" aria-label="Close"></a>
+        <div style="z-index: 1;">
+            <div class="text-center">Génération en cours...</div>
+            <div class="loading loading-lg"></div>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-file-import-config">
+        <a class="modal-overlay" aria-label="Close" onclick="closeModal('modal-file-import-config');"></a>
+        <div class="modal-container">
+            <div class="modal-header">
+                <a class="btn btn-clear float-right" aria-label="Close" onclick="closeModal('modal-file-import-config');"></a>
+                <div class="modal-title h5">Importer une configuration</div>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <input class="form-input" type="file" id="input-file-import-config" accept=".json" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="btn-import-file">Importer</button>
+                <button class="btn" onclick="closeModal('modal-file-import-config');">Annuler</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-file-export-solution">
+        <a class="modal-overlay" aria-label="Close" onclick="closeModal('modal-file-export-solution');"></a>
+        <div class="modal-container">
+            <form action="/export" method="get">
+                <div class="modal-header">
+                    <a class="btn btn-clear float-right" aria-label="Close" onclick="closeModal('modal-file-export-solution');"></a>
+                    <div class="modal-title h5">Exporter le planning</div>
+                </div>
+                <div class="modal-body">
+                    <input type="text" name="solution" id="input-file-export-solution-solution" hidden />
+                    <div class="form-group">
+                        <label class="form-label" for="input-file-export-solution-format">Format</label>
+                        <select class="form-select" id="input-file-export-solution-format" name="format">
+                            <option value=".xlsx">Classeur Excel (*.xlsx)</option>
+                            <option value=".ods">Feuille de calcul OpenDocument (*.ods)</option>
+                            <option value=".csv">CSV (*.csv)</option>
+                            <option value=".tsv">TSV (*.tsv)</option>
+                            <option value=".txt">Texte (*.txt)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" onclick="closeModal('modal-file-export-solution');">Exporter</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>
